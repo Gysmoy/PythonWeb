@@ -3,4 +3,4 @@ if (1 == 1):
 else:
     print('Hoal we')
 
-print('Esto es todo, mas una actualización y un poquito mas')
+print('Ella no te ama')
