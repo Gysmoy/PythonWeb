@@ -84,13 +84,21 @@
 
 			<!-- About -->
 			<article id="register">
-				<h2 class="major">Formulario de registro</h2>
+				<h2 class="major">Registrarme</h2>
 				<blockquote>Ingrese sus datos para registrarlo</blockquote>
-				<form action="assets/python/signupAPI.js" autocomplete="off">
+				<form action="assets/python/signupAPI.py" autocomplete="off">
 					<div class="fields">
 						<div class="field half">
-							<label for="lastnameRegister">Apellidos</label>
-							<input type="text" id="lastnameRegister" placeholder="Ingrese sus apellidos"/>
+							<label for="dniRegister">DNI</label>
+							<input type="text" id="dniRegister" placeholder="Ingrese su DNI"/>
+						</div>
+						<div class="field half">
+							<label for="apePaterRegister">Apellido paterno</label>
+							<input type="text" id="apePaterRegister" placeholder="Ingrese sus apellidos"/>
+						</div>
+						<div class="field half">
+							<label for="apeMaterRegister">Apellido materno</label>
+							<input type="text" id="apeMaterRegister" placeholder="Ingrese sus apellidos"/>
 						</div>
 						<div class="field half">
 							<label for="nameRegister">Nombres</label>
@@ -426,6 +434,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/signupAPI.js"></script>
 
 </body>
 
