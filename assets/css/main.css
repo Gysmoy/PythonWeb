@@ -386,6 +386,7 @@ input, select, textarea {
 	}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
@@ -411,6 +412,7 @@ input, select, textarea {
 	}
 
 		input[type="text"]:invalid,
+		input[type="number"]:invalid,
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
@@ -420,6 +422,7 @@ input, select, textarea {
 		}
 
 		input[type="text"]:focus,
+		input[type="number"]:focus,
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
@@ -454,6 +457,7 @@ input, select, textarea {
 		}
 
 	input[type="text"],
+	input[type="number"],
 	input[type="password"],
 	input[type="email"],
 	select {
@@ -1659,3 +1663,17 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+/* Clases autogeneradas */
+.success {
+	border-color: #00B050;
+	background-color: #00B05011;
+}
+.danger {
+	border-color: #FF3B3B;
+	background-color: #FF3B3B11;
+}
+.info {
+	border-color: #6698ff;
+	background-color: #6698ff11;
+}
