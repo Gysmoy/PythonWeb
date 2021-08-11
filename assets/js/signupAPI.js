@@ -51,21 +51,23 @@ $('#register > form').on('submit', e => {
             var data = JSON.parse(response);
             $('#messageRegister').text(data.message);
             if (data.status === true) {
-                $('#messageRegister').removeClass('info');
-                $('#messageRegister').removeClass('danger');
+                $('#messageRegister').attr('class', null);
                 $('#messageRegister').addClass('success');
             } else {
-                $('#messageRegister').removeClass('success info').addClass('danger');
+                $('#messageRegister').attr('class', null);
+                $('#messageRegister').addClass('danger');
             }
         },
         error: e => {
             $('#messageRegister').text(e.statusText);
-            $('#messageRegister').removeClass('success').addClass('danger');
+            $('#messageRegister').attr('class', null);
+            $('#messageRegister').addClass('danger');
         },
         complete: function () {
             setTimeout( function() {
                 $('#messageRegister').text('Ingrese sus datos para registrarlo');
-                $('#messageRegister').removeClass('success danger').addClass('info');
+                $('#messageRegister').attr('class', null);
+                $('#messageRegister').addClass('info');
             }, 3000);
         }
     });
