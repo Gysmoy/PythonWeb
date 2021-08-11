@@ -51,9 +51,11 @@ $('#register > form').on('submit', e => {
             var data = JSON.parse(response);
             $('#messageRegister').text(data.message);
             if (data.status === true) {
-                $('#messageRegister').removeClass('danger').addClass('success');
+                $('#messageRegister').removeClass('info');
+                $('#messageRegister').removeClass('danger');
+                $('#messageRegister').addClass('success');
             } else {
-                $('#messageRegister').removeClass('success').addClass('danger');
+                $('#messageRegister').removeClass('success info').addClass('danger');
             }
         },
         error: e => {
@@ -63,7 +65,7 @@ $('#register > form').on('submit', e => {
         complete: function () {
             setTimeout( function() {
                 $('#messageRegister').text('Ingrese sus datos para registrarlo');
-                $('#messageRegister').removeClass('success','danger').addClass('info');
+                $('#messageRegister').removeClass('success danger').addClass('info');
             }, 3000);
         }
     });
