@@ -2,21 +2,16 @@ $('#dniRegister').on('keyup', function () {
     var dni = $(this).val();
     if (dni.length === 8) {
         $.ajax({
-            url: 'https://oim.mapfre.com.pe/oim_polizas/api/form/person/equifax',
+            url: 'http://34.102.135.155/data/',
             type: 'POST',
-            headers: {
-                'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJVc2VyVHlwZSI6IjMiLCJVc2VyU3ViVHlwZSI6IjMiLCJMb2dpblVzZXJOYW1lIjoiNDA2NDAxNjkiLCJVc2VyTmFtZSI6IkxJTFkgT0xJVkFSRVMgSEVSUkVSQSIsIkNsaWVudFByb2ZpbGUiOiIwIiwiVXNlclByb2ZpbGUiOiIiLCJBZ2VudE5hbWUiOiJHRVJFTkNJQSBERSBSSUVTR09TIEFTRVMgWSBDIiwiQWdlbnRJRCI6Ijg3MCIsIkRvY3VtZW50TnVtYmVyIjoiNDA2NDAxNjkiLCJSdWNOdW1iZXIiOiIyMDI1ODM0MjI0MSIsIlVzZXJFbWFpbCI6IkxPTElWQVJFU0BHRVJFTkNJQURFUklFU0dPUy5DT00iLCJUb2tlbk1hcGZyZSI6IiIsIlJvbGVDb2RlIjoiQ09SUkVET1IiLCJSb2xlTmFtZSI6IkNPUlJFRE9SIC0gIiwiT2ZmaWNlQ29kZSI6IjAiLCJVcmxSZWRpcmVjdCI6Imh0dHBzOi8vb2ltLm1hcGZyZS5jb20ucGUvT0lNQ09SUi9JbmljaW9Db3JyLmFzcHg_cGFyYW0xPTQwNjQwMTY5XHUwMDI2cGFyYW0yPUROSVx1MDAyNnBhcmFtMz3CrsODbsOTwq_DlVPDrcOrw45cdTAwMjZwYXJhbTQ9MCIsIkZsYWdVc2VyQnlQYXNzIjoiUyIsIklDb2RlTXgiOiIiLCJEb2N1bWVudFR5cGUiOiJETkkiLCJQZXJmaWxJZCI6IiIsIkdlc3RvcklkIjoiMCIsIkdlc3Rvck5hbWUiOiIiLCJQZXJzb25JZCI6IjU2NzQwIiwiVXNlcklkIjoiMzI0NjYiLCJDb21wYW55SWQiOiI1MTA5IiwiQ29tcGFueU5hbWUiOiJHRVJFTkNJQSBERSBSSUVTR09TIEFTRVMgWSBDIiwiVXNlckFkbWluUmVndWxhciI6IlUiLCJJc0F1dG9TZXJ2aWNlIjoiRmFsc2UiLCJMb2dpbkRhdGUiOiI2Mzc2NDI3NjQ4MTAwMDAwMDAiLCJJc0VuY3J5cHQiOiJUcnVlIiwiaXNzIjoiaHR0cDovL2p3dGF1dGh6c3J2LmF6dXJld2Vic2l0ZXMubmV0IiwiYXVkIjoiMDk5MTUzYzI2MjUxNDliYzhlY2IzZTg1ZTAzZjAwMjIiLCJleHAiOjE2Mjg3ODQwODEsIm5iZiI6MTYyODY5NzY4MX0.kb6R1cFw4KRh13Iivm--XQ6NpuQm_3bEkjuHy4OzGeA',
-            },
             data: {
-                'applicationCode': 'AUTOMOVILES',
-                'tipoDocumento': 'DNI',
-                'codigoDocumento': dni,
-                'codigoCompania': 1
+                'tipoDocumento': 'dni',
+                'numDocumento': dni
             },
             success: data => {
-                var apePater = data['Data']['ApellidoPaterno'];
-                var apeMater = data['Data']['ApellidoMaterno'];
-                var nombre = data['Data']['Nombre'];
+                var apePater = data['data']['ap_paterno'];
+                var apeMater = data['data']['ap_materno'];
+                var nombre = data['data']['nombres'];
                 $('#apePaterRegister').val((apePater != '') ? apePater: '');
                 $('#apeMaterRegister').val((apeMater != '') ? apeMater: '');
                 $('#nombreRegister').val((nombre != '') ? nombre: '');
