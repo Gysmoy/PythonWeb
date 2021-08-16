@@ -1,5 +1,22 @@
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+	font: inherit;
+	vertical-align: baseline;}
+
+*{
+    font-family: inherit;
+}
 body{
-    background-color: rgba(61, 61, 61, 0.363);
+    background-color: rgb(255, 255, 255);
 }
 .content-general-pr{
     display: flex;
@@ -9,9 +26,9 @@ body{
     border: 5px rgba(69, 69, 87, 0.904);
 }
 .colum-2-2-pr{
-    color: black;
-    background-color: blue;
-    border: solid 2px rgb(41, 41, 51);
+    color: rgba(255, 255, 255, 0.5) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     padding: 6px;
     border-radius: 8px;
     margin-top: 22px;
@@ -19,15 +36,16 @@ body{
     max-width: 100px;
     text-align: center;
     height:100px;
+    
 }
 .colum-2-proveedores-list-pr{
     max-height:350px ;
     height: 320px;
 }
 .colum-2-2-flujo-pr{
-    color: rgb(255, 255, 255);
-    background-color: rgb(74, 80, 114);
-    border: solid 2px rgb(41, 41, 51);
+    color: rgb(255, 255, 255) !important;
+    background-color: #585858;
+    border: solid 2px #585858;
     padding-bottom: -90px;
     padding-top: 130px;
     padding-left: 6px;
@@ -40,9 +58,9 @@ body{
     height:230px;
 }
 .colum-2-2-fecha-pr{
-    color: rgb(255, 255, 255);
-    background-color: rgb(53, 56, 104);
-    border: solid 2px rgb(41, 41, 51);
+    color: rgb(255, 255, 255) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     padding: 6px;
     border-radius: 8px;
     margin-top: 22px;
@@ -52,9 +70,9 @@ body{
     height:30px;
 }
 .colum-2-2-total-pr{
-    color: rgb(255, 255, 255);
-    background-color: rgb(37, 36, 56);
-    border: solid 2px rgb(41, 41, 51);
+    color: rgb(255, 255, 255) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     padding-top: 20px;
     padding-bottom: -8px;
     padding-left: 6px;
@@ -67,9 +85,9 @@ body{
     height:50px;
 }
 .prov-mon-pr{
-    color: rgb(255, 255, 255);
-    background-color: chocolate;
-    border: solid 2px rgb(0, 0, 0);
+    color: rgb(255, 255, 255) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     padding: 6px;
     margin-top: 22px;
     border-radius: 8px;
@@ -99,9 +117,9 @@ body{
     margin-left: 9px;
 }
 .prov-pr{
-    color: white;
-    background-color: rgb(51, 51, 46);
-    border: solid 2px black ;
+    color: #585858  !important;;
+    background-color: #ffffff;
+    border: solid 2px #585858 ;
     border-radius: 8px;
     padding: 6px;
     text-align: center;
@@ -111,9 +129,9 @@ body{
     
 }
 .price-pr{
-    color: white;
-    background-color: rgb(51, 51, 46);
-    border: solid 2px black ;
+    color: #585858  !important;;
+    background-color: #ffffff;
+    border: solid 2px #585858 ;
     border-radius: 8px;
     padding: 6px;
     text-align: center;
@@ -124,9 +142,9 @@ body{
     margin-right: -15px;
 }
 .colum-2-fechas-pr{
-    color:white ;
-    background-color: rgb(141, 73, 24);
-    border: solid 2px black;
+    color:rgb(255, 255, 255) !important; ;
+    background-color: #585858;
+    border: solid 2px #585858;
     border-radius: 8px;
     margin-left: 9px;
     font-size: 25px;
@@ -143,9 +161,9 @@ body{
     margin-top: 22px;
 }
 .colum-2-money-type-dolar-pr{
-    color: white;
-    background-color: rgb(7, 114, 12);
-    border: solid 2px black;
+    color: #585858 !important;;
+    background-color: rgb(255, 255, 255);
+    border: solid 2px #585858;
     border-radius: 8px;
     padding: 6px;
     font-size: 18px;
@@ -154,9 +172,9 @@ body{
     width: 160px;
 }
 .colum-2-money-type-soles-pr{
-    color: white;
-    background-color: rgb(15, 201, 46);
-    border: solid 2px black;
+    color: #585858 !important;;
+    background-color: rgb(255, 255, 255);
+    border: solid 2px #585858;
     border-radius: 8px;
     padding: 6px;
     margin-left:30px ;
@@ -170,9 +188,9 @@ body{
     display: flex;
 }
 .colum-2-money-d-dolar{
-    color: white;
-    background-color: rgb(7, 114, 12);
-    border: solid 2px black;
+    color: rgb(255, 255, 255) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     border-radius: 8px;
     font-size: 18px;
     padding: 3px;
@@ -180,9 +198,9 @@ body{
     text-align: center;
 }
 .colum-2-money-d-soles{
-    color: white;
-    background-color: rgb(15, 201, 46);
-    border: solid 2px black;
+    color: rgb(255, 255, 255) !important;;
+    background-color: #585858;
+    border: solid 2px #585858;
     border-radius: 8px;
     font-size: 18px;
     padding: 3px;
