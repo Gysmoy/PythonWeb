@@ -81,7 +81,7 @@ body{
     font-size: 25px;
     max-width: 100px;
     text-align: center;
-    height:73px;
+    height:83px;
 }
 .prov-mon-pr{
     color: rgb(255, 255, 255) !important;;
@@ -154,10 +154,12 @@ body{
     border: solid 2px #585858;
     border-radius: 8px;
     margin-left: 9px;
-    font-size: 25px;
+    font-size: 13px;
     padding: 6px;
     margin-top: 22px;
     text-align: center;
+    max-width: 365px;
+    width: 365px;
 }
 .colum-2-money-pr{
     display: block;
@@ -173,10 +175,11 @@ body{
     border: solid 2px #585858;
     border-radius: 8px;
     padding: 6px;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
     max-width: 150px;
-    width: 160px;
+    width: 150px;
+    font-family: inherit ;
 }
 .colum-2-money-type-soles-pr{
     color: #585858 !important;;
@@ -184,10 +187,10 @@ body{
     border: solid 2px #585858;
     border-radius: 8px;
     padding: 6px;
-    margin-left:30px ;
-    font-size: 18px;
+    margin-left:62px ;
+    font-size: 12px;
     max-width: 150px;
-    width: 160px;
+    width: 150px;
     text-align: center;
 }
 .colum-2-money-d-pr{
@@ -199,21 +202,24 @@ body{
     background-color: #585858;
     border: solid 2px #585858;
     border-radius: 8px;
-    font-size: 18px;
-    padding: 3px;
-    width: 156px;
+    font-size: 12px;
+    max-width: 150px;
+    width: 150px;
     text-align: center;
+    height: 30px;
+
 }
 .colum-2-money-d-soles{
     color: rgb(255, 255, 255) !important;;
     background-color: #585858;
     border: solid 2px #585858;
     border-radius: 8px;
-    font-size: 18px;
-    padding: 3px;
-    width: 156px;
-    margin-left:30px ;
+    font-size: 12px;
+    max-width: 150px;
+    width: 150px;
+    margin-left:60px ;
     text-align: center;
+    height: 30px;
 }
 
 
