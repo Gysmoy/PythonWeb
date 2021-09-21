@@ -4,3 +4,12 @@ pip install django-filter  # Filtering support
 
 
 ver version de  django que usas : python -m django --version 
+
+crear nuevo super usuario :  python manage.py createsuperuser
+
+iniciar servidor de django : python  manage.py runserver
+
+
+migrar 1 : python manage.py makemigrations profiles_api
+
+migrar 2 : python manage.py migrate
