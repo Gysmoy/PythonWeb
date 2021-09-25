@@ -2,17 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from profiles_api import serializers
+from django.http import JsonResponse
+import json
+
+
 
 class HelloApiView(APIView):
     '''API view de prueba'''
-
     serializer_class = serializers.HelloSerializer
-
-
     def get(self, request, format=None):
-        an_apiview = ['data','de','base de  datos']
-
-        return Response({'status':'200','message':'Listado Terminado','data':an_apiview})
+        data = ['data','de','base de  datos']
+        return Response({'status':'200','message':'Listado Terminado','data':data})
 
     def post(self, request):
         '''crear un mensaje con nuestro nombre'''
@@ -20,8 +20,23 @@ class HelloApiView(APIView):
 
         if serializer.is_valid():
             name = serializer.validated_data.get('name')
-            message =  f'Hello {name}'
-            return Response({'message':message})
+            apellido = serializer.validated_data.get('apellido')
+            telefono = serializer.validated_data.get('telefono')
+            gmail = serializer.validated_data.get('gmail')
+            edad = serializer.validated_data.get('edad')
+            data =  {
+                'Nombre':name,
+                'Apellido':apellido,
+                'Telefono':telefono,
+                'Gmail':gmail,
+                'Edad':edad
+            }
+            respuesta=({'message':'Datos recibidos correctamente','status':'200','data':data})
+
+            with open('C:\\Users\\anonymous\\Desktop\\TFR\\PythonWeb\\assets\\python\\profiles_api\\json\\datas.json', 'w') as file:
+                json.dump(respuesta, file, indent=4)
+
+            return Response(respuesta)
         else:
             return Response(
                 serializer.errors,
