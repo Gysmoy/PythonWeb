@@ -18,3 +18,5 @@ AS BEGIN
 END
 GO
 
+/* wa hacer algunas cosas ya lo termino al rato */
+
