@@ -1,20 +1,28 @@
 $('#dniRegister').on('keyup', function () {
     var dni = $(this).val();
+    var tokenEquifax = localStorage.getItem('tokenEquifax');
     if (dni.length === 8) {
         $.ajax({
-            url: 'http://34.102.135.155/data/',
+            url: 'https://oim.mapfre.com.pe/oim_polizas/api/form/person/equifax',
             type: 'POST',
-            data: {
-                'tipoDocumento': 'dni',
-                'numDocumento': dni
+            dataType: 'json',
+            headers: {
+                'accept': 'application/json, text/plain, */*',
+                'authorization': tokenEquifax,
+                'content-Type': 'application/json;charset=UTF-8',
             },
-            success: data => {
-                var apePater = data['data']['ap_paterno'];
-                var apeMater = data['data']['ap_materno'];
-                var nombre = data['data']['nombres'];
-                $('#apePaterRegister').val((apePater != '') ? apePater: '');
-                $('#apeMaterRegister').val((apeMater != '') ? apeMater: '');
-                $('#nombreRegister').val((nombre != '') ? nombre: '');
+            data: JSON.stringify({
+                tipoDocumento: 'DNI',
+                codigoDocumento: dni
+            }),
+            success: res => {
+                console.log(res);
+                var apePater = res.Data.ApellidoPaterno;
+                var apeMater = res.Data.ApellidoMaterno;
+                var nombre = res.Data.Nombre;
+                $('#apePaterRegister').val((apePater != '') ? apePater : '');
+                $('#apeMaterRegister').val((apeMater != '') ? apeMater : '');
+                $('#nombreRegister').val((nombre != '') ? nombre : '');
             }
         })
     } else {
@@ -31,7 +39,7 @@ $('#register > form').on('submit', e => {
     var password1 = $('#password1Register').val();
     var password2 = $('#password2Register').val();
     var urlAPI = $('#register > form').attr('action');
-    
+
     $.ajax({
         url: urlAPI,
         type: 'POST',
@@ -59,7 +67,7 @@ $('#register > form').on('submit', e => {
             $('#messageRegister').addClass('danger');
         },
         complete: function () {
-            setTimeout( function() {
+            setTimeout(function () {
                 $('#messageRegister').text('Ingrese sus datos para registrarlo');
                 $('#messageRegister').attr('class', null);
                 $('#messageRegister').addClass('info');
