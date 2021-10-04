@@ -105,7 +105,7 @@ GO
 CREATE TABLE MONEDAS
 (
     id CHAR(8),
-    moneda VARCHAR(12),
+    modeda VARCHAR(12),
     estado BIT,
     CONSTRAINT pk_monedas PRIMARY KEY (id),
 );
