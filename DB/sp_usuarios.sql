@@ -54,8 +54,58 @@ CREATE PROCEDURE USUARIOS_SEARCH
 @search VARCHAR(50)
 AS
     SELECT * FROM USUARIOS WHERE
-        usuario LIKE(CONCAT('%', @search, '%'))
+        usuario LIKE(CONCAT('%', @search, '%')) OR
+        correo LIKE (CONCAT('%', @search, '%')) OR
+        clave LIKE (CONCAT('%', @search, '%')) OR
+        dni LIKE (CONCAT('%', @search, '%')) OR
+        apePater LIKE (CONCAT('%', @search, '%')) OR
+        apeMater LIKE (CONCAT('%', @search, '%')) OR
+        nombre LIKE (CONCAT('%', @search, '%'))
+GO
 
+-- USUARIOS -> UPDATE == EXEC USUARIOS_UPDATE
+CREATE PROCEDURE USUARIOS_UPDATE
 
+@id CHAR(8),
+@usuario VARCHAR(16),
+@correo VARCHAR(320),
+@clave CHAR(64),
+@dni CHAR(8),
+@apePater VARCHAR(15),
+@apeMater VARCHAR(15),
+@nombres VARCHAR(45),
+@sexo CHAR(1),
+@fec_nac DATE,
+@id_idioma CHAR(8),
+@estado BIT
+AS
+    UPDATE USUARIOS SET
+    usuario = @usuario,
+    correo = @correo,
+    clave = @clave,
+    dni = @dni,
+    apePater = @apePater,
+    apeMater = @apeMater,
+    nombres = @nombres,
+    sexo = @sexo,
+    fec_nac = @fec_nac,
+    id_idioma = @is_idioma,
+    estado = @estado
+    WHERE id = @id
+GO 
+
+--USUARIOS -> CHANGE STATUS == EXEC USUARIOS_CHANGE_STATUS
+CREATE PROCEDURE USUARIOS_CHANGE_STATUS
+@id CHAR(8)
+AS
+    DECLARE @estado BIT
+    SELECT @estado = estado from USUARIOS WHERE id=@id
+    IF @estado = 1
+        UPDATE USUARIOS SET estado = '0' WHERE id = @id
+    ELSE 
+        UPDATE USUARIOS SET estado = '1' WHERE id = @id
+GO
+
+        
 
 /*  USUARIO Y CORREO PARA SEARCH* 201 107*/
