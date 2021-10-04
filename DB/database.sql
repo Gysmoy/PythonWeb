@@ -14,7 +14,7 @@ GO
 CREATE TABLE SERVICIOS
 (
     id CHAR(8),
-    descripcion VARCHAR(45),
+    servicio VARCHAR(45),
     estado BIT,
     CONSTRAINT pk_servicio PRIMARY KEY (id)
 );
