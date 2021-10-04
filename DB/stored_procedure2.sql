@@ -1,4 +1,20 @@
-USE MASTER 
+
+/* ===================================================== */
+/* INICIO PROCEDIMINETOS ALACENADOS PROVEEDORES */
+USE MANAGE_IT
+GO
+-- PROVEEDORES -> CEREATE == EXECT IDIOMAS_CREATE
+CREATE PROCEDURE PROVEEDORES_CREATE
+@tipo CHAR(1),
+@id_per_nat CHAR(8),
+@id_per_jur CHAR(8),
+@estado BIT
+AS BEGIN
+    DECLARE @id CHAR(8)
+    SELECT @id = 'PRO'+ RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) FROM PROVEEDORES
+    INSERT INTO PROVEEDORES VALUES (@id, @tipo, @id_per_nat, @id_per_jur, '1')
+END
+
 GO
 
 -- PROVEEDORES -> READ ALL == EXEC PROVEEDORES_READ_ALL
@@ -55,5 +71,7 @@ AS
     else 
         UPDATE PROVEEDORES SET estado = '1' WHERE id = @id
 GO
+/* FIN DE  PROCEDIMINTO ALMACENADO PROVEEDORES */
+/* ===============================================*/
 
---PRO
+--USUARIOS
