@@ -123,6 +123,5 @@ CREATE TABLE HISTORIALES(
     CONSTRAINT pk_historial PRIMARY KEY (id),
     CONSTRAINT fk_historial_usuario FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id),
     CONSTRAINT fk_historial_proveedor FOREIGN KEY (id_proveedor) REFERENCES PROVEEDORES(id),
-
 );
 GO
