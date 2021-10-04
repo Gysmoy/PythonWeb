@@ -14,7 +14,7 @@ GO
 CREATE TABLE SERVICIOS
 (
     id CHAR(8),
-    descripcion VARCHAR(45),
+    servicio VARCHAR(45),
     estado BIT,
     CONSTRAINT pk_servicio PRIMARY KEY (id)
 );
@@ -105,7 +105,7 @@ GO
 CREATE TABLE MONEDAS
 (
     id CHAR(8),
-    idioma VARCHAR(12),
+    moneda VARCHAR(12),
     estado BIT,
     CONSTRAINT pk_monedas PRIMARY KEY (id),
 );
