@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+
+<html>
+    <title>Proveedores</title>
+<head>
+   
+   
+  <meta charset="utf-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  
+
+  <noscript>
+      
+      <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
+  
+</head>
+
+<body class="is-preload">
+
+  <div id="wrapper">
+
+      <header id="header">
+          <div class="inner">
+
+              <a href="./" class="logo">
+                  <span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
+              </a>
+
+              <nav>
+                  <ul>
+                      <li><a href="#menu">Menu</a></li>
+                  </ul>
+              </nav>
+
+          </div>
+      </header>
+ <!-- Menu -->
+ <nav id="menu">
+  <h2>Menu</h2>
+  <ul>
+      <li><a href="./">Inicio</a></li>
+      <li><a href="paymentChron.html">Cronograma de pagos</a></li>
+      <li><a href="providerFlow.html">Flujo de proveedores</a></li>
+      <li><a href="providerList.html">Lista de proveedores</a></li>
+      <li><a href="config.html">Configuración</a></li>
+      <li><a href="./#">Cerrar sesión</a></li>
+  </ul>
+</nav>
+
+
+
+<!--tabla de registro-->
+<center>
+<h1>Lista de proveedores</h1>
+</center>
+<br>  
+
+<!-- Main -->
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-10">      
+                  
+        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo</button>    
+        </div>    
+    </div>    
+</div>   
+<!--Buscador -->
+
+
+
+<left>
+
+
+<div class="container"    aling  ="left">
+    <div class="input-group" >
+        <div class="form-outline"  >
+            
+          <input type="search" id="form1" class="form-control" />
+          <label class="form-label" for="form1" aling=ringht></label>
+        </div>
+
+    <align =center>
+        <button type="button" class="btn btn-primary ">
+          <i class="fas fa-search"></i>
+        </button>
+        <align =center>
+    </div>
+    
+      <br>
+  <div class="row">
+          <div class="col-lg-12" ></div>
+              <div class="table-responsive" >        
+                <table class="table ">
+                    <thead class="table-info table-striped table-bordered" >
+                      <tr>
+                          
+                          <th>Id</th>
+                          <th>Nombre</th>
+                          <th>Categoria</th>                                
+                          <th>Fecha de suscripción</th>  
+                          <th>Monto</th>  
+                          <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <!--?php                            
+                    foreach($data as $dat) {                                                        
+                    ?>
+                    <tr>
+                        <td><?php echo $dat['id'] ?></td>
+                        <td><?php echo $dat['Nombre'] ?></td>
+                        <td><?php echo $dat['Categoria'] ?></td>
+                        <td><?php echo $dat['Fecha de suscripción'] ?></td>
+                        <td><?php echo $dat['Monto'] ?></td>      
+                        <td></td>
+                    </tr>
+                    <?php!
+                -->
+                    <tr>
+                        <td>1</td>
+                        <td>........</td>
+                        <td>........</td>
+                        <td>........</td>
+                        <td>.........</td>
+                        <td><button type='button' class='btn btn-success'>Modificar</button> <button type='button'  class="btn btn-danger">Eliminar</button></a> </td>
+             
+                    </tr>             
+                  </tbody>        
+                 </table>                    
+              </div>
+          </div>
+  </div>  
+</div>    
+<br>
+
+<!--Modal para CRUD-->
+
+
+<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPersonas">    
+            <div class="modal-body">
+                <div class="form-group">
+                <label for="Categoria" class="col-form-label">Categoria:</label>
+                <input type="" class="form-control" id="nombre">
+                </div>
+                <div class="form-group">
+                <label for="Fecha de suscripción" class="col-form-label">Fecha de suscripción:</label>
+                <input type="number" class="form-control" id="pais">
+                </div>                
+                <div class="form-group">
+                <label for="Ciclo" class="col-form-label">Ciclo:</label>
+                <input type="number" class="form-control" id="edad">
+
+                <div class="form-group">
+                    <label for="Duracion" class="col-form-label">Duracion:</label>
+                    <input type="number" class="form-control" id="edad">
+
+                <div class="form-group">
+                        <label for="Modo de pago en soles" class="col-form-label">Modo de pago en soles:</label>
+                        <input type="number" class="form-control" id="edad">
+                </div>            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>  
+      
+</div>
+
+ <!-- Scripts -->
+ <script src="assets/js/jquery.min.js"></script>
+ <script src="assets/js/browser.min.js"></script>
+ <script src="assets/js/breakpoints.min.js"></script>
+ <script src="assets/js/util.js"></script>
+ <script src="assets/js/main.js"></script>
+ <script src="assets/js/showHide.js"></script>
+
+</body>
+
+
+</html>

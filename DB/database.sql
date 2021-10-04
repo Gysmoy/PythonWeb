@@ -1,21 +1,35 @@
-CREATE TABLE SERVICIOS(
+USE MASTER
+GO
+
+IF DB_ID('MANAGE_IT') IS NOT NULL
+	DROP DATABASE MANAGE_IT
+GO
+
+CREATE DATABASE MANAGE_IT
+GO
+
+USE MANAGE_IT
+GO
+
+CREATE TABLE SERVICIOS
+(
     id CHAR(8),
     descripcion VARCHAR(8),
     estado BIT,
     CONSTRAINT pk_servicio PRIMARY KEY (id)
 );
-
 GO
 
-CREATE TABLE PERSONA_NATURAL(
+CREATE TABLE PERSONA_NATURAL
+(
     id CHAR(8),
     apePater VARCHAR(15),
     apeMater VARCHAR(15),
     nombres VARCHAR(45),
     dni CHAR(8),
     id_servicio CHAR(8),
-    tel1  VARCHAR(15),
-    tel2  VARCHAR(15),
+    tel1 VARCHAR(15),
+    tel2 VARCHAR(15),
     correo VARCHAR(320),
     direccion VARCHAR(250),
     estado BIT,
@@ -24,13 +38,15 @@ CREATE TABLE PERSONA_NATURAL(
     CONSTRAINT ck_persona_natural_dni CHECK(dni LIKE('[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')),
 );
 GO
-CREATE TABLE PERSONA_JURIDICA(
+
+CREATE TABLE PERSONA_JURIDICA
+(
     id CHAR(8),
     razonSocial VARCHAR(250),
     ruc CHAR(11),
     id_servicio CHAR(8),
-    tel1  VARCHAR(15),
-    tel2  VARCHAR(15),
+    tel1 VARCHAR(15),
+    tel2 VARCHAR(15),
     correo VARCHAR(320),
     direccion VARCHAR(320),
     estado BIT,
@@ -40,7 +56,8 @@ CREATE TABLE PERSONA_JURIDICA(
 );
 GO
 
-CREATE TABLE PROVEEDORES(
+CREATE TABLE PROVEEDORES
+(
     id CHAR(8),
     tipo CHAR(1),
     id_per_nat CHAR(8),
@@ -53,17 +70,20 @@ CREATE TABLE PROVEEDORES(
 );
 GO
 
-CREATE TABLE IDIOMAS(
+CREATE TABLE IDIOMAS
+(
     id CHAR(8),
     idioma VARCHAR(12),
     estado BIT,
     CONSTRAINT pk_idioma PRIMARY KEY (id)
 );
 GO
-CREATE TABLE USUARIOS(
+
+CREATE TABLE USUARIOS
+(
     id CHAR(8),
     usuario VARCHAR(16),
-    correo  VARCHAR(320),
+    correo VARCHAR(320),
     clave CHAR(64),
     dni CHAR(8),
     apePater VARCHAR(15),
@@ -81,15 +101,18 @@ CREATE TABLE USUARIOS(
 
 );
 GO
-CREATE TABLE MONEDAS(
+
+CREATE TABLE MONEDAS
+(
     id CHAR(8),
     idioma VARCHAR(12),
     estado BIT,
-    CONSTRAINT pk_persona_natural PRIMARY KEY (id),
-
+    CONSTRAINT pk_monedas PRIMARY KEY (id),
 );
 GO
-CREATE TABLE CICLOS(
+
+CREATE TABLE CICLOS
+(
     id CHAR(8),
     tipo VARCHAR(15),
     ciclo INT,
@@ -97,7 +120,9 @@ CREATE TABLE CICLOS(
     CONSTRAINT pk_ciclo PRIMARY KEY (id),
 );
 GO
-CREATE TABLE SUBSCRIPCIONES(
+
+CREATE TABLE SUBSCRIPCIONES
+(
     id CHAR(8),
     id_usuario CHAR(8),
     id_proveedor CHAR(8),
@@ -114,7 +139,9 @@ CREATE TABLE SUBSCRIPCIONES(
     CONSTRAINT fk_subscripcion_moneda FOREIGN KEY (id_moneda) REFERENCES CICLOS(id),
 );
 GO
-CREATE TABLE HISTORIALES(
+
+CREATE TABLE HISTORIALES
+(
     id CHAR(8),
     id_usuario CHAR(8),
     id_proveedor CHAR(8),
