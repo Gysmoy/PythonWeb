@@ -54,17 +54,30 @@ CREATE PROCEDURE SUBSCRIPCIONES_SEARCH
 @search VARCHAR(12)
 AS
 	SELECT * FROM SUBSCRIPCIONES WHERE
-        id_usuario LIKE(CONCAT('%', @idioma, '%'))
+        id_usuario LIKE(CONCAT('%', @search, '%')) OR
+        id_proveedor LIKE(CONCAT('%', @search, '%'))
 GO
 
 -- SUBSCRIPCIONES -> UPDATE == EXEC SUBSCRIPCIONES_UPDATE
 CREATE PROCEDURE SUBSCRIPCIONES_UPDATE
-@id		CHAR(8),
-@idioma VARCHAR(12),
+@id CHAR(8),
+@id_usuario CHAR(8),
+@id_proveedor CHAR(8),
+@id_ciclo CHAR(8),
+@id_moneda CHAR(8),
+@monto DECIMAL(5,2),
+@fec_inicio DATE,
+@prorroga INT,
 @estado BIT
 AS
 	UPDATE SUBSCRIPCIONES SET
-	idioma = @idioma,
+	id_usuario = @id_usuario,
+    id_proveedor = @id_proveedor,
+    id_ciclo = @id_ciclo,
+    id_moneda = @id_moneda,
+    monto = @monto,
+    fec_inicio = @fec_inicio,
+    prorroga = @prorroga,
 	estado = @estado
 	WHERE id = @id
 GO
