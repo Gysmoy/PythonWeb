@@ -11,12 +11,9 @@ CREATE PROCEDURE CICLOS_CREATE
 @ciclo INT
 AS BEGIN
     DECLARE @id CHAR(8)
-    SELECT @id = 'CLC' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)) FROM CICLOS
+    SELECT @id = 'CIC' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1))) FROM CICLOS
     INSERT INTO CICLOS VALUES (
         @id, @tipo, @ciclo, @estado, '1'
     )
 END
 GO
-
-/* wa hacer algunas cosas ya lo termino al rato */
-
