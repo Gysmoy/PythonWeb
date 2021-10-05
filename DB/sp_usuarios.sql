@@ -106,6 +106,4 @@ AS
         UPDATE USUARIOS SET estado = '1' WHERE id = @id
 GO
 
-        
-
-/*  USUARIO Y CORREO PARA SEARCH* 201 107*/
+/*FN*/
