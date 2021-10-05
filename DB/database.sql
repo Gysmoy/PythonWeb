@@ -142,7 +142,7 @@ GO
 
 CREATE TABLE HISTORIALES
 (
-    id CHAR(8),
+    id CHAR(11),
     id_usuario CHAR(8),
     id_proveedor CHAR(8),
     monto DECIMAL(5,2),

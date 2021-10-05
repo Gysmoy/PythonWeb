@@ -11,7 +11,7 @@ CREATE PROCEDURE CICLOS_CREATE
 @ciclo INT
 AS BEGIN
     DECLARE @id CHAR(8)
-    SELECT @id = 'CLC' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)) FROM CICLOS
+    SELECT @id = 'CIC' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1))) FROM CICLOS
     INSERT INTO CICLOS VALUES (
         @id, @tipo, @ciclo, @estado, '1'
     )
@@ -31,8 +31,58 @@ AS
 GO
 
 -- CILOS -> READ INACTIVE == EXEC CICLOS_READ_INACTIVES
-CREATE PROCEDURE CICLOS_READ_IN
+CREATE PROCEDURE CICLOS_READ_INACTIVES
 AS
     SELECT * FROM CICLOS WHERE estado = '0'
 GO
+
+-- CICLOS ->  READ ONE == EXEC CICLOS_READ_ONE
+CREATE PROCEDURE CICLOS_READ_ONE
+@id CHAR(8)
+AS
+    SELECT * FROM CICLOS WHERE id = @id
+GO
+
+-- CICLOS -> SEARCH == EXEC CICLOS_SEARCH
+CREATE PROCEDURE CICLOS_SERCH
+@search VARCHAR(50)
+AS
+    SELECT * FROM CICLOS WHERE 
+        tipo LIKE(CONCAT('%', @search, '%')) 
+GO
+
+--CICLOS ->  UPDATE == EXEC CICLOS_UPDATE
+CREATE PROCEDURE CICLOS_UPDATE
+@id CHAR(8),
+@tipo VARCHAR(15),
+@ciclo INT,
+@estado BIT
+AS
+    UPDATE CICLOS SET
+    id = @id,
+    tipo = @tipo,
+    ciclo = @ciclo,
+    estado = @estado
+    WHERE id = @id
+GO
+
+-- CICLOS -> CHANGE STATUS = EXEC CICLOS_CHANGE_STATUS
+CREATE PROCEDURE CICLOS_CHANGE_STATUS
+@id CHAR(8)
+AS
+    DECLARE @estado BIT
+    SELECT @estado = estado FROM USUARIOS WHERE id = @id
+IF @estado = 1
+    UPDATE CICLOS SET estado = '0' WHERE id = @id
+ELSE
+     UPDATE USUARIOS SET estado = '1' WHERE id = @id
+    
+GO
+/* FIN PROCEDIMIENTOS ALMACENADOS CICLOS */
+/* ====================================== */
+
+
+
+
+
 

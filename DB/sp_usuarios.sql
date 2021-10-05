@@ -105,5 +105,5 @@ AS
     ELSE 
         UPDATE USUARIOS SET estado = '1' WHERE id = @id
 GO
-
-/*FN*/
+/* FIN PROCEDIMIENTOS ALMACENADOS USUARIOS */
+/* ====================================== */
