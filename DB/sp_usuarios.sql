@@ -20,7 +20,7 @@ CREATE PROCEDURE USUARIOS_CREATE
 AS BEGIN 
     DECLARE @id CHAR(8)
     SELECT @id = 'USR' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) FROM USUARIOS
-    INSERT INTO USUARIOS VALUES (@id, @usuario, @correo, @clave, @dni, @apePater, @apeMater, @nombre, @sexo, @fec_nac,@id_idioma, '1')
+    INSERT INTO USUARIOS VALUES (@id, @usuario, @correo, @clave, @dni, @apePater, @apeMater, @nombres, @sexo, @fec_nac,@id_idioma, '1')
 END
 GO 
 
@@ -60,7 +60,7 @@ AS
         dni LIKE (CONCAT('%', @search, '%')) OR
         apePater LIKE (CONCAT('%', @search, '%')) OR
         apeMater LIKE (CONCAT('%', @search, '%')) OR
-        nombre LIKE (CONCAT('%', @search, '%'))
+        nombres LIKE (CONCAT('%', @search, '%'))
 GO
 
 -- USUARIOS -> UPDATE == EXEC USUARIOS_UPDATE
@@ -89,7 +89,7 @@ AS
     nombres = @nombres,
     sexo = @sexo,
     fec_nac = @fec_nac,
-    id_idioma = @is_idioma,
+    id_idioma = @id_idioma,
     estado = @estado
     WHERE id = @id
 GO 
