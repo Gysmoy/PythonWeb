@@ -5,18 +5,17 @@ GO
 
 -- USUARIOS -> CREATE = EXEC == USUARIOS_CREATE ''
 CREATE PROCEDURE USUARIOS_CREATE
-(
-    @usuario VARCHAR(16),
-    @correo VARCHAR(320),
-    @clave CHAR(64),
-    @dni CHAR(8),
-    @apePater VARCHAR(15),
-    @apeMater VARCHAR(15),
-    @nombres VARCHAR(45),
-    @sexo CHAR(1),
-    @fec_nac DATE,
-    @id_idioma CHAR(8)
-)
+@usuario VARCHAR(16),
+@correo VARCHAR(320),
+@clave CHAR(64),
+@dni CHAR(8),
+@apePater VARCHAR(15),
+@apeMater VARCHAR(15),
+@nombres VARCHAR(45),
+@sexo CHAR(1),
+@fec_nac DATE,
+@id_idioma CHAR(8)
+
 AS BEGIN 
     DECLARE @id CHAR(8)
     SELECT @id = 'USR' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) FROM USUARIOS
