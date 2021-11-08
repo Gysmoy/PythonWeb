@@ -11,23 +11,26 @@ class HelloApiView(APIView):
     serializer_class = serializers.HelloSerializer
     def get(self, request, format=None):
         try:
-            connection=pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-R089M73\SQLEXPRESS;DATABASE=manage;Trusted_Connection=yes;')
-            print('concion sitosa')
+            connection=pyodbc.connect('DRIVER={SQL Server};SERVER=DESKTOP-TM5VSPQ\SQLEXPRESS;DATABASE=manage_it;Trusted_Connection=yes;')
             cursor = connection.cursor()
-            cursor.execute('select * from usuarios;')
+            query = "EXEC USUARIOS_SEARCH 'yopirata'"
+            #params = ['yopirata']
+            cursor.execute(query)
             row = cursor.fetchone()
             rows = cursor.fetchall()
-            rows = json.dumps(rows)
+            data = list()
+            for row in rows:
+                data.append([x for x in row])
+
+            rows = data
             print( rows)
-            with open('C:\\Users\\anonymous\\Desktop\\TFR\\PythonWeb\\assets\\python\\profiles_api\\json\\datas.json', 'w') as file:
-                json.dump(rows, file, indent=4)
         except Exception as ex:
             print(ex)
+            rows = []
         finally:
             connection.close()
             print('conexion finalizada')
-        data = ['data','de','base de  datos']
-        return Response({'status':'200','message':'Listado Terminado','data':data})
+        return Response({'status':'200','message':'Listado Terminado','data':rows})
 
     def post(self, request):
         '''crear un mensaje con nuestro nombre'''
