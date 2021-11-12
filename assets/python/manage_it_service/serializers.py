@@ -12,3 +12,10 @@ class UserSerializer(serializers.Serializer):
     '''SERIALIZA UN CAMPO'''
     id = serializers.CharField(max_length = 8)
     search = serializers.CharField(max_length = 50)
+    username = serializers.CharField(max_length = 320)
+    password = serializers.CharField(max_length = 64)
+
+class LoginSerializer(serializers.Serializer):
+    '''Datos que vienen del login'''
+    username = serializers.CharField(max_length = 320)
+    password = serializers.CharField(max_length = 64)

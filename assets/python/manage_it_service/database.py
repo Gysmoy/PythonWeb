@@ -17,4 +17,7 @@ class Database:
         finally:
             return cursor
     def disconnect(self):
-        self.connection.close()
+        try:
+            self.connection.close()
+        except Exception as e:
+            print(e)

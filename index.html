@@ -13,8 +13,8 @@
 </head>
 
 <body class="is-preload">
-	<script src="https://account.snatchbot.me/script.js"></script>
-	<script>window.sntchChat.Init(203821)</script>
+	<!--script src="https://account.snatchbot.me/script.js"></script>
+	<script>window.sntchChat.Init(203821)</script-->
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -65,12 +65,12 @@
 			<!-- Work -->
 			<article id="login">
 				<h2 class="major">Iniciar sesión</h2>
-				<blockquote>Ingrese sus datos para iniciar sesión</blockquote>
-				<form action="" autocomplete="off">
+				<blockquote id="messageLogin" style="display: none;">Ingrese sus datos para iniciar sesión</blockquote>
+				<form action="" autocomplete="off" method="post">
 					<div class="fields">
 						<div class="field half">
-							<label for="emailLogin">Correo electrónico</label>
-							<input type="email" id="emailLogin" placeholder="correo@ejemplo.com" />
+							<label for="usernameLogin">Correo electrónico</label>
+							<input type="text" id="usernameLogin" placeholder="correo@ejemplo.com" />
 						</div>
 						<div class="field half">
 							<label for="passwordLogin">Contraseña</label>

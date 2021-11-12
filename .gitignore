@@ -1,6 +1,2 @@
-assets/python/profiles_api/__pycache__
-#assets/js/ipgeneral.js
-assets/python/manage_it_service/__pycache__
-assets/python/profiles_api/__pycache__
-assets/python/manage_it_service/__init__.py
-assets/python/profiles_api/__init__.py
+*__init__.py
+*__pycache__
