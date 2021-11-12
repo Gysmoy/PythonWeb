@@ -13,6 +13,8 @@ $('#login form').submit(e => {
             'username': username,
             'password': password,
         }),
+        beforeSend: function() {
+        },
         success: data => {
             $('#messageLogin').text(data.message);
             $('#messageLogin').show(250);
@@ -31,5 +33,4 @@ $('#login form').submit(e => {
             }, 2500);
         }
     })
-
 })
