@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from manage_it_service import serializers
 from manage_it_service.database import Database
-
+from uuid import uuid4
+from hashlib import sha256
 
 class setUser(APIView):
     pass
@@ -38,10 +39,16 @@ class getUsers(APIView):
             cursor = db.connect()
             query = 'USUARIOS_READ_ALL'
             if (cursor != False):
-                cursor.execute(query)
+                cursor.execute(query, [])
+                columns = [i[0] for i in cursor.description]
                 rows = cursor.fetchall()
                 for row in rows:
-                    data.append([x for x in row])
+                    i = 0
+                    one = {}
+                    for x in row:
+                        one[columns[i]] = x
+                        i = i + 1
+                    data.append(one)
                 status = 200
                 message = 'Operación correcta'
             else:
@@ -68,25 +75,38 @@ class validateUser(APIView):
     def post(self, request):
         statusCode = 200
         message = 'NTS'
-        data = list()
+        data = dict()
+        session = dict()
         db = Database()
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                username = serializer.validated_data.get('username')
-                password = serializer.validated_data.get('password')
+                postData = serializer.validated_data
+                username = postData.get('username')
+                password = postData.get('password')
+                password = sha256(password.encode()).hexdigest()
                 cursor = db.connect()
                 query = "USUARIOS_READ_USERNAME_PASSWORD ?, ?"
                 parameters = (username, password)
                 cursor.execute(query, parameters)
+                columns = [i[0] for i in cursor.description]
                 row = cursor.fetchall()
                 if (len(row) == 0):
                     statusCode = 400
                     message = 'Usuario y/o contraseña incorrectos'
                 else:
-                    data = (x for x in row[0])
-                    statusCode = 200
-                    message = 'Operación correcta'
+                    i = 0
+                    for x in row[0]:
+                        data[columns[i]] = x
+                        i = i + 1 
+                    if data['estado'] == False:
+                        statusCode = 400
+                        message = 'Este usuario esta inactivo'
+                    else: 
+                        statusCode = 200
+                        message = 'Operación correcta'
+                        session['uuid'] = uuid4()
+                        session['rol'] = 'USER'
             else:
                 statusCode = 400
                 message = 'Error en la petición'
@@ -98,7 +118,8 @@ class validateUser(APIView):
             res = {
                 'status': statusCode,
                 'message': message,
-                'data': data
+                'data': data,
+                'session': session
             }
             if (statusCode == 200):
                 return Response(res, status.HTTP_200_OK)

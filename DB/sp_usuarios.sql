@@ -53,7 +53,12 @@ CREATE PROCEDURE USUARIOS_READ_USERNAME_PASSWORD
 @username CHAR(320),
 @password CHAR(64)
 AS
-    SELECT * FROM USUARIOS WHERE (usuario = @username OR correo = @username) AND clave = @password
+    SELECT 
+        id, usuario, correo, dni, 
+        apePater, apeMater, nombres,
+        sexo, fec_nac, id_idioma, estado
+    FROM USUARIOS 
+    WHERE (usuario = @username OR correo = @username) AND clave = @password
 GO
 
 -- USUARIOS -> SEARCH = EXEC USUARIOS_SEARCH

@@ -1,9 +1,10 @@
 import pyodbc
+from os import environ
 
 class Database:
     def __init__(self):
         self.driver = 'DRIVER={SQL Server};'
-        self.server = 'SERVER=DESKTOP-TM5VSPQ\SQLEXPRESS;'
+        self.server = 'SERVER=' + environ['COMPUTERNAME'] + '\SQLEXPRESS;'
         self.db = 'DATABASE=MANAGE_IT;'
         self.tc = 'Trusted_Connection=yes;'
         self.connection = None
