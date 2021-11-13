@@ -14,7 +14,7 @@ class Query():
                 spu += ' ?,' if (i < len(params) - 1) else ' ?'
             # Ejecutando QUERY
             if (cursor != False):
-                cursor.execute(spu, params)
+                cursor.execute(spu, tuple(params))
                 columns = [i[0] for i in cursor.description]
                 rows = cursor.fetchall()
                 self.quantity = len(rows)
@@ -35,17 +35,11 @@ class Query():
                 self.message = 'No se pudo conectar a la BD'
         except Exception as e:
             self.message = e
+        finally:
+            db.disconnect()
+
     def getOne(self):
         return self.row
+        
     def getAll(self):
         return self.rows
-
-Query('USUARIOS_READ_ALL')
-Query('USUARIOS_READ_ALL', [])
-
-
-'''data = Query('USUARIOS_READ_ALL', [])
-print(data.message)
-print(data.quantity)
-print(data.getOne())
-print(data.getAll())'''
