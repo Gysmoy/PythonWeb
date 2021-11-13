@@ -19,3 +19,7 @@ class LoginSerializer(serializers.Serializer):
     '''Datos que vienen del login'''
     username = serializers.CharField(max_length = 320)
     password = serializers.CharField(max_length = 64)
+
+# Serializador de SERVICES
+class setService(serializers.Serializer):
+    service = serializers.CharField(max_length = 45)
