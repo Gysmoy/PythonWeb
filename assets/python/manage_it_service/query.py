@@ -30,6 +30,7 @@ class Query():
                         self.rows.append(one)
                     self.row = self.rows[0]
                     self.message = 'Operación correcta'
+                    self.status = True
             else:
                 self.message = 'No se pudo conectar a la BD'
         except Exception as e:
@@ -38,6 +39,10 @@ class Query():
         return self.row
     def getAll(self):
         return self.rows
+
+Query('USUARIOS_READ_ALL')
+Query('USUARIOS_READ_ALL', [])
+
 
 '''data = Query('USUARIOS_READ_ALL', [])
 print(data.message)
