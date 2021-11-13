@@ -1,3 +1,4 @@
+from typing import final
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -20,7 +21,7 @@ class setService(APIView):
             serial = self.serializer_class(data = request.data)
             if serial.is_valid():
                 service = serial.validated_data.get('service')
-                query = Query('SERVICIOS_CREATE', [service])
+                query = Query('SERVICIOS_CREATE', [service], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'El servicio se agregó correctamente'
@@ -28,6 +29,29 @@ class setService(APIView):
                     res['message'] = query.message
             else:
                 res['message'] = 'Falló en la petición'
+        except Exception as e:
+            res['message'] = 'Error: ' + e
+        finally:
+            print(res)
+            if (res['status'] == 200):
+                return Response(res, status.HTTP_200_OK)
+            else:
+                return Response(res, status.HTTP_400_BAD_REQUEST)
+
+class getServices(APIView):
+    def get(self, request):
+        res = {}
+        res['status'] = 400
+        res['message'] = 'NTS'
+        res['data'] = []
+        try:
+            query = Query('SERVICIOS_READ_ALL')
+            if query.status:
+                res['status'] = 200
+                res['message'] = 'Operación correcta'
+                res['data'] = query.getAll()
+            else:
+                res['message'] = query.message
         except Exception as e:
             res['message'] = 'Error: ' + e
         finally:
