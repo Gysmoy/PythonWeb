@@ -1,9 +1,9 @@
 import pyodbc
 import json
 from os import environ
-from os.path import dirname, abspath
+from os.path import dirname, relpath
 
-config_db = dirname(abspath(__file__)) + '\\config.json'
+config_db = dirname(relpath(__file__)) + '\\config.json'
 
 class Database:
     def __init__(self):
