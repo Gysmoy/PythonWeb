@@ -3,7 +3,7 @@ from os import environ
 
 class Database:
     def __init__(self):
-        self.driver = 'DRIVER={SQL Server};'
+        self.driver = 'DRIVER={ODBC Driver 17 for SQL Server};'
         self.server = 'SERVER=' + environ['COMPUTERNAME'] + '\SQLEXPRESS;'
         self.db = 'DATABASE=MANAGE_IT;'
         self.tc = 'Trusted_Connection=yes;'

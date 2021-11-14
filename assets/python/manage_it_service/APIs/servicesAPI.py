@@ -55,7 +55,6 @@ class getServices(APIView):
         except Exception as e:
             res['message'] = 'Error: ' + e
         finally:
-            print(res)
             if (res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
