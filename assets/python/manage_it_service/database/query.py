@@ -1,4 +1,4 @@
-from manage_it_service.database import Database
+from manage_it_service.database.database import Database
 
 class Query():
     status = False

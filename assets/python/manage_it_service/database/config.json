@@ -1,8 +1,8 @@
 {
-    "driver": "DRIVER={ODBC Driver 17 for SQL Server};",
-    "server": "SQLEXPRESS;",
+    "driver": "{ODBC Driver 17 for SQL Server}",
+    "server": "SQLEXPRESS",
+    "db": "MANAGE_IT",
     "user": "",
     "pass":  "",
-    "db": "DATABASE=MANAGE_IT;",
-    "tc": "Trusted_Connection=yes;"
+    "tc": true
   }
