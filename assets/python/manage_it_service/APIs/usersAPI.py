@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from manage_it_service import serializers
+from manage_it_service.serializers import users as serializers
 from manage_it_service.database import Database
 from manage_it_service.query import Query
 from uuid import uuid4
