@@ -1,14 +1,18 @@
 import pyodbc
+import json
 from os import environ
+
+data = 'assets/python/manage_it_service/database/config.json'
 
 class Database:
     def __init__(self):
-        self.driver = 'DRIVER={ODBC Driver 17 for SQL Server};'
-        self.server = 'SERVER=' + environ['COMPUTERNAME'] + '\SQLEXPRESS;'
-        self.db = 'DATABASE=MANAGE_IT;'
-        self.tc = 'Trusted_Connection=yes;'
+        with open(data) as file:
+            connf = json.load(file)
+        self.driver = connf['driver']
+        self.server = 'SERVER=' + environ['COMPUTERNAME'] + '\\'+connf['server']
+        self.db = connf['db']
+        self.tc =connf['tc']
         self.connection = None
-
     def connect(self):
         try:
             self.connection = pyodbc.connect(self.driver + self.server + self.db + self.tc)
