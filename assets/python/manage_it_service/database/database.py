@@ -2,6 +2,7 @@ import pyodbc
 import json
 from os import environ
 
+
 data = 'assets/python/manage_it_service/database/config.json'
 
 class Database:
