@@ -31,6 +31,17 @@ $('#dniRegister').on('keyup', function () {
         $('#nombreRegister').val(null);
     }
 })
+$('#password2Register').on('focus', function() {
+    $('#password2Register').on('keyup', function(){
+        var pwd1 = $('#password1Register').val();
+        var pwd2 = $(this).val();
+        if (pwd1 === pwd2) {
+            $('#messageRegister').attr('class', 'success').text('Las contraseñas coinciden');
+        } else {
+            $('#messageRegister').attr('class', 'danger').text('Las contraseñas deben coincidir');
+        }
+    })
+})
 $('#register > form').on('submit', e => {
     e.preventDefault();
     var lastname = $('#lastnameRegister').val();
