@@ -52,8 +52,6 @@ class setUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getActiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -77,8 +75,6 @@ class getActiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getInactiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -102,8 +98,6 @@ class getInactiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class searchUsers(APIView):
     serializer_class = serializers.searchUserSerializer
 
@@ -136,8 +130,6 @@ class searchUsers(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
     pass
-
-
 class updateUser(APIView):
     serializer_class = serializers.updateUserSerializer
 
@@ -186,8 +178,6 @@ class updateUser(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
     pass
-
-
 class deleteUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -218,8 +208,6 @@ class deleteUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class restoreUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -250,8 +238,6 @@ class restoreUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getUsers(APIView):
     '''API PARA OBTENER LOS USUARIOS'''
 
@@ -277,8 +263,6 @@ class getUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getUserById(APIView):
     """API PARA OBTENER USUARIO X USERNAME."""
     serializer_class = serializers.searchForId
@@ -311,8 +295,6 @@ class getUserById(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class validateUser(APIView):
     '''OBTENER USUARIO SEGÚN USUARIO Y CONTRASEÑA'''
     serializer_class = serializers.LoginSerializer
