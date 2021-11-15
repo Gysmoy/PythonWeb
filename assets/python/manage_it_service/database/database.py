@@ -3,7 +3,12 @@ import json
 from os import environ
 from os.path import dirname, relpath
 
+<<<<<<< HEAD
+
+data = 'assets/python/manage_it_service/database/config.json'
+=======
 config_db = dirname(relpath(__file__)) + '\\config.json'
+>>>>>>> 8685d2a9382412cd559d39727f7cc7e726cd53b4
 
 class Database:
     def __init__(self):
