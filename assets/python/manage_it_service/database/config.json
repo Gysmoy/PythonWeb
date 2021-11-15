@@ -1,8 +1,8 @@
 {
     "driver": "{ODBC Driver 17 for SQL Server}",
     "server": "SQLEXPRESS",
-    "db": "MANAGE_IT",
-    "user": "",
-    "pass":  "",
+    "database": "MANAGE_IT",
+    "username": "",
+    "password":  "",
     "tc": true
   }

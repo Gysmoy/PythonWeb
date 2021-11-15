@@ -11,12 +11,14 @@ class Database:
             config = json.load(file)
         self.driver = 'DRIVER=' + config['driver'] + ';'
         self.server = 'SERVER=' + environ['COMPUTERNAME'] + '\\' + config['server'] + ';'
-        self.db = 'DATABASE=' + config['db'] + ';'
+        self.database = 'DATABASE=' + config['database'] + ';'
+        self.username = 'UID=' + config['username'] + ';'
+        self.password = 'PWD=' + config['password'] + ';'
         self.tc = 'Trusted_Connection=' + ('yes' if config['tc'] else 'no') + ';' 
         self.connection = None
     def connect(self):
         try:
-            self.connection = pyodbc.connect(self.driver + self.server + self.db + self.tc)
+            self.connection = pyodbc.connect(self.driver + self.server + self.database + self.username + self.password + self.tc)
             cursor = self.connection.cursor()
         except Exception as e:
             cursor = False

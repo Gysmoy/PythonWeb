@@ -54,10 +54,10 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 CORS_ALLOWED_ORIGINS = [
-    "http://read.only.com",
-    "http://change.allowed.com",
-    'http://127.0.0.1:5500',
+    'http://127.0.0.1:5580'
 ]
 
 ROOT_URLCONF = 'manage_it_service.urls'
