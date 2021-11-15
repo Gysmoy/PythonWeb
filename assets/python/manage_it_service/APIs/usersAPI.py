@@ -9,8 +9,7 @@ from hashlib import sha256
 
 
 class setUser(APIView):
-    serializer_class = serializers.setUsersSeriaizer
-
+    serializer_class = serializers.setUser
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -18,7 +17,8 @@ class setUser(APIView):
         res['data'] = []
 
         try:
-            serializer = self.serializer_class(data=request.data)
+            serializer = self.serializer_class(data = request.data)
+            print(serializer)
             if serializer.is_valid():
                 postData = serializer.validated_data
                 usuario = postData.get('usuario')
@@ -38,7 +38,6 @@ class setUser(APIView):
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
                 else:
                     res['message'] = query.message
             else:
