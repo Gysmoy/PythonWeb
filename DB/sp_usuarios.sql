@@ -156,11 +156,7 @@ SET
 WHERE
     id = @id
     ELSE
-UPDATE
-    USUARIOS
-SET
-    estado = '1'
-WHERE
+UPDATE USUARIOS SET estado = '1' WHERE
     id = @id
 GO
     /* FIN PROCEDIMIENTOS ALMACENADOS USUARIOS */

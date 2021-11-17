@@ -98,6 +98,7 @@ CREATE TABLE USUARIOS
     CONSTRAINT ck_usuario_dni CHECK(dni LIKE('[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')),
     CONSTRAINT ck_usuario_sexo CHECK(sexo IN('M','F')),
     CONSTRAINT ck_usuario_fec_nac CHECK (fec_nac < GETDATE()),
+    CONSTRAINT uk_usuario_correo UNIQUE(correo),
 
 );
 GO
