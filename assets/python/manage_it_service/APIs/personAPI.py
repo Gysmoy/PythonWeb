@@ -7,8 +7,6 @@ from uuid import uuid4
 from hashlib import sha256
 from manage_it_service.database.query import Query
 
-
-
 class setP_natural(APIView):
     serializer_class = serializers.setP_naturalSerializer
     def post(self, request):
