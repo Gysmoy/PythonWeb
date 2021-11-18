@@ -179,7 +179,7 @@ class deleteServices(APIView):
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
                 id_service = serializer.validated_data.get('dat')
-                query = Query("DELETE_SERVICIO",[id_service], 'SET')
+                query = Query("SERVICIOS_DELETE",[id_service], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -209,7 +209,7 @@ class restoreServices(APIView):
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
                 id_service = serializer.validated_data.get('dat')
-                query = Query("RESTORE_SERVICIO",[id_service], 'SET')
+                query = Query("SERVICIOS_RESTORE",[id_service], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'

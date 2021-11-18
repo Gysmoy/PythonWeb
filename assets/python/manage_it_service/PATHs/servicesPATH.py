@@ -11,3 +11,4 @@ urlpatterns = [
     path('deleteServices/', views.deleteServices.as_view()),
     path('restoreServices/', views.restoreServices.as_view()),
 ]
+
