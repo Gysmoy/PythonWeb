@@ -9,8 +9,7 @@ from hashlib import sha256
 
 
 class setUser(APIView):
-    serializer_class = serializers.setUsersSeriaizer
-
+    serializer_class = serializers.setUser
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -18,7 +17,8 @@ class setUser(APIView):
         res['data'] = []
 
         try:
-            serializer = self.serializer_class(data=request.data)
+            serializer = self.serializer_class(data = request.data)
+            print(serializer)
             if serializer.is_valid():
                 postData = serializer.validated_data
                 usuario = postData.get('usuario')
@@ -38,7 +38,6 @@ class setUser(APIView):
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
                 else:
                     res['message'] = query.message
             else:
@@ -53,8 +52,6 @@ class setUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getActiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -78,8 +75,6 @@ class getActiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getInactiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -103,8 +98,6 @@ class getInactiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class searchUsers(APIView):
     serializer_class = serializers.searchUserSerializer
 
@@ -137,8 +130,6 @@ class searchUsers(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
     pass
-
-
 class updateUser(APIView):
     serializer_class = serializers.updateUserSerializer
 
@@ -187,8 +178,6 @@ class updateUser(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
     pass
-
-
 class deleteUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -219,8 +208,6 @@ class deleteUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class restoreUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -251,8 +238,6 @@ class restoreUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getUsers(APIView):
     '''API PARA OBTENER LOS USUARIOS'''
 
@@ -278,8 +263,6 @@ class getUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class getUserById(APIView):
     """API PARA OBTENER USUARIO X USERNAME."""
     serializer_class = serializers.searchForId
@@ -312,8 +295,6 @@ class getUserById(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-
 class validateUser(APIView):
     '''OBTENER USUARIO SEGÚN USUARIO Y CONTRASEÑA'''
     serializer_class = serializers.LoginSerializer

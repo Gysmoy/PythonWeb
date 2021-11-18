@@ -4,7 +4,7 @@ class searchForId(serializers.Serializer):
     # buscar usuario por id
     id_user = serializers.CharField(max_length = 8)
 
-class setUsersSeriaizer(serializers.Serializer):
+class setUser(serializers.Serializer):
     # Agregar nuebo usuario
     usuario = serializers.CharField(max_length = 16)
     correo = serializers.CharField(max_length = 320)

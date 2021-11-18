@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from web.database.query import Query
+from manage_it_service.database.query import Query
 from manage_it_service.serializers import currency as serializers
 
 class setCurrency(APIView):
