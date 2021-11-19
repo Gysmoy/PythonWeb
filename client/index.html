@@ -9,6 +9,9 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+	<script>
+		if (getCookie())
+	</script>
 </head>
 
 <body class="is-preload">
@@ -45,7 +48,7 @@
 				<li><a href="providerFlow.html">Flujo de proveedores</a></li>
 				<li><a href="providerList.html">Lista de proveedores</a></li>
 				<li><a href="config.html">Configuración</a></li>
-				<li><a href="./#">Cerrar sesión</a></li>
+				<li><a onclick="destroySession()">Cerrar sesión</a></li>
 			</ul>
 		</nav>
 
@@ -137,6 +140,8 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="/assets/js/cookies.js"></script>
+	<script src="/assets/js/session.js"></script>
 
 </body>
 

@@ -19,6 +19,7 @@ $('#login form').submit(e => {
             $('#messageLogin').text(data.message);
             $('#messageLogin').show(250);
             $('#messageLogin').removeClass('danger').addClass('success');
+            activeSession(data.data);
             location.href = './client/';
         },
         error: e => {

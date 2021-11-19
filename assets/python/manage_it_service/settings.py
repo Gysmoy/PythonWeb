@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-q&w9335ri+h!4u+r@4k!oi8qi&f-r+f_^ck#ht183lhrii!4ed
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://manageit.epizy.com'
 ]
 
 
