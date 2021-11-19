@@ -57,8 +57,9 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
-    
-    'http://127.0.0.1:5580'
+    'https://gysmoy.github.io',
+    'http://127.0.0.1:5580',
+    'http://127.0.0.1:5500',
 ]
 
 ROOT_URLCONF = 'manage_it_service.urls'

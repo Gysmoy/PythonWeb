@@ -3,7 +3,7 @@ $('#login form').submit(e => {
     var username = $('#usernameLogin').val();
     var password = $('#passwordLogin').val();
     $.ajax({
-        url: 'http://localhost:5580/users/validateUser/',
+        url: 'http://localhost:8000/users/validateUser/',
         method: 'POST',
         dataType: 'JSON',
         headers: {
