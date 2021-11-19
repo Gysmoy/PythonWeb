@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-q&w9335ri+h!4u+r@4k!oi8qi&f-r+f_^ck#ht183lhrii!4ed
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'http://manageit.epizy.com'
+]
 
 
 # Application definition
@@ -38,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    #'profiles_api',
     'corsheaders',
 ]
 
@@ -60,6 +61,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://gysmoy.github.io',
     'http://127.0.0.1:5580',
     'http://127.0.0.1:5500',
+    'http://manageit.epizy.com',
 ]
 
 ROOT_URLCONF = 'manage_it_service.urls'
