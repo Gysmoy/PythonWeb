@@ -10,4 +10,5 @@ urlpatterns = [
     path('users/', include(usersPATH)),
     path('services/', include(servicesPATH)),
     path('persona/', include(personPATH)),
+    path('currency/', include(currencyPATH)),
 ]

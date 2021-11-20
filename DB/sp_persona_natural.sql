@@ -17,7 +17,8 @@ CREATE PROCEDURE PERSONA_NATURAL_CREATE
 @direccion VARCHAR(250)
 AS BEGIN
 	DECLARE @id CHAR(8)
-	SELECT @id = 'PNA' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) FROM PERSONA_NATURAL
+	SELECT @id = 'PNA' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) 
+	FROM PERSONA_NATURAL
 	INSERT INTO PERSONA_NATURAL VALUES (
 		@id, @apePater, @apeMater, @nombres, @dni,
 		@id_servicio, @tel1, @tel2, @correo, @direccion, '1'
