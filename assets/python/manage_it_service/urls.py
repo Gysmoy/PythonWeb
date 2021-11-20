@@ -1,14 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
-from manage_it_service.PATHs import usersPATH
-from manage_it_service.PATHs import servicesPATH
-from manage_it_service.PATHs import currencyPATH
-from manage_it_service.PATHs import personPATH
+from manage_it_service.PATHs import usersPATH as users
+from manage_it_service.PATHs import servicesPATH as services
+from manage_it_service.PATHs import currencyPATH as currency
+from manage_it_service.PATHs import personPATH as persona
+from manage_it_service.PATHs import adminPATH as admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('users/', include(usersPATH)),
-    path('services/', include(servicesPATH)),
-    path('persona/', include(personPATH)),
-    path('currency/', include(currencyPATH)),
+    path('admin/', include(admin)),
+    path('users/', include(users)),
+    path('services/', include(services)),
+    path('persona/', include(persona)),
+    path('currency/', include(currency)),
 ]
