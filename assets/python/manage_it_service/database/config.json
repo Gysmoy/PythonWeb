@@ -1,8 +1,10 @@
 {
     "driver": "{ODBC Driver 17 for SQL Server}",
-    "server": "SQLEXPRESS",
-    "database": "MANAGE_IT",
-    "username": "",
-    "password":  "",
-    "tc": true
+    "server": "manageit-server.database.windows.net",
+    "database": "MANAGEIT-DB",
+    "username": "gysmoy",
+    "password":  "8bd69e52%8BD69E52",
+    "encrypt": true,
+    "tsc": false,
+    "timeout": 30
   }

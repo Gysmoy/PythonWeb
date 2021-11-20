@@ -33,6 +33,7 @@ class Query():
                                 one[columns[i]] = x
                                 i += 1
                             self.rows.append(one)
+                        print('Conexión realizada...')
                         self.row = self.rows[0]
                         self.message = 'Operación correcta'
                         self.status = True
@@ -40,6 +41,7 @@ class Query():
                 self.message = 'No se pudo conectar a la BD'
         except Exception as e:
             self.message = str(e)
+            print('Conexión rechazada...')
         finally:
             db.disconnect()
 
@@ -49,7 +51,5 @@ class Query():
     def getAll(self):
         return self.rows
 
-data = Query('SERVICIOS_CREATE', ['Limpieza'], 'SET')
-print(data.message)
-print(data.quantity)
-print(data.getAll())
+db = Query('USUARIOS_READ_ALL')
+print(db.getOne())

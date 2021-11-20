@@ -3,7 +3,7 @@ $('#login form').submit(e => {
     var username = $('#usernameLogin').val();
     var password = $('#passwordLogin').val();
     $.ajax({
-        url: 'http://localhost:5580/users/validateUser/',
+        url: 'http://localhost:8000/users/validateUser/',
         method: 'POST',
         dataType: 'JSON',
         headers: {
@@ -19,6 +19,7 @@ $('#login form').submit(e => {
             $('#messageLogin').text(data.message);
             $('#messageLogin').show(250);
             $('#messageLogin').removeClass('danger').addClass('success');
+            activeSession(data.data);
             location.href = './client/';
         },
         error: e => {

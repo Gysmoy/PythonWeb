@@ -109,9 +109,8 @@ WHERE
     OR apeMater LIKE (CONCAT('%', @search, '%'))
     OR nombres LIKE (CONCAT('%', @search, '%'))
 GO
--- USUARIOS -> UPDATE == EXEC USUARIOS_UPDATE
-CREATE PROCEDURE USUARIOS_UPDATE 
-    id CHAR(8),
+    -- USUARIOS -> UPDATE == EXEC USUARIOS_UPDATE
+    CREATE PROCEDURE USUARIOS_UPDATE id CHAR(8),
     @usuario VARCHAR(16),
     @correo VARCHAR(320),
     @clave CHAR(64),
@@ -122,8 +121,7 @@ CREATE PROCEDURE USUARIOS_UPDATE
     @sexo CHAR(1),
     @fec_nac DATE,
     @id_idioma CHAR(8),
-    @estado BIT
-AS
+    @estado BIT AS
 UPDATE
     USUARIOS
 SET
@@ -156,7 +154,11 @@ SET
 WHERE
     id = @id
     ELSE
-UPDATE USUARIOS SET estado = '1' WHERE
+UPDATE
+    USUARIOS
+SET
+    estado = '1'
+WHERE
     id = @id
 GO
     /* FIN PROCEDIMIENTOS ALMACENADOS USUARIOS */
