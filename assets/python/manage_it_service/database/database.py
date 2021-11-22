@@ -22,6 +22,7 @@ class Database:
             self.connection = pyodbc.connect(f'{self.driver}{self.server}{self.database}{self.username}{self.password}{self.encrypt}{self.tsc}{self.timeout}')
             cursor = self.connection.cursor()
         except Exception as e:
+            print(e[1])
             cursor = False
         finally:
             return cursor

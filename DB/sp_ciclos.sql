@@ -1,6 +1,3 @@
-USE MANAGE_IT
-GO
-
 /* ================================================= */
 /* INICIO PROCEDIMIENTOS ALMACENADOS CICLOS */
 
