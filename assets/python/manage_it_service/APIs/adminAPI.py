@@ -9,30 +9,31 @@ from manage_it_service.database.query import Query
 
 class queryAdmin(APIView):
     serializer_class = serializers.queryAdmin
+
     def post(self, request):
-        res={}
-        res['status']=400
-        res['message']=200
-        res['data']=[]
+        res = {}
+        res['status'] = 400
+        res['message'] = 200
+        res['data'] = []
         try:
-            serializer = self.serializer_class(data = request.data)
+            serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
                 queryy = serializer.validated_data.get('query')
                 query = Query(queryy)
                 if query.status:
-                    res['status']=200
-                    res['message']='Operacion Correcta'
-                    res['data']=query.getAll()
+                    res['status'] = 200
+                    res['message'] = 'Operacion Correcta: ' + queryy
+                    res['data'] = query.getAll()
                 else:
-                    query.message
+                    res['message'] = query.message
             else:
-                res['status']=400
-                res['message']='Error en la consulta'
+                res['status'] = 400
+                res['message'] = 'Error en la consulta'
         except Exception as e:
-            res['status']=400
-            res['message']='Error' + e
+            res['status'] = 400
+            res['message'] = 'Error' + e
         finally:
-            if (res['status']==200):
+            if (res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)

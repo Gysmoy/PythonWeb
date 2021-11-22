@@ -50,6 +50,3 @@ class Query():
 
     def getAll(self):
         return self.rows
-
-db = Query('USUARIOS_READ_ALL')
-print(db.getOne())
