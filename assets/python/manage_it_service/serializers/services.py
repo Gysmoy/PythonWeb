@@ -11,7 +11,7 @@ class HelloSerializer(serializers.Serializer):
 
 # Serializador de SERVICES
 class allService(serializers.Serializer):
-    dat = serializers.CharField(max_length = 20)
+    dat = serializers.CharField(max_length = 45)
 
 # Actualizar services serializer
 class updateService(serializers.Serializer):

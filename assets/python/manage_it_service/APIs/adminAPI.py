@@ -6,7 +6,6 @@ from uuid import uuid4
 from hashlib import sha256
 from manage_it_service.database.query import Query
 
-
 class queryAdmin(APIView):
     serializer_class = serializers.queryAdmin
     def post(self, request):
