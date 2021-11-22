@@ -233,7 +233,7 @@ class restoreUser(APIView):
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
                 id_user = serializer.validated_data.get('id_user')
-                query = Query("USUARIOS_RESTORE_USER", [id_user], 'SET')
+                query = Query("USUARIOS_RESTORE", [id_user], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
