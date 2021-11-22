@@ -201,7 +201,7 @@ class deleteUser(APIView):
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
                 id_user = serializer.validated_data.get('id_user')
-                query = Query("USUARIOS_DELETE_USER", [id_user], 'SET')
+                query = Query("USUARIOS_DELETE", [id_user], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -331,9 +331,15 @@ class validateUser(APIView):
                 password = sha256(password.encode()).hexdigest()
                 query = Query('USUARIOS_VALIDATE', [username, password])
                 if (query.status):
-                    statusCode = 200
-                    message = 'Operación correcta'
                     data = query.getOne()
+                    if (data['estado'] == 1):
+                        statusCode = 200
+                        message = 'Operación correcta'
+                        data = query.getOne()
+                    else:
+                        statusCode = 400
+                        message = 'Usuario inactivo'
+                        data = dict()
                 else:
                     statusCode = 400
                     message = 'Usuario y/o contraseña incorrectos'

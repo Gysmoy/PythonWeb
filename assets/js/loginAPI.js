@@ -36,3 +36,6 @@ $('#login form').submit(e => {
         }
     })
 })
+$('a[href="#login"]').click(function() {
+    deleteCookie();
+})

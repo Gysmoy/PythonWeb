@@ -17,6 +17,7 @@ function deleteCookie() {
     document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "correo=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "dni=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "apePater=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "apeMater=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
