@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Lista de proveedores | Manage It</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+        <link rel="stylesheet" href="../assets/css/noscript.css/Proveedor" />
+    </noscript>
+</head>
+<body class="is-preload">
+
+    <div id="wrapper">
+        <header id="header">
+            <div class="inner">
+                <a href="./" class="logo">
+                    <span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Menu -->
+        <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="./">Inicio</a></li>
+                <li><a href="../paymentChron.html">Cronograma de pagos</a></li>
+                <li><a href="../providerFlow.html">Flujo de proveedores</a></li>
+                <li><a href="../providerList/">Lista de proveedores</a></li>
+                <li><a href="../config.html">Configuración</a></li>
+                <li><a href="./#">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+
+
+
+        <!--tabla de registro-->
+        <div id="main">
+            <div class="inner">
+                <h1><span class="icon solid fa-list"></span> Lista de proveedores</h1>
+
+                <div class="row gtr-uniform">
+                    <div class="col-6 col-12-xsmall">
+                        <input type="text" name="search" id="search" value="" placeholder="🔎 Buscar" />
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <button>AGREGAR PROVEEDOR</button>
+                    </div>
+                </div>
+                <br>
+                <section>
+                    <div class="table-wrapper">
+                        <table class="alt" id="btl-providers">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Proveedor</th>
+                                    <th>Servicio</th>
+                                    <th>Contacto</th>
+                                    <th>Direccion</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <!-- Lists -->
+                    <section>
+                        <h2>Lists</h2>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <h3>Unordered</h3>
+                                <ul>
+                                    <li>Dolor pulvinar etiam.</li>
+                                    <li>Sagittis adipiscing.</li>
+                                    <li>Felis enim feugiat.</li>
+                                </ul>
+                                <h3>Alternate</h3>
+                                <ul class="alt">
+                                    <li>Dolor pulvinar etiam.</li>
+                                    <li>Sagittis adipiscing.</li>
+                                    <li>Felis enim feugiat.</li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <h3>Ordered</h3>
+                                <ol>
+                                    <li>Dolor pulvinar etiam.</li>
+                                    <li>Etiam vel felis viverra.</li>
+                                    <li>Felis enim feugiat.</li>
+                                    <li>Dolor pulvinar etiam.</li>
+                                    <li>Etiam vel felis lorem.</li>
+                                    <li>Felis enim et feugiat.</li>
+                                </ol>
+                                <h3>Icons</h3>
+                                <ul class="icons">
+                                    <li><a href="#" class="icon brands style1 fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands style1 fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="#" class="icon brands style1 fa-instagram"><span class="label">Instagram</span></a></li>
+                                    <li><a href="#" class="icon brands style1 fa-github"><span class="label">Github</span></a></li>
+                                </ul>
+                                <ul class="icons">
+                                    <li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                                    <li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+                                    <li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                                    <li><a href="#" class="icon brands style2 fa-github"><span class="label">Github</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h2>Actions</h2>
+                        <div class="row">
+                            <div class="col-6 col-12-medium">
+                                <ul class="actions">
+                                    <li><a href="#" class="button primary">Default</a></li>
+                                    <li><a href="#" class="button">Default</a></li>
+                                </ul>
+                                <ul class="actions small">
+                                    <li><a href="#" class="button primary small">Small</a></li>
+                                    <li><a href="#" class="button small">Small</a></li>
+                                </ul>
+                                <ul class="actions stacked">
+                                    <li><a href="#" class="button primary">Default</a></li>
+                                    <li><a href="#" class="button">Default</a></li>
+                                </ul>
+                                <ul class="actions stacked">
+                                    <li><a href="#" class="button primary small">Small</a></li>
+                                    <li><a href="#" class="button small">Small</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-12-medium">
+                                <ul class="actions stacked">
+                                    <li><a href="#" class="button primary fit">Default</a></li>
+                                    <li><a href="#" class="button fit">Default</a></li>
+                                </ul>
+                                <ul class="actions stacked">
+                                    <li><a href="#" class="button primary small fit">Small</a></li>
+                                    <li><a href="#" class="button small fit">Small</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                <!-- Table -->
+                    <section>
+                        <h2>Table</h2>
+                        <h3>Default</h3>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Item One</td>
+                                        <td>Ante turpis integer aliquet porttitor.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Two</td>
+                                        <td>Vis ac commodo adipiscing arcu aliquet.</td>
+                                        <td>19.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Three</td>
+                                        <td> Morbi faucibus arcu accumsan lorem.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Four</td>
+                                        <td>Vitae integer tempus condimentum.</td>
+                                        <td>19.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Five</td>
+                                        <td>Ante turpis integer aliquet porttitor.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td>100.00</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <h3>Alternate</h3>
+                        <div class="table-wrapper">
+                            <table class="alt">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Item One</td>
+                                        <td>Ante turpis integer aliquet porttitor.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Two</td>
+                                        <td>Vis ac commodo adipiscing arcu aliquet.</td>
+                                        <td>19.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Three</td>
+                                        <td> Morbi faucibus arcu accumsan lorem.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Four</td>
+                                        <td>Vitae integer tempus condimentum.</td>
+                                        <td>19.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Item Five</td>
+                                        <td>Ante turpis integer aliquet porttitor.</td>
+                                        <td>29.99</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td>100.00</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </section>
+
+                <!-- Buttons -->
+                    <section>
+                        <h3>Buttons</h3>
+                        <ul class="actions">
+                            <li><a href="#" class="button primary">Primary</a></li>
+                            <li><a href="#" class="button">Default</a></li>
+                        </ul>
+                        <ul class="actions">
+                            <li><a href="#" class="button large">Large</a></li>
+                            <li><a href="#" class="button">Default</a></li>
+                            <li><a href="#" class="button small">Small</a></li>
+                        </ul>
+                        <ul class="actions fit">
+                            <li><a href="#" class="button primary fit">Fit</a></li>
+                            <li><a href="#" class="button fit">Fit</a></li>
+                            <li><a href="#" class="button fit">Fit</a></li>
+                        </ul>
+                        <ul class="actions fit small">
+                            <li><a href="#" class="button primary fit small">Fit + Small</a></li>
+                            <li><a href="#" class="button fit small">Fit + Small</a></li>
+                            <li><a href="#" class="button fit small">Fit + Small</a></li>
+                        </ul>
+                        <ul class="actions">
+                            <li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
+                            <li><a href="#" class="button icon solid fa-upload">Icon</a></li>
+                            <li><a href="#" class="button icon solid fa-save">Icon</a></li>
+                        </ul>
+                        <ul class="actions">
+                            <li><span class="button primary disabled">Disabled</span></li>
+                            <li><span class="button disabled">Disabled</span></li>
+                        </ul>
+                    </section>
+
+                <!-- Form -->
+                    <section>
+                        <h2>Form</h2>
+                        <form method="post" action="#">
+                            <div class="row gtr-uniform">
+                                <input type="hidden" id="id" name="id" value="">
+                                <div class="col-6 col-12-xsmall">
+                                    <select name="demo-category" id="demo-category" required>
+                                        <option>- Tipo de proveedor -</option>
+                                        <option value="N">PERSONA</option>
+                                        <option value="J">EMPRESA</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="text" name="name" id="name" value="" placeholder="Nombres" />
+                                </div>
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="text" name="apePater" id="name" value="" placeholder="Apellido paterno" />
+                                </div>
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="text" name="apeMater" id="name" value="" placeholder="Apellido materno" />
+                                </div>
+                                <div class="col-6 col-12-xsmall">
+                                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+                                </div>
+                                <div class="col-12">
+                                    <select name="demo-category" id="demo-category">
+                                        <option value="">- Category -</option>
+                                        <option value="1">Manufacturing</option>
+                                        <option value="1">Shipping</option>
+                                        <option value="1">Administration</option>
+                                        <option value="1">Human Resources</option>
+                                    </select>
+                                </div>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-low" name="demo-priority" checked>
+                                    <label for="demo-priority-low">Low</label>
+                                </div>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-normal" name="demo-priority">
+                                    <label for="demo-priority-normal">Normal</label>
+                                </div>
+                                <div class="col-4 col-12-small">
+                                    <input type="radio" id="demo-priority-high" name="demo-priority">
+                                    <label for="demo-priority-high">High</label>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="checkbox" id="demo-copy" name="demo-copy">
+                                    <label for="demo-copy">Email me a copy</label>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <input type="checkbox" id="demo-human" name="demo-human" checked>
+                                    <label for="demo-human">Not a robot</label>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="actions">
+                                        <li><input type="submit" value="Send Message" class="primary" /></li>
+                                        <li><input type="reset" value="Reset" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+
+                <!-- Image -->
+                    <section>
+                        <h2>Image</h2>
+                        <h3>Fit</h3>
+                        <div class="box alt">
+                            <div class="row gtr-uniform">
+                                <div class="col-12"><span class="image fit"><img src="images/pic13.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+                                <div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
+                            </div>
+                        </div>
+                        <h3>Left &amp; Right</h3>
+                        <p><span class="image left"><img src="images/pic14.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+                        <p><span class="image right"><img src="images/pic15.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+                    </section>
+
+            </div>
+        </div>
+
+    <!--Modal para CRUD-->
+
+
+    <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="formPersonas">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="Categoria" class="col-form-label">Categoria:</label>
+                            <input type="" class="form-control" id="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="Fecha de suscripción" class="col-form-label">Fecha de suscripción:</label>
+                            <input type="number" class="form-control" id="pais">
+                        </div>
+                        <div class="form-group">
+                            <label for="Ciclo" class="col-form-label">Ciclo:</label>
+                            <input type="number" class="form-control" id="edad">
+
+                            <div class="form-group">
+                                <label for="Duracion" class="col-form-label">Duracion:</label>
+                                <input type="number" class="form-control" id="edad">
+
+                                <div class="form-group">
+                                    <label for="Modo de pago en soles" class="col-form-label">Modo de pago en
+                                        soles:</label>
+                                    <input type="number" class="form-control" id="edad">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/showHide.js"></script>
+
+</body>
+
+
+</html>
