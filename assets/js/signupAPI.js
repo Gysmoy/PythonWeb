@@ -34,7 +34,7 @@ $('#register > form').on('submit', e => {
     var nombres = $('#lastnameRegister').val();
     var sexo = $('#sexoRegister').val();
     var fec_nac = $('#fechanaciRegister').val();
-    var id_idioma = 'IDI00001';
+    var id_idioma = 1;
     if (clave1 != clave2)
         validatePWD2();
     else {

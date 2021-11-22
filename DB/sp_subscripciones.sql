@@ -1,97 +1,102 @@
-USE MANAGE_IT
-GO
-
 /* ========================================= */
 /* INICIO PROCEDIMIENTOS ALMACENADOS SUBSCRIPCIONES */
 
 -- SUBSCRIPCIONES -> CREATE == EXEC SUBSCRIPCIONES_CREATE 'English'
 CREATE PROCEDURE SUBSCRIPCIONES_CREATE
-@id_usuario CHAR(8),
-@id_proveedor CHAR(8),
-@id_ciclo CHAR(8),
-@id_moneda CHAR(8),
+@id_proveedor INT,
+@id_ciclo INT,
+@id_moneda INT,
 @monto DECIMAL(5,2),
 @fec_inicio DATE,
-@prorroga INT
+@prorroga INT,
+@usuario_creacion INT
 AS BEGIN
-	DECLARE @id CHAR(8)
-	SELECT @id = 'SUB' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) FROM SUBSCRIPCIONES
-	INSERT INTO SUBSCRIPCIONES VALUES (
-        @id, @id_usuario, @id_proveedor,
-        @id_ciclo, @id_moneda, @monto,
-        @fec_inicio, @prorroga, '1'
+	INSERT INTO SUBSCRIPCIONES (
+		id_proveedor, id_ciclo, id_moneda, monto, fec_inicio, prorroga, usuario_creacion
+	) VALUES (
+        @id_proveedor, @id_ciclo, @id_moneda, @monto, @fec_inicio, @prorroga, @usuario_creacion
     )
 END
 GO
 
 -- SUBSCRIPCIONES -> READ ALL == EXEC SUBSCRIPCIONES_READ_ALL
 CREATE PROCEDURE SUBSCRIPCIONES_READ_ALL
+@usuario INT
 AS
-	SELECT * FROM SUBSCRIPCIONES
+	IF @usuario = 'admin'
+		SELECT * FROM SUBSCRIPCIONES
+	ELSE
+		SELECT * FROM SUBSCRIPCIONES
+		WHERE usuario_creacion = @usuario
 GO
 
 -- SUBSCRIPCIONES -> READ ACTIVES == EXEC SUBSCRIPCIONES_READ_ACTIVES
 CREATE PROCEDURE SUBSCRIPCIONES_READ_ACTIVES
+@usuario INT
 AS
-	SELECT * FROM SUBSCRIPCIONES WHERE estado = '1'
+	IF @usuario = 'admin'
+		SELECT * FROM SUBSCRIPCIONES
+		WHERE estado = 1
+	ELSE
+		SELECT * FROM SUBSCRIPCIONES
+		WHERE 
+			usuario_creacion = @usuario AND
+			estado = 1
 GO
 
 -- SUBSCRIPCIONES -> READ INACTIVES == EXEC SUBSCRIPCIONES_READ_INACTIVES
 CREATE PROCEDURE SUBSCRIPCIONES_READ_INACTIVES
+@usuario VARCHAR(16)
 AS
-	SELECT * FROM SUBSCRIPCIONES WHERE estado = '0'
-GO
-
--- SUBSCRIPCIONES -> READ ONE == EXEC SUBSCRIPCIONES_READ_ONE
-CREATE PROCEDURE SUBSCRIPCIONES_READ_ONE
-@id CHAR(8)
-AS
-	SELECT * FROM SUBSCRIPCIONES WHERE id = @id
-GO
-
--- SUBSCRIPCIONES -> SEARCH == EXEC SUBSCRIPCIONES_SEARCH
-CREATE PROCEDURE SUBSCRIPCIONES_SEARCH
-@search VARCHAR(12)
-AS
-	SELECT * FROM SUBSCRIPCIONES WHERE
-        id_usuario LIKE(CONCAT('%', @search, '%')) OR
-        id_proveedor LIKE(CONCAT('%', @search, '%'))
+	IF @usuario = 'admin'
+		SELECT * FROM SUBSCRIPCIONES
+		WHERE estado = 0
+	ELSE
+		SELECT * FROM SUBSCRIPCIONES
+		WHERE 
+			usuario_creacion = @usuario AND
+			estado = 0
 GO
 
 -- SUBSCRIPCIONES -> UPDATE == EXEC SUBSCRIPCIONES_UPDATE
 CREATE PROCEDURE SUBSCRIPCIONES_UPDATE
-@id CHAR(8),
-@id_usuario CHAR(8),
-@id_proveedor CHAR(8),
-@id_ciclo CHAR(8),
-@id_moneda CHAR(8),
+@id INT,
+@id_proveedor INT,
+@id_ciclo INT,
+@id_moneda INT,
 @monto DECIMAL(5,2),
 @fec_inicio DATE,
-@prorroga INT,
-@estado BIT
+@prorroga INT
 AS
 	UPDATE SUBSCRIPCIONES SET
-	id_usuario = @id_usuario,
-    id_proveedor = @id_proveedor,
-    id_ciclo = @id_ciclo,
-    id_moneda = @id_moneda,
-    monto = @monto,
-    fec_inicio = @fec_inicio,
-    prorroga = @prorroga,
-	estado = @estado
+		id_proveedor = @id_proveedor,
+		id_ciclo = @id_ciclo,
+		id_moneda = @id_moneda,
+		monto = @monto,
+		fec_inicio = @fec_inicio,
+		prorroga = @prorroga
 	WHERE id = @id
 GO
 
--- SUBSCRIPCIONES -> CHANGE STATUS == EXEC SUBSCRIPCIONES_CHANGE_STATUS
-CREATE PROCEDURE SUBSCRIPCIONES_CHANGE_STATUS
+
+-- ELIMINAR SUBSCRIPCION
+CREATE PROCEDURE SUBSCRIPCIONES_DELETE
+@id INT
+AS BEGIN
+	UPDATE SUBSCRIPCIONES
+	SET estado = 0
+	WHERE id = @id
+END
+GO
+
+-- ACTIVAR SUBSCRIPCION
+CREATE PROCEDURE SUBSCRIPCIONES_RESTORE
 @id CHAR(8)
-AS
-	DECLARE @estado BIT
-	SELECT @estado = estado FROM SUBSCRIPCIONES WHERE id = @id
-	IF @estado = 1
-		UPDATE SUBSCRIPCIONES SET estado = '0' WHERE id = @id
-	ELSE
-		UPDATE SUBSCRIPCIONES SET estado = '1' WHERE id = @id
+AS BEGIN
+	UPDATE SUBSCRIPCIONES
+	SET estado = 1
+	WHERE id = @id
+END
 GO
 
 /* FIN PROCEDIMIENTOS ALMACENADOS SUBSCRIPCIONES */

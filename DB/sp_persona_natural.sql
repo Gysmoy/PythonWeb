@@ -1,104 +1,110 @@
-USE MANAGE_IT
-GO
-
 /* ================================================= */
 /* INICIO PROCEDIMIENTOS ALMACENADOS PERSONA_NATURAL */
 
 -- PERSONA_NATURAL -> CREATE == EXEC PERSONA_NATURAL_CREATE 'English'
 CREATE PROCEDURE PERSONA_NATURAL_CREATE
-@apePater VARCHAR(15),
-@apeMater VARCHAR(15),
-@nombres VARCHAR(45),
+@apePater VARCHAR(25),
+@apeMater VARCHAR(25),
+@nombres VARCHAR(50),
 @dni CHAR(8),
-@id_servicio CHAR(8),
+@id_servicio INT,
 @tel1 VARCHAR(15),
 @tel2 VARCHAR(15),
 @correo VARCHAR(320),
-@direccion VARCHAR(250)
+@direccion VARCHAR(250),
+@usuario_creacion INT
 AS BEGIN
-	DECLARE @id CHAR(8)
-	SELECT @id = 'PNA' + RIGHT('00000' + LTRIM(STR(COUNT(*) + 1)), 5) 
-	FROM PERSONA_NATURAL
-	INSERT INTO PERSONA_NATURAL VALUES (
-		@id, @apePater, @apeMater, @nombres, @dni,
-		@id_servicio, @tel1, @tel2, @correo, @direccion, '1'
+	INSERT INTO PERSONA_NATURAL (
+		apePater, apeMater, nombres, dni, id_servicio, tel1, tel2, correo, direccion, usuario_creacion
+	) VALUES (
+		@apePater, @apeMater, @nombres, @dni, @id_servicio, @tel1, @tel2, @correo, @direccion, @usuario_creacion
 	)
 END
 GO
 
 -- PERSONA_NATURAL -> READ ALL == EXEC PERSONA_NATURAL_READ_ALL
 CREATE PROCEDURE PERSONA_NATURAL_READ_ALL
+@usuario INT
 AS
-	SELECT * FROM PERSONA_NATURAL
+	IF @usuario = 'admin'
+		SELECT * FROM PERSONA_NATURAL
+	ELSE
+		SELECT * FROM PERSONA_NATURAL
+		WHERE usuario_creacion = @usuario
 GO
 
 -- PERSONA_NATURAL -> READ ACTIVES == EXEC PERSONA_NATURAL_READ_ACTIVES
 CREATE PROCEDURE PERSONA_NATURAL_READ_ACTIVES
+@usuario INT
 AS
-	SELECT * FROM PERSONA_NATURAL WHERE	estado = '1'
+	IF @usuario = 'admin'
+		SELECT * FROM PERSONA_NATURAL
+		WHERE estado = 1
+	ELSE
+		SELECT * FROM PERSONA_NATURAL
+		WHERE 
+			usuario_creacion = @usuario AND
+			estado = 1
 GO
 
 -- PERSONA_NATURAL -> READ INACTIVES == EXEC PERSONA_NATURAL_READ_INACTIVES
 CREATE PROCEDURE PERSONA_NATURAL_READ_INACTIVES
+@usuario VARCHAR(16)
 AS
-	SELECT * FROM PERSONA_NATURAL WHERE	estado = '0'
-GO
-
--- PERSONA_NATURAL -> READ ONE == EXEC PERSONA_NATURAL_READ_ONE
-CREATE PROCEDURE PERSONA_NATURAL_READ_ONE
-@id CHAR(8)
-AS
-	SELECT * FROM PERSONA_NATURAL WHERE id = @id
-GO
-
--- PERSONA_NATURAL -> SEARCH == EXEC PERSONA_NATURAL_SEARCH
-CREATE PROCEDURE PERSONA_NATURAL_SEARCH
-@search VARCHAR(50)
-AS
-	SELECT * FROM PERSONA_NATURAL WHERE
-		apePater LIKE(CONCAT('%', @search, '%')) OR
-		apeMater LIKE(CONCAT('%', @search, '%')) OR
-		nombres LIKE(CONCAT('%', @search, '%')) OR
-		dni LIKE(CONCAT('%', @search, '%'))
+	IF @usuario = 'admin'
+		SELECT * FROM PERSONA_NATURAL
+		WHERE estado = 0
+	ELSE
+		SELECT * FROM PERSONA_NATURAL
+		WHERE 
+			usuario_creacion = @usuario AND
+			estado = 0
 GO
 
 -- PERSONA_NATURAL -> UPDATE == EXEC PERSONA_NATURAL_UPDATE
 CREATE PROCEDURE PERSONA_NATURAL_UPDATE
-@id CHAR(8),
-@apePater VARCHAR(15),
-@apeMater VARCHAR(15),
-@nombres VARCHAR(45),
+@id INT,
+@apePater VARCHAR(25),
+@apeMater VARCHAR(25),
+@nombres VARCHAR(50),
 @dni CHAR(8),
-@id_servicio CHAR(8),
+@id_servicio INT,
 @tel1 VARCHAR(15),
 @tel2 VARCHAR(15),
 @correo VARCHAR(320),
-@direccion VARCHAR(250),
-@estado BIT
-AS
+@direccion VARCHAR(250)
+AS BEGIN
 	UPDATE PERSONA_NATURAL SET
-	apePater = @apePater,
-	apeMater = @apeMater,
-	nombres = @nombres,
-	dni = @dni,
-	id_servicio = @id_servicio,
-	tel1 = @tel1,
-	tel2 = @tel2,
-	correo = @correo,
-	direccion = @direccion,
-	estado = @estado
+		apePater = @apePater,
+		apeMater = @apeMater,
+		nombres = @nombres,
+		dni = @dni,
+		id_servicio = @id_servicio,
+		tel1 = @tel1,
+		tel2 = @tel2,
+		correo = @correo,
+		direccion = @direccion
 	WHERE id = @id
+END
 GO
 
--- delete
+-- ELEIMAR CERVICIO
+
 CREATE PROCEDURE PERSONA_NATURAL_DELETE
-@id CHAR(8)
-AS
-UPDATE PERSONA_NATURAL SET estado = '0' WHERE id = @id
--- restore
+@id INT
+AS BEGIN
+	UPDATE PERSONA_NATURAL
+	SET estado = 0
+	WHERE id = @id
+END
 GO
+
+-- ACTIVAR CERVICIO
 CREATE PROCEDURE PERSONA_NATURAL_RESTORE
 @id CHAR(8)
-AS
-UPDATE PERSONA_NATURAL SET estado = '1' WHERE id = @id
-
+AS BEGIN
+	UPDATE PERSONA_NATURAL
+	SET estado = 1
+	WHERE id = @id
+END
+GO
