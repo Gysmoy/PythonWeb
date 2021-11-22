@@ -3,7 +3,7 @@ $('#login form').submit(e => {
     var username = $('#usernameLogin').val();
     var password = $('#passwordLogin').val();
     $.ajax({
-        url: 'http://localhost:8000/users/validateUser/',
+        url: 'http://127.0.0.1:8000/users/validateUser/',
         method: 'POST',
         dataType: 'JSON',
         headers: {
@@ -23,6 +23,7 @@ $('#login form').submit(e => {
             location.href = './client/';
         },
         error: e => {
+            console.log(e)
             var data = JSON.parse(e.responseText)
             $('#messageLogin').text(data.message);
             $('#messageLogin').show(250);

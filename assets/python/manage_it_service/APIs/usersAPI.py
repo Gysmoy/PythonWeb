@@ -10,6 +10,7 @@ from hashlib import sha256
 
 class setUser(APIView):
     serializer_class = serializers.setUser
+
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -17,7 +18,7 @@ class setUser(APIView):
         res['data'] = []
 
         try:
-            serializer = self.serializer_class(data = request.data)
+            serializer = self.serializer_class(data=request.data)
             print(serializer)
             if serializer.is_valid():
                 postData = serializer.validated_data
@@ -52,6 +53,8 @@ class setUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class getActiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -75,6 +78,8 @@ class getActiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class getInactiveUsers(APIView):
     def get(self, request):
         res = {}
@@ -98,6 +103,8 @@ class getInactiveUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class searchUsers(APIView):
     serializer_class = serializers.searchUserSerializer
 
@@ -130,6 +137,8 @@ class searchUsers(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
     pass
+
+
 class updateUser(APIView):
     serializer_class = serializers.updateUserSerializer
 
@@ -178,6 +187,8 @@ class updateUser(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
     pass
+
+
 class deleteUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -208,6 +219,8 @@ class deleteUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class restoreUser(APIView):
     serializer_class = serializers.searchForId
 
@@ -238,6 +251,8 @@ class restoreUser(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class getUsers(APIView):
     '''API PARA OBTENER LOS USUARIOS'''
 
@@ -263,6 +278,8 @@ class getUsers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class getUserById(APIView):
     """API PARA OBTENER USUARIO X USERNAME."""
     serializer_class = serializers.searchForId
@@ -295,6 +312,8 @@ class getUserById(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+
 class validateUser(APIView):
     '''OBTENER USUARIO SEGÚN USUARIO Y CONTRASEÑA'''
     serializer_class = serializers.LoginSerializer
@@ -303,8 +322,6 @@ class validateUser(APIView):
         statusCode = 200
         message = 'NTS'
         data = dict()
-        session = dict()
-        db = Database()
         try:
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
@@ -312,28 +329,14 @@ class validateUser(APIView):
                 username = postData.get('username')
                 password = postData.get('password')
                 password = sha256(password.encode()).hexdigest()
-                cursor = db.connect()
-                query = "USUARIOS_READ_USERNAME_PASSWORD ?, ?"
-                parameters = (username, password)
-                cursor.execute(query, parameters)
-                columns = [i[0] for i in cursor.description]
-                row = cursor.fetchall()
-                if (len(row) == 0):
+                query = Query('USUARIOS_VALIDATE', [username, password])
+                if (query.status):
+                    statusCode = 200
+                    message = 'Operación correcta'
+                    data = query.getOne()
+                else:
                     statusCode = 400
                     message = 'Usuario y/o contraseña incorrectos'
-                else:
-                    i = 0
-                    for x in row[0]:
-                        data[columns[i]] = x
-                        i = i + 1
-                    if data['estado'] == False:
-                        statusCode = 400
-                        message = 'Este usuario esta inactivo'
-                    else:
-                        statusCode = 200
-                        message = 'Operación correcta'
-                        session['uuid'] = uuid4()
-                        session['rol'] = 'USER'
             else:
                 statusCode = 400
                 message = 'Error en la petición'
@@ -341,12 +344,10 @@ class validateUser(APIView):
             statusCode = 400
             message = 'Error: ' + e
         finally:
-            db.disconnect()
             res = {
                 'status': statusCode,
                 'message': message,
-                'data': data,
-                'session': session
+                'data': data
             }
             if (statusCode == 200):
                 return Response(res, status.HTTP_200_OK)
