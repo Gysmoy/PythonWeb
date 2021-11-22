@@ -1,45 +1,27 @@
-USE MANAGE_IT
-GO
-
 /* ========================================= */
 /* INICIO PROCEDIMIENTOS ALMACENADOS HISTORIALES */
 
 -- HISTORIALES -> CREATE == EXEC HISTORIALES_CREATE 'English'
 CREATE PROCEDURE HISTORIALES_CREATE
-@id_usuario CHAR(8),
-@id_proveedor CHAR(8),
-@monto DECIMAL(5,2)
+@id_proveedor INT,
+@monto DECIMAL(5,2),
+@usuario_creacion INT
 AS BEGIN
-	DECLARE @id CHAR(11)
-	SELECT @id = 'HIS' + RIGHT('00000000' + LTRIM(STR(COUNT(*) + 1)), 8) FROM HISTORIALES
-	INSERT INTO HISTORIALES VALUES (
-        @id, @id_usuario, @id_proveedor,
-        @monto, GETDATE()
+	INSERT INTO HISTORIALES (
+        id_proveedor, monto, fecha, usuario_creacion
+	) VALUES (
+        @id_proveedor, @monto, GETDATE(), @usuario_creacion
     )
 END
 GO
 
 -- HISTORIALES -> READ ALL == EXEC HISTORIALES_READ_ALL
 CREATE PROCEDURE HISTORIALES_READ_ALL
+@usuario INT
 AS
-	SELECT * FROM HISTORIALES
+	IF @usuario = 'admin'
+		SELECT * FROM HISTORIALES
+	ELSE
+		SELECT * FROM HISTORIALES
+		WHERE usuario_creacion = @usuario
 GO
-
--- HISTORIALES -> READ ONE == EXEC HISTORIALES_READ_ONE
-CREATE PROCEDURE HISTORIALES_READ_ONE
-@id CHAR(8)
-AS
-	SELECT * FROM HISTORIALES WHERE id = @id
-GO
-
--- HISTORIALES -> SEARCH == EXEC HISTORIALES_SEARCH
-CREATE PROCEDURE HISTORIALES_SEARCH
-@search VARCHAR(50)
-AS
-	SELECT * FROM HISTORIALES WHERE
-        id_usuario LIKE(CONCAT('%', @search, '%')) OR
-        id_proveedor LIKE(CONCAT('%', @search, '%'))
-GO
-
-/* FIN PROCEDIMIENTOS ALMACENADOS HISTORIALES */
-/* ====================================== */
