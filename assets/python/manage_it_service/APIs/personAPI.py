@@ -127,7 +127,7 @@ class getInactivePNaturales(APIView):
                 query = Query("PERSONA_NATURAL_READ_INACTIVES",[id_user])
                 if query.status:
                         res['status'] = 200
-                        res['message'] = 'Operacion Correcta'
+                        res['message'] = 'Persona Natural Activas '
                         res['data'] = query.getAll()
                 else:
                     res['message'] = query.message
@@ -143,36 +143,6 @@ class getInactivePNaturales(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class searchPNatural(APIView):
-    serializer_class = serializers.allUseSerializer
-    def post(self, request):
-        res = {}
-        res['status'] = 400
-        res['message'] = 'NTS' 
-        res['data'] = []
-        try:
-            serializer = self.serializer_class(data = request.data)
-            if serializer.is_valid():
-                dat = serializer.validated_data.get('dat')
-                query = Query("PERSONA_NATURAL_SEARCH",[dat])
-                if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
-                else:
-                    res['message'] = query.message
-            else:
-                res['status'] = 400
-                res['message'] = 'Error en la Peticion'
-        except Exception as e:
-            res['status'] = 400
-            res['message'] = 'Error' + e
-        finally:
-            
-            if ( res['status'] == 200):
-                return Response(res, status.HTTP_200_OK)
-            else:
-                return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class updatePNatural(APIView):
     serializer_class = serializers.updateP_naturalSerializer
@@ -200,7 +170,7 @@ class updatePNatural(APIView):
                 query = Query("PERSONA_NATURAL_UPDATE",[id, apePater, apeMater, nombres, dni, id_servicio, tel1, tel2, correo, direccion, estado], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Persona Natural Actualizada Correctamente'
                     res['data'] = query.getAll()
                 else:
                     res['message'] = query.message + str(serializer)
@@ -231,7 +201,7 @@ class deletePNatural(APIView):
                 query = Query("PERSONA_NATURAL_DELETE",[dat], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Persona Natural Eliminada Correctamente'
                 else:
                     res['message'] = query.message
             else:
@@ -261,7 +231,7 @@ class restorePNatural(APIView):
                 query = Query("PERSONA_NATURAL_RESTORE",[dat], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta' 
+                    res['message'] = 'Persona Natural Recuperada Correctamente' 
                 else:
                     res['message'] = query.message
             else:
