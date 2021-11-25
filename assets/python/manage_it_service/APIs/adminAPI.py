@@ -18,13 +18,31 @@ class queryAdmin(APIView):
             serializer = self.serializer_class(data=request.data)
             if serializer.is_valid():
                 queryy = serializer.validated_data.get('query')
-                query = Query(queryy)
-                if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta: ' + queryy
-                    res['data'] = query.getAll()
+                if('select' in queryy or 'SELECT' in queryy):
+                    m ='Usted desea listar datos'
+                    query = Query(queryy)
+                    if query.status:
+                        res['status'] = 200
+                        res['message'] = 'Operacion Correcta: ' + m
+                        res['data'] = query.getAll()
+                    else:
+                        res['message'] = query.message + 'list'
                 else:
-                    res['message'] = query.message
+                    update='Registro Actualizado Correctamente'
+                    delete='Registro Eliminado Correctamente'
+                    insert='Registro Insertado Correctamente'
+                    if('UPDATE' in queryy or 'update' in queryy):
+                        res['message']=update
+                    elif('DELETE' in queryy or 'delete' in queryy):
+                        res['message']=delete
+                    else:
+                        res['message']=insert
+        
+                    query = Query(queryy,[],'SET')
+                    if query.status:
+                        res['status'] = 200
+                    else:
+                        res['message'] = query.message + 'update,etc'
             else:
                 res['status'] = 400
                 res['message'] = 'Error en la consulta'
@@ -32,7 +50,11 @@ class queryAdmin(APIView):
             res['status'] = 400
             res['message'] = 'Error' + e
         finally:
-            if (res['status'] == 200):
+            if ( res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+            
+
+

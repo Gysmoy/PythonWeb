@@ -1,70 +1,51 @@
-from typing import final
+'''
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from manage_it_service.serializers import services as serializers
 from manage_it_service.database.query import Query
-from uuid import uuid4
-from hashlib import sha256
+from manage_it_service.serializers import cycles as serializers
 
-class setService(APIView):
-    serializer_class = serializers.allService
+class setCycle(APIView):
+    serializer_class = serializers.setCycles
     def post(self, request):
-        res = {}
-        res['status'] = 400
-        res['message'] = 'NTS'
-        res['data'] = []
-        try:
-            serial = self.serializer_class(data = request.data)
-            if serial.is_valid():
-                service = serial.validated_data.get('dat')
-                query = Query('SERVICIOS_CREATE', [service], 'SET')
-                if query.status:
-                    res['status'] = 200
-                    res['message'] = 'El servicio se agregó correctamente'
-                else:
-                    res['message'] = query.message
-            else:
-                res['message'] = 'Falló en la petición'
-        except Exception as e:
-            res['message'] = 'Error: ' + e
-        finally:
-            if (res['status'] == 200):
-                return Response(res, status.HTTP_200_OK)
-            else:
-                return Response(res, status.HTTP_400_BAD_REQUEST)
-
-class getServices(APIView):
-    def get(self, request):
-        res = {}
-        res['status'] = 400
-        res['message'] = 'NTS'
-        res['data'] = []
-        try:
-            query = Query('SERVICIOS_READ_ALL')
-            if query.status:
-                res['status'] = 200
-                res['message'] = 'Operación correcta'
-                res['data'] = query.getAll()
-            else:
-                res['message'] = query.message
-        except Exception as e:
-            res['message'] = 'Error: ' + e
-        finally:
-            print(res)
-            if (res['status'] == 200):
-                return Response(res, status.HTTP_200_OK)
-            else:
-                return Response(res, status.HTTP_400_BAD_REQUEST)
-
-class getActiveServices(APIView):
-    def get(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            query = Query("SERVICIOS_READ_ACTIVES")
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                tipo = postData.get('tipo')
+                ciclo = postData.get('ciclo')
+                query = Query('CICLOS_CREATE',[tipo, ciclo], 'SET')
+                if query.status:
+                    res['status'] = 200
+                    res['message'] = 'Ciclo Agregado Correctamente'
+                    res['data'] = query.getAll()
+                else:
+                    res['message'] = query.message
+            else:
+                res['status'] = 400
+                res['message'] = 'Error en la Peticion'
+        except Exception as e:
+            res['status'] = 400
+            res['message'] = 'Error' +e
+        finally:
+            
+            if ( res['status'] == 200):
+                return Response(res, status.HTTP_200_OK)
+            else:
+                return Response(res, status.HTTP_400_BAD_REQUEST)
+
+class getCycles(APIView):
+   def get(self, request):
+        res = {}
+        res['status'] = 400
+        res['message'] = 'NTS' 
+        res['data'] = []
+        try:
+            query = Query("CICLOS_READ_ALL")
             if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -75,21 +56,20 @@ class getActiveServices(APIView):
             res['status'] = 400
             res['message'] = 'Error' + e
         finally:
+            
             if ( res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-            pass
-
-class getInactiveServices(APIView):
+class getActiveCycles(APIView):
      def get(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            query = Query("SERVICIOS_READ_INACTIVES")
+            query = Query("CICLOS_READ_ATIVES")
             if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -106,21 +86,50 @@ class getInactiveServices(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class searchServices(APIView):
-    serializer_class = serializers.allService
-    def post(self, request):
+class getInactiveCycles(APIView):
+    def get(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            serializer = self.serializer_class(data = request.data)
-            if serializer.is_valid():
-                service = serializer.validated_data.get('dat')
-                query = Query("SERVICIOS_SEARCH",[service])
-                if query.status:
+            query = Query("CICLOS_READ_INACTIVES")
+            if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
+                    res['data'] = query.getAll()
+            else:
+                res['message'] = query.message
+        except Exception as e:
+            res['status'] = 400
+            res['message'] = 'Error' + e
+        finally:
+            
+            if ( res['status'] == 200):
+                return Response(res, status.HTTP_200_OK)
+            else:
+                return Response(res, status.HTTP_400_BAD_REQUEST)
+
+class updateCycle(APIView):
+    serializer_class = serializers.updateCycle
+    def post(self, request):
+        res = {}
+        res['status'] = 400
+        res['message'] = 'NTS' 
+        res['data'] = []
+
+        try:
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id = postData.get('id')
+                tipo = postData.get('tipo')
+                ciclo = postData.get('ciclo')
+                query = Query('CICLOS_UPDATE',[id, tipo,ciclo], 'SET')
+                print(serializer)
+                if query.status:
+                    res['status'] = 200
+                    res['message'] = 'Ciclo Actualizado Correctamente'
                     res['data'] = query.getAll()
                 else:
                     res['message'] = query.message
@@ -129,7 +138,7 @@ class searchServices(APIView):
                 res['message'] = 'Error en la Peticion'
         except Exception as e:
             res['status'] = 400
-            res['message'] = 'Error' + e
+            res['message'] = 'Error' +e
         finally:
             
             if ( res['status'] == 200):
@@ -137,38 +146,8 @@ class searchServices(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class updateServices(APIView):
-    serializer_class = serializers.allService
-    def post(self, request):
-        res = {}
-        res['status'] = 400
-        res['message'] = 'NTS'
-        res['data'] = []
-        try:
-            serial = self.serializer_class(data = request.data)
-            if serial.is_valid():
-                id = serial.validated_data.get('id')
-                service = serial.validated_data.get('dat')
-                status = serial.validated_data.get('status')
-                query = Query('SERVICIOS_UPDATE', [id,service,status], 'SET')
-                if query.status:
-                    res['status'] = 200
-                    res['message'] = 'El servicio se agregó correctamente'
-                else:
-                    res['message'] = query.message
-            else:
-                res['message'] = 'Falló en la petición'
-        except Exception as e:
-            res['message'] = 'Error: ' + e
-        finally:
-            print(res)
-            if (res['status'] == 200):
-                return Response(res, status.HTTP_200_OK)
-            else:
-                return Response(res, status.HTTP_400_BAD_REQUEST)
-
-class deleteServices(APIView):
-    serializer_class = serializers.allService  
+class deleteCycle(APIView):
+    serializer_class = serializers.datCycle
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -177,11 +156,11 @@ class deleteServices(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                id_service = serializer.validated_data.get('dat')
-                query = Query("SERVICIOS_DELETE",[id_service], 'SET')
+                dat = serializer.validated_data.get('dat')
+                query = Query("CICLOS_DELETE",[dat], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Ciclo Eliminado Correctamente'
                 else:
                     res['message'] = query.message
             else:
@@ -197,8 +176,8 @@ class deleteServices(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class restoreServices(APIView):
-    serializer_class = serializers.allService
+class restoreCycle(APIView):
+    serializer_class = serializers.datCycle
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -207,11 +186,11 @@ class restoreServices(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                id_service = serializer.validated_data.get('dat')
-                query = Query("SERVICIOS_RESTORE",[id_service], 'SET')
+                dat = serializer.validated_data.get('dat')
+                query = Query("CICLOS_RESTORE",[dat], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Ciclo Recuperado Correctamente'
                 else:
                     res['message'] = query.message
             else:
@@ -226,3 +205,5 @@ class restoreServices(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
+'''

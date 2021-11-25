@@ -14,12 +14,13 @@ class Query():
                 spu += ' ?,' if (i < len(params) - 1) else ' ?'
             # Ejecutando QUERY
             if (cursor != False):
-                cursor.execute(spu, tuple(params))
                 if type == 'SET':
+                    cursor.execute(spu)
                     cursor.commit()
                     self.status = True
                     self.message = 'Operación correcta'
                 else:
+                    cursor.execute(spu, tuple(params))
                     columns = [i[0] for i in cursor.description]
                     rows = cursor.fetchall()
                     self.quantity = len(rows)

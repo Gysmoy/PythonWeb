@@ -1,8 +1,8 @@
 -- PROVEEDORES -> CEREATE == EXECT IDIOMAS_CREATE 'PAPA, PNA88888'
 CREATE PROCEDURE PROVEEDORES_CREATE
 @tipo CHAR(1),
-@id_per_nat CHAR(8),
-@id_per_jur CHAR(8),
+@id_per_nat INT,
+@id_per_jur INT,
 @usuario_creacion INT
 AS BEGIN
     INSERT INTO PROVEEDORES (
@@ -18,7 +18,7 @@ GO
 CREATE PROCEDURE PROVEEDORES_READ_ALL
 @usuario INT
 AS
-	IF @usuario = 'admin'
+	IF @usuario = 1
 		SELECT * FROM PROVEEDORES
 	ELSE
 		SELECT * FROM PROVEEDORES
@@ -29,7 +29,7 @@ GO
 CREATE PROCEDURE PROVEEDORES_READ_ACTIVES
 @usuario INT
 AS
-	IF @usuario = 'admin'
+	IF @usuario = 1
 		SELECT * FROM PROVEEDORES
 		WHERE estado = 1
 	ELSE
@@ -43,7 +43,7 @@ GO
 CREATE PROCEDURE PROVEEDORES_READ_INACTIVES
 @usuario VARCHAR(16)
 AS
-	IF @usuario = 'admin'
+	IF @usuario = 1
 		SELECT * FROM PROVEEDORES
 		WHERE estado = 0
 	ELSE
