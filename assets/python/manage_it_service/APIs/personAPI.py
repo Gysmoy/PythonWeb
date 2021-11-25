@@ -18,7 +18,6 @@ class setP_natural(APIView):
         res['data'] = []
         try:
             serializer = self.serializer_class(data = request.data)
-            print(serializer)
             if serializer.is_valid():
                 postData = serializer.validated_data
                 apePater = postData.get('apePater')
@@ -30,7 +29,8 @@ class setP_natural(APIView):
                 tel2 = postData.get('tel2')
                 correo = postData.get('correo')
                 direccion = postData.get('direccion')
-                query = Query("PERSONA_NATURAL_CREATE",[apePater, apeMater, nombres, dni, id_servicio, tel1, tel2, correo, direccion], 'SET')
+                usuario_creacion = postData.get('usuario_creacion')
+                query = Query("PERSONA_NATURAL_CREATE",[apePater, apeMater, nombres, dni, id_servicio, tel1, tel2, correo, direccion, usuario_creacion], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -51,19 +51,26 @@ class setP_natural(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getP_naturales(APIView):
-     def get(self, request):
+    serializer_class = serializers.idUser
+    def post(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            query = Query("PERSONA_NATURAL_READ_ALL")
-            if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query("PERSONA_NATURAL_READ_ALL",[id_user])
+                if query.status:
+                        res['status'] = 200
+                        res['message'] = 'Operacion Correcta'
+                        res['data'] = query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['message'] = query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
             res['status'] = 400
             res['message'] = 'Error' + e
@@ -75,19 +82,26 @@ class getP_naturales(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getActiveP_naturales(APIView):
-   def get(self, request):
+    serializer_class = serializers.idUser
+    def post(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            query = Query("PERSONA_NATURAL_READ_ACTIVES")
-            if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query("PERSONA_NATURAL_READ_ACTIVES",[id_user])
+                if query.status:
+                        res['status'] = 200
+                        res['message'] = 'Operacion Correcta'
+                        res['data'] = query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['message'] = query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
             res['status'] = 400
             res['message'] = 'Error' + e
@@ -99,19 +113,26 @@ class getActiveP_naturales(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getInactiveP_naturales(APIView):
-   def get(self, request):
+    serializer_class = serializers.idUser
+    def post(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
         try:
-            query = Query("PERSONA_NATURAL_READ_INACTIVES")
-            if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query("PERSONA_NATURAL_READ_INACTIVES",[id_user])
+                if query.status:
+                        res['status'] = 200
+                        res['message'] = 'Operacion Correcta'
+                        res['data'] = query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['message'] = query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
             res['status'] = 400
             res['message'] = 'Error' + e
@@ -269,7 +290,6 @@ class setPJuridica(APIView):
         try:
             
             serializer = self.serializer_class(data = request.data)
-            res['message'] = 'dentro de try' + str(serializer.is_valid())
             if serializer.is_valid():
                 res['message'] = 'dentro de try, if' 
                 postData = serializer.validated_data
@@ -280,8 +300,9 @@ class setPJuridica(APIView):
                 tel2 = postData.get('tel2')
                 correo = postData.get('correo')
                 direccion = postData.get('direccion')
+                id_user = postData.get('id_user')
                 
-                query = Query("PERSONA_JURIDICA_CREATE",[RSocial, ruc, id_servicio, tel1,tel2, correo, direccion], 'SET')
+                query = Query("PERSONA_JURIDICA_CREATE",[RSocial, ruc, id_servicio, tel1,tel2, correo, direccion,id_user], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -302,19 +323,26 @@ class setPJuridica(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getPJuridica(APIView):
-    def get(self, request):
+    serializer_class = serializers.idUser
+    def post(self, request):
         res={}
         res['status'] = 400
         res['message'] = 'NTS'
         res['data']=[]
         try:
-            query = Query('PERSONA_JURIDICA_READ_ALL', )
-            if query.status:
-                res['status']=200
-                res['message'] = 'Operacion Correcta'
-                res['data']=query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query('PERSONA_JURIDICA_READ_ALL',[id_user] )
+                if query.status:
+                    res['status']=200
+                    res['message'] = 'Operacion Correcta'
+                    res['data']=query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['message'] = query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
             res['status']=400
             res['message']= 'Error en la peticion' + e
@@ -325,48 +353,61 @@ class getPJuridica(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getActivePJuridica(APIView):
-    def get(self, request):
+    dserializer_class = serializers.idUser
+    def post(self, request):
         res={}
         res['status'] = 400
         res['message'] = 'NTS'
-        res['data'] = []
+        res['data']=[]
         try:
-            query = Query('PERSONA_JURIDICA_READ_ACTIVES')
-            if query.status:
-                res['status']=200
-                res['message'] = 'Operacion Correcta'
-                res['data']=query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query('PERSONA_JURIDICA_READ_ACTIVES',[id_user] )
+                if query.status:
+                    res['status']=200
+                    res['message'] = 'Operacion Correcta'
+                    res['data']=query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['status']=400
-                res['message'] = query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
             res['status']=400
             res['message']= 'Error en la peticion' + e
         finally:
-            if (res['status'] == 200):
+            if (res['status'] == '200'):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getInactivePJuridica(APIView):
-    def get(self, request):
+    serializer_class = serializers.idUser
+    def post(self, request):
         res={}
-        res['status']=400
-        res['message']='NTS'
+        res['status'] = 400
+        res['message'] = 'NTS'
         res['data']=[]
         try:
-            query = Query('PERSONA_JURIDICA_READ_INACTIVES')
-            if query.status:
-                res['status']=200
-                res['message']='Operacion Correcta'
-                res['data']=query.getAll()
+            serializer = self.serializer_class(data = request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id_user = postData.get('id_user')
+                query = Query('PERSONA_JURIDICA_READ_INACTIVES',[id_user] )
+                if query.status:
+                    res['status']=200
+                    res['message'] = 'Operacion Correcta'
+                    res['data']=query.getAll()
+                else:
+                    res['message'] = query.message
             else:
-                res['message']=query.message
+                res['message'] = 'Error en la operacion'
         except Exception as e:
-            res['status']= 400
-            res['message']= 'Error en la operacion' + e
+            res['status']=400
+            res['message']= 'Error en la peticion' + e
         finally:
-            if (res['status']==200):
+            if (res['status'] == '200'):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)

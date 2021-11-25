@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from manage_it_service.serializers import lang as serializers
+from manage_it_service.serializers import idiom as serializers
 from uuid import uuid4
 from hashlib import sha256
 from manage_it_service.database.query import Query

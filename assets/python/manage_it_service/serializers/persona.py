@@ -13,7 +13,8 @@ class setP_naturalSerializer(serializers.Serializer):
     correo = serializers.CharField(max_length = 320)
     direccion = serializers.CharField(max_length = 250)
     # multi usos
-
+class idUser(serializers.Serializer):
+    id_user = serializers.CharField(max_length = 10)
 class allUseSerializer(serializers.Serializer):
     dat = serializers.CharField(max_length = 30)
 # actualizar persona natural

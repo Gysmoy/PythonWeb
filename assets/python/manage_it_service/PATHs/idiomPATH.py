@@ -1,5 +1,5 @@
 from django.urls import path
-from manage_it_service.APIs import langAPI as views
+from manage_it_service.APIs import idiomAPI as views
 
 urlpatterns = [
     path('setIdiom/', views.setIdiom.as_view()),
