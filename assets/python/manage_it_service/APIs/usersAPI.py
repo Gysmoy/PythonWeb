@@ -7,7 +7,6 @@ from manage_it_service.database.query import Query
 from uuid import uuid4
 from hashlib import sha256
 
-
 class setUser(APIView):
     serializer_class = serializers.setUser
 
