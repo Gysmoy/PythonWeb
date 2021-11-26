@@ -8,12 +8,17 @@ from manage_it_service.PATHs import adminPATH as admin
 from manage_it_service.PATHs import supplierPATH as supplier
 from manage_it_service.PATHs import subsPATH as subs
 from manage_it_service.PATHs import cyclesPATH as cycles
+from manage_it_service.PATHs import idiomPATH as idiom
+from manage_it_service.PATHs import recordPATH as record
+
+
 
 
 #from manage_it_service.PATHs import cyclesPATH as cycles
 
 
 urlpatterns = [
+
     path('admin/', include(admin)),
     path('users/', include(users)),
     path('services/', include(services)),
@@ -22,5 +27,8 @@ urlpatterns = [
     path('supplier/', include(supplier)),
     path('subs/', include(subs)),
     path('cycles/', include(cycles)),
+    path('idiom/', include(idiom)),
+    path('record/', include(record)),
+    
 
 ]
