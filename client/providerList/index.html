@@ -43,19 +43,18 @@
         <!--tabla de registro-->
         <div id="main">
             <div class="inner">
-                <h1 id="title"><span class="icon solid fa-list"></span> Lista de proveedores</h1>
+                <h1><span class="icon solid fa-users"></span> PROVEEDORES</h1>
+                <hr>
                 <section id="table">
+                    <h2 id="title">Lista de proveedores</h2>
                     <div class="row gtr-uniform">
                         <div class="col-6 col-12-xsmall">
-                            <input type="text" name="search" id="search" value="" placeholder="🔎 Buscar" />
-                        </div>
-                        <div class="col-6 col-12-xsmall">
-                            <button>AGREGAR PROVEEDOR</button>
+                            <button id="addSupplier">AGREGAR PROVEEDOR</button>
                         </div>
                     </div>
                     <br>
                     <div class="table-wrapper">
-                        <table class="alt" id="btl-providers">
+                        <table class="alt" id="tbl-providers">
                             <thead>
                                 <tr>
                                     <th>Tipo</th>
@@ -74,11 +73,13 @@
                 </section>
                 <section id="form" style="display: none;">
                     <form method="post" class="box">
+                        <h2 id="title">Agregar un proveedor</h2>
                         <div class="row gtr-uniform">
-                            <input type="hidden" id="id" name="id" value="">
+                            <input type="hidden" id="id" value="">
+                            <input type="hidden" id="tipoConsulta" value="set">
                             <div class="col-6 col-12-xsmall">
-                                <select name="demo-category" id="demo-category" required>
-                                    <option disabled selected>- Tipo de proveedor -</option>
+                                <select id="tipoProveedor" required>
+                                    <option value disabled selected>- Tipo de proveedor -</option>
                                     <option value="N">Persona natural (Persona)</option>
                                     <option value="J">Persona jurídica (Empresa)</option>
                                 </select>
@@ -86,36 +87,39 @@
                             <div class="col-6 col-12-xsmall">
                                 <input type="text" id="numDoc" placeholder="Ingrese N° documento">
                             </div>
-                            <div class="col-6 col-12-xsmall">
-                                <input type="text" id="nombres" placeholder="Nombres">
-                            </div>
-                            <div class="col-6 col-12-xsmall">
+                            <div class="col-6 col-12-xsmall" style="display: none;">
                                 <input type="text" id="apePater" placeholder="Apellido Paterno">
                             </div>
-                            <div class="col-6 col-12-xsmall">
+                            <div class="col-6 col-12-xsmall" style="display: none;">
                                 <input type="text" id="apeMater" placeholder="Apellido Materno">
+                            </div>
+                            <div class="col-6 col-12-xsmall" style="display: none;">
+                                <input type="text" id="nombres" placeholder="Nombres">
+                            </div>
+                            <div class="col-6 col-12-xsmall" style="display: none;">
+                                <input type="text" id="razonSocial" placeholder="Razón Social">
                             </div>
                             <div class="col-6 col-12-xsmall">
                                 <select id="servicios" required>
-                                    <option disabled>- Escoge un servicio -</option>
+                                    <option value disabled selected>- Escoge un servicio -</option>
                                 </select>
                             </div>
                             <div class="col-6 col-12-xsmall">
                                 <input type="text" id="tel1" placeholder="Telefono Principal">
                             </div>
                             <div class="col-6 col-12-xsmall">
-                                <input type="text" id="tel1" placeholder="Telefono Secundario (Opcional)">
+                                <input type="text" id="tel2" placeholder="Telefono Secundario (Opcional)">
                             </div>
                             <div class="col-12">
-                                <input type="email" id="tel1" placeholder="Correo de contacto">
+                                <input type="email" id="correo" placeholder="Correo de contacto">
                             </div>
                             <div class="col-12">
                                 <textarea id="direccion" placeholder="Direccion de contacto" rows="2"></textarea>
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="AGREGAR PROVEEDOR" class="primary" /></li>
-                                    <li><input type="reset" value="CANCELAR" /></li>
+                                    <li><input type="submit" value="AGREGAR" class="primary" /></li>
+                                    <li><input type="button" id="cancelSupplier" value="CANCELAR" /></li>
                                 </ul>
                             </div>
                         </div>
@@ -136,6 +140,7 @@
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/showHide.js"></script>
     <script src="../assets/js/configuracion.js"></script>
+    <script src="../../assets/js/cookies.js"></script>
     <script src="main.js"></script>
 
 </body>
