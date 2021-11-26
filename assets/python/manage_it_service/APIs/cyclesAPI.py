@@ -1,4 +1,3 @@
-'''
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -205,5 +204,3 @@ class restoreCycle(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-
-'''

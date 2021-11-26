@@ -113,6 +113,7 @@ class getActivesSuppliers(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
 class getInactivesSuppliers(APIView):
     serializer_class = serializers.idUser
     def post(self, request):
@@ -156,12 +157,12 @@ class updateSupplier(APIView):
                 postData = serializer.validated_data
                 id = postData.get('id')
                 tipo = postData.get('tipo')
-                per_nat = postData.get('id_per_nat')
-                per_jur = postData.get('id_per_jur')
+                id_per_nat = postData.get('id_per_nat')
+                id_per_jur = postData.get('id_per_jur')
                 query = Query("PROVEEDORES_UPDATE",[id, tipo, id_per_nat, id_per_jur], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Proveedor Actualizado Correctamente'
                 else:
                     res['message'] = query.message 
             else:
@@ -176,6 +177,7 @@ class updateSupplier(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
 class deleteSupplier(APIView):
     serializer_class = serializers.idSupplier
     def post(self, request):
@@ -190,7 +192,7 @@ class deleteSupplier(APIView):
                 query = Query("PROVEEDORES_DELETE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Proveedor Eliminado Correctamente'
                 else:
                     res['message'] = query.message
             else:
@@ -205,6 +207,7 @@ class deleteSupplier(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
+
 class restoreSupplier(APIView):
     serializer_class = serializers.idSupplier
     def post(self, request):
@@ -219,7 +222,7 @@ class restoreSupplier(APIView):
                 query = Query("PROVEEDORES_RESTORE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
+                    res['message'] = 'Proveedor Restaurado Correctamente'
                 else:
                     res['message'] = query.message
             else:

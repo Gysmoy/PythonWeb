@@ -7,7 +7,7 @@ class setSupplier(serializers.Serializer):
     usuario_creacion = serializers.CharField(max_length = 10)
 
 class updateSupplier(serializers.Serializer):
-    id = serializers.CharField(max_length = 10)
+    id = serializers.CharField(max_length = 8)
     tipo = serializers.CharField(max_length = 1)
     id_per_nat = serializers.CharField(max_length = 8)
     id_per_jur = serializers.CharField(max_length = 8)

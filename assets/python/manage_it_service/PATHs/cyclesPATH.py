@@ -1,6 +1,6 @@
 from django.urls import path
 from manage_it_service.APIs import cyclesAPI as views
-'''
+
 urlpatterns = [
     path('setCycle/', views.setCycle.as_view()),
     path('getCycles/', views.getCycles.as_view()),
@@ -10,4 +10,3 @@ urlpatterns = [
     path('deleteCycle/', views.deleteCycle.as_view()),
     path('restoreCycle/', views.restoreCycle.as_view()),
 ]
-'''
