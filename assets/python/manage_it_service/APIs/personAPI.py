@@ -7,6 +7,8 @@ from uuid import uuid4
 from hashlib import sha256
 from manage_it_service.database.query import Query
 
+# hacer que te reciba en actualizzar dato telefono nulo
+
 # Persona Natural
 
 class setPNatural(APIView):
