@@ -9,6 +9,6 @@ class updateCycle(serializers.Serializer):
     tipo = serializers.CharField(max_length = 50)
     ciclo = serializers.CharField(max_length = 10)
 
-class datCycle(serializers.Serializer):
-    dat = serializers.CharField(max_length = 20)
+class idCycle(serializers.Serializer):
+    id = serializers.CharField(max_length = 20)
 

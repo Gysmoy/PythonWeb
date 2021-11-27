@@ -12,11 +12,11 @@ class setP_naturalSerializer(serializers.Serializer):
     tel2 = serializers.CharField(max_length = 15)
     correo = serializers.CharField(max_length = 320)
     direccion = serializers.CharField(max_length = 250)
+    id_user = serializers.CharField(max_length = 8)
     # multi usos
-class idUser(serializers.Serializer):
-    id_user = serializers.CharField(max_length = 10)
-class allUseSerializer(serializers.Serializer):
-    dat = serializers.CharField(max_length = 30)
+class idPer(serializers.Serializer):
+    id = serializers.CharField(max_length = 10)
+
 # actualizar persona natural
 
 class updateP_naturalSerializer(serializers.Serializer):
@@ -30,9 +30,6 @@ class updateP_naturalSerializer(serializers.Serializer):
     tel2 = serializers.CharField(max_length = 15)
     correo = serializers.CharField(max_length = 320)
     direccion = serializers.CharField(max_length = 250)
-    estado = serializers.ChoiceField(choices = (('1', 'ACTIVO'), ('0', 'INACTIVO')))
-
-
 
     # persona juridica serializers
 
@@ -45,9 +42,8 @@ class setPjuridicaSerializer(serializers.Serializer):
     tel2 = serializers.CharField(max_length = 15)
     correo = serializers.CharField(max_length = 320)
     direccion = serializers.CharField(max_length = 250)
+    id_user = serializers.CharField(max_length = 8)
     
-class searchAllPJuridica(serializers.Serializer):
-    dat = serializers.CharField(max_length = 50)
 
 class updatePJuridicaSerializer(serializers.Serializer):
     id = serializers.CharField(max_length = 8)
@@ -58,5 +54,4 @@ class updatePJuridicaSerializer(serializers.Serializer):
     tel2 = serializers.CharField(max_length = 15)
     correo = serializers.CharField(max_length = 320)
     direccion = serializers.CharField(max_length = 250)
-    estado = serializers.ChoiceField(choices = (('1', 'Activo'),('0','Inactivo')))
 

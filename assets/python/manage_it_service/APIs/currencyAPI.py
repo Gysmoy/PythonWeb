@@ -17,8 +17,6 @@ class setCurrency(APIView):
                 postData = serializer.validated_data
                 moneda = postData.get('moneda')
                 estado = postData.get('estado')
-              
-
                 query = Query("MONEDAS_CREATE",[moneda, estado], 'SET')
                 if query.status:
                     res['status'] = 200
@@ -38,10 +36,8 @@ class setCurrency(APIView):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
-        pass
 
 class getCurrencyes(APIView):
-    
     def get(self, request):
         res = {}
         res['status'] = 400
@@ -66,7 +62,6 @@ class getCurrencyes(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getActiveCurrencies(APIView):
-    
     def get(self, request):
         res = {}
         res['status'] = 400
@@ -91,7 +86,6 @@ class getActiveCurrencies(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class getInactiveCurrencies(APIView):
-    
     def get(self, request):
         res = {}
         res['status'] = 400
@@ -115,37 +109,6 @@ class getInactiveCurrencies(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class searchCurrency(APIView):
-    serializer_class = serializers.searchCurrencySerializer
-    def post(self, request):
-        res = {}
-        res['status'] = 400
-        res['message'] = 'NTS' 
-        res['data'] = []
-        try:
-            serializer = self.serializer_class(data = request.data)
-            if serializer.is_valid():
-                currency = serializer.validated_data.get('currency')
-                query = Query("MONEDAS_SEARCH",[currency])
-                if query.status:
-                    res['status'] = 200
-                    res['message'] = 'Operacion Correcta'
-                    res['data'] = query.getAll()
-                else:
-                    res['message'] = query.message
-            else:
-                res['status'] = 400
-                res['message'] = 'Error en la Peticion'
-        except Exception as e:
-            res['status'] = 400
-            res['message'] = 'Error' + e
-        finally:
-            
-            if ( res['status'] == 200):
-                return Response(res, status.HTTP_200_OK)
-            else:
-                return Response(res, status.HTTP_400_BAD_REQUEST)
-
 class updateCurrency(APIView):
     serializer_class = serializers.updateCurrencySerializer
     def post(self, request):
@@ -159,10 +122,7 @@ class updateCurrency(APIView):
                 postData = serializer.validated_data
                 id = postData.get('id')
                 moneda = postData.get('moneda')
-                estado = postData.get('estado')
-              
-
-                query = Query("MONEDA_UPDATE",[id,moneda, estado], 'SET')
+                query = Query("MONEDA_UPDATE",[id,moneda], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
@@ -183,7 +143,7 @@ class updateCurrency(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class deleteCurrency(APIView):
-    serializer_class = serializers.searchForId
+    serializer_class = serializers.idCurrency
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -213,7 +173,7 @@ class deleteCurrency(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class restoreCurrency(APIView):
-    serializer_class = serializers.searchForId
+    serializer_class = serializers.idCurrency
     def post(self, request):
         res = {}
         res['status'] = 400

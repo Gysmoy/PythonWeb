@@ -14,7 +14,6 @@ class setIdiom(APIView):
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
-
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
@@ -148,7 +147,7 @@ class updateIdiom(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class deleteIdiom(APIView):
-    serializer_class = serializers.datIdiomSerializer
+    serializer_class = serializers.idIdiom
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -157,8 +156,8 @@ class deleteIdiom(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                dat = serializer.validated_data.get('dat')
-                query = Query("IDIOMAS_DELETE",[dat], 'SET')
+                id = serializer.validated_data.get('id')
+                query = Query("IDIOMAS_DELETE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Idioma Eliminada'
@@ -178,7 +177,7 @@ class deleteIdiom(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class restoreIdiom(APIView):
-    serializer_class = serializers.datIdiomSerializer
+    serializer_class = serializers.idIdiom
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -187,8 +186,8 @@ class restoreIdiom(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                dat = serializer.validated_data.get('dat')
-                query = Query("IDIOMAS_RESTORE",[dat], 'SET')
+                id = serializer.validated_data.get('id')
+                query = Query("IDIOMAS_RESTORE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Idioma Recuperado'

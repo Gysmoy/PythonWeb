@@ -8,5 +8,5 @@ class updateIdiomSerializer(serializers.Serializer):
     id = serializers.CharField(max_length = 8)
     idiom = serializers.CharField(max_length = 12)
 
-class datIdiomSerializer(serializers.Serializer):
-    dat = serializers.CharField(max_length = 20)
+class idIdiom(serializers.Serializer):
+    id = serializers.CharField(max_length = 20)

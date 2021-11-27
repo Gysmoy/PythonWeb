@@ -31,7 +31,6 @@ class setCycle(APIView):
             res['status'] = 400
             res['message'] = 'Error' +e
         finally:
-            
             if ( res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
@@ -103,7 +102,6 @@ class getInactiveCycles(APIView):
             res['status'] = 400
             res['message'] = 'Error' + e
         finally:
-            
             if ( res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
@@ -116,7 +114,6 @@ class updateCycle(APIView):
         res['status'] = 400
         res['message'] = 'NTS' 
         res['data'] = []
-
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
@@ -146,7 +143,7 @@ class updateCycle(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class deleteCycle(APIView):
-    serializer_class = serializers.datCycle
+    serializer_class = serializers.idCycle
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -155,8 +152,8 @@ class deleteCycle(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                dat = serializer.validated_data.get('dat')
-                query = Query("CICLOS_DELETE",[dat], 'SET')
+                id = serializer.validated_data.get('id')
+                query = Query("CICLOS_DELETE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Ciclo Eliminado Correctamente'
@@ -176,7 +173,7 @@ class deleteCycle(APIView):
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
 class restoreCycle(APIView):
-    serializer_class = serializers.datCycle
+    serializer_class = serializers.idCycle
     def post(self, request):
         res = {}
         res['status'] = 400
@@ -185,8 +182,8 @@ class restoreCycle(APIView):
         try:
             serializer = self.serializer_class(data = request.data)
             if serializer.is_valid():
-                dat = serializer.validated_data.get('dat')
-                query = Query("CICLOS_RESTORE",[dat], 'SET')
+                id = serializer.validated_data.get('id')
+                query = Query("CICLOS_RESTORE",[id], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Ciclo Recuperado Correctamente'
