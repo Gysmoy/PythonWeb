@@ -19,9 +19,9 @@ class getSuppliers(APIView):
                 id = postData.get('id')
                 query = Query('PROVEEDORES_READ_ALL',[id] )
                 if query.status:
-                    res['status']=200
+                    res['status'] = 200
                     res['message'] = 'Operacion Correcta'
-                    res['data']=query.getAll()
+                    res['data'] = query.getAll()
                 else:
                     res['message'] = query.message
             else:
@@ -30,7 +30,7 @@ class getSuppliers(APIView):
             res['status']=400
             res['message']= 'Error en la peticion' + e
         finally:
-            if (res['status'] == '200'):
+            if (res['status'] == 200):
                 return Response(res, status.HTTP_200_OK)
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
