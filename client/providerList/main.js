@@ -65,18 +65,16 @@ function getSuppliers() {
                     <td>${direccion}</td>
                     <td>${estado}</td>
                     <td>
-                        <a href="#tbl-providers" id="btn-editar" class="icon solid style1 fa-edit"><span class="label">Editar</span></a>
-                        <a href="#tbl-providers" id="btn-estado" class="icon solid style1 fa-toggle-${estado == 'ACTIVO'? 'on': 'off'}"><span class="label">Cambiar estado</span></a>
+                        <button id="btn-subscriptions" class="button small icon solid style1 fa-eye" title="Ver subscripciones"><span class="label">Agregar una subscripción</span></button>
+                        ${estado == 'ACTIVO' ? '<button id="btn-subscribe" class="small icon solid style1 fa-anchor" title="Agregar subscripcion"><span class="label">Agregar una subscripción</span></button>': ''}
+                        <button id="btn-editar" class="button small icon solid style1 fa-edit" title="Editar proveedor"><span class="label">Editar</span></button>
+                        <button id="btn-estado" class="button small icon solid style1 fa-toggle-${estado == 'ACTIVO'? 'on': 'off'}" title="Cambiar estado"><span class="label">Cambiar estado</span></button>
                     </td>
                 </tr>
                 `;
             })
             $('#tbl-providers tbody').html(template);
             $('#tbl-providers').DataTable()
-            $.notify('Proveedores obtenidos con exito', {
-                'position': 'top left',
-                'className': 'success'
-            });
         },
         error: e => {
             var message = e.responseJSON ? e.responseJSON.message : `Proveedores: ${e.statusText}`;
@@ -183,22 +181,13 @@ $(document).on('click', '#btn-estado', function() {
         },
         data: JSON.stringify({'id': id}),
         success: res => {
-            data.estado = !data.estado;
-            $(row).attr('data-proveedor', JSON.stringify(data));
+            getSuppliers();
             if (data.estado) {
-                $(row).find('td:eq(5)').text('ACTIVO');
-                $(this)
-                    .removeClass('fa-toggle-off')
-                    .addClass('fa-toggle-on');
                 $.notify(`El proveedor ${data.razonSocial || (data.nombres)} ha sido restaurado`, {
                     'position': 'top left',
                     'className': 'success'
                 });
             } else {
-                $(row).find('td:eq(5)').text('INACTIVO');
-                $(this)
-                    .removeClass('fa-toggle-on')
-                    .addClass('fa-toggle-off');
                 $.notify(`El proveedor ${data.razonSocial || (data.nombres)} ha sido desactivado`, {
                     'position': 'top left',
                     'className': 'success'
