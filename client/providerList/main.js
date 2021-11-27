@@ -32,7 +32,7 @@ function getSuppliers() {
                 var tipo = proveedor.tipo == 'N' ? 'PERSONA': 'EMPRESA';
                 var nombre;
                 if (proveedor.tipo == 'N') {
-                    nombre = `${proveedor.apeMater} ${proveedor.apePater}, ${proveedor.nombres}`;
+                    nombre = `${proveedor.apePater} ${proveedor.apeMater}, ${proveedor.nombres}`;
                 } else {
                     nombre = proveedor.razonSocial; 
                 }
@@ -122,7 +122,7 @@ $(document).on('click', '#btn-editar', function() {
     var data = JSON.parse($(row).attr('data-proveedor'));
     console.log(data)
     $('#form #title').text('Editar un proveedor');
-    $('#id').val(data.id);
+    $('#id').val(data.id_persona);
     $('#tipoConsulta').val('update');
     $('#tipoProveedor').val(data.tipo)
         .trigger('change')
