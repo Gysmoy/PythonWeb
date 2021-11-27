@@ -146,5 +146,29 @@ $(document).on('click', '#btn-editar', function() {
 })
 $('#form form').submit(form => {
     form.preventDefault();
-    console.log(form);
+    var request = {};
+    
+    var tipoConsulta = $('#tipoConsulta').val();
+    var tipoProveedor = $('#tipoProveedor').val();
+    var numDoc = $('#numDoc').val();
+    var apePater = $('#apePater').val();
+    var apeMater = $('#apeMater').val();
+    var nombres = $('#nombres').val();
+    var razonSocial = $('#razonSocial').val();
+    request.id = tipoConsulta == 'update' ? $('#id').val(): undefined;
+    request.id_servicio = $('#servicios').val();
+    request.tel1 = $('#tel1').val();
+    request.tel2 = $('#tel2').val();
+    request.correo = $('#correo').val();
+    request.direccion = $('#direccion').val();
+    var usuario_creacion = getCookie('id');
+    if (tipoProveedor == 'N') {
+        request.apePater = apePater;
+        request.apeMater = apeMater;
+        request.nombres = nombres;
+        request.dni = numDoc;
+    } else {
+        request.razonSocial = razonSocial;
+        request.ruc = numDoc;
+    }
 })
