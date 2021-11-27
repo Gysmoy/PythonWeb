@@ -262,7 +262,7 @@ class setPJuridica(APIView):
             if serializer.is_valid():
                 res['message'] = 'dentro de try, if' 
                 postData = serializer.validated_data
-                RSocial = postData.get('RSocial')
+                RSocial = postData.get('razonSocial')
                 ruc = postData.get('ruc')
                 id_servicio = postData.get('id_servicio')
                 tel1 = postData.get('tel1')
@@ -393,7 +393,7 @@ class updatePJuridica(APIView):
             if serializer.is_valid():
                 postData = serializer.validated_data
                 id = postData.get('id')
-                RSocial = postData.get('RSocial')
+                RSocial = postData.get('razonSocial')
                 ruc = postData.get('ruc')
                 id_servicio = postData.get('id_servicio')
                 tel1 = postData.get('tel1')

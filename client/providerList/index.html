@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="../assets/css/noscript.css" />
         <link rel="stylesheet" href="../assets/css/noscript.css/Proveedor" />
     </noscript>
+    <script src="../assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
 </head>
 <body class="is-preload">
 
@@ -29,12 +33,12 @@
         <nav id="menu">
             <h2>Menu</h2>
             <ul>
-                <li><a href="./">Inicio</a></li>
-                <li><a href="../paymentChron.html">Cronograma de pagos</a></li>
-                <li><a href="../providerFlow.html">Flujo de proveedores</a></li>
+                <li><a href="../">Inicio</a></li>
+                <li><a href="../paymentChron/">Cronograma de pagos</a></li>
+                <li><a href="../providerFlow/">Flujo de proveedores</a></li>
                 <li><a href="../providerList/">Lista de proveedores</a></li>
-                <li><a href="../config.html">Configuración</a></li>
-                <li><a href="./#">Cerrar sesión</a></li>
+                <li><a href="../config/">Configuración</a></li>
+                <li><a href="../#">Cerrar sesión</a></li>
             </ul>
         </nav>
 
@@ -54,7 +58,7 @@
                     </div>
                     <br>
                     <div class="table-wrapper">
-                        <table class="alt" id="tbl-providers">
+                        <table class="alt hover" id="tbl-providers">
                             <thead>
                                 <tr>
                                     <th>Tipo</th>
@@ -133,7 +137,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/browser.min.js"></script>
     <script src="../assets/js/breakpoints.min.js"></script>
     <script src="../assets/js/util.js"></script>
