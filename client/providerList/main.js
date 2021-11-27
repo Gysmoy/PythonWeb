@@ -15,6 +15,7 @@ function getServices() {
         }
     })
 }
+
 function getSuppliers() {
     var usuario = getCookie('id');
     $.ajax({

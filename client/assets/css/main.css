@@ -2590,11 +2590,13 @@ input, select, textarea {
 				width: 100%;
 				border-radius: 4px;
 				overflow: hidden;
+			
 			}
 
 				.tiles article > .image img {
 					display: block;
 					width: 100%;
+					z-index: 1;
 				}
 
 				.tiles article > .image:before {
@@ -2628,7 +2630,7 @@ input, select, textarea {
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' z-index=0 height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
@@ -2668,19 +2670,21 @@ input, select, textarea {
 				color: #ffffff;
 				text-align: center;
 				text-decoration: none;
-				z-index: 3;
 			}
 
 				.tiles article > a > :last-child {
 					margin: 0;
+				
 				}
 
 				.tiles article > a:hover {
 					color: #ffffff !important;
+					
 				}
 
 				.tiles article > a h2 {
 					margin: 0;
+					
 				}
 
 				.tiles article > a .content {
@@ -2693,56 +2697,64 @@ input, select, textarea {
 					line-height: 1.5;
 					margin-top: 0.35em;
 					opacity: 0;
+					position: relative;
+					
 				}
 
 					.tiles article > a .content > :last-child {
 						margin-bottom: 0;
 					}
 
-			.tiles article.style1 > .image:before {
-				background-color: #f2849e;
-			}
+.tiles article.style1 > .image:before {
+	background-color: #f2849e;
 
-			.tiles article.style2 > .image:before {
-				background-color: #7ecaf6;
-			}
+}
 
-			.tiles article.style3 > .image:before {
-				background-color: #7bd0c1;
-			}
+.tiles article.style2 > .image:before {
+	background-color: #7ecaf6;
+	
+}
 
-			.tiles article.style4 > .image:before {
-				background-color: #c75b9b;
-			}
+.tiles article.style3 > .image:before {
+	background-color: #7bd0c1;
+	
+}
 
-			.tiles article.style5 > .image:before {
-				background-color: #ae85ca;
-			}
+.tiles article.style4 > .image:before {
+	background-color: #c75b9b;
+	
+}
 
-			.tiles article.style6 > .image:before {
-				background-color: #8499e7;
-			}
+.tiles article.style5 > .image:before {
+	background-color: #ae85ca;
+	
+}
 
-			body:not(.is-touch) .tiles article:hover > .image {
-				-moz-transform: scale(1.1);
-				-webkit-transform: scale(1.1);
-				-ms-transform: scale(1.1);
-				transform: scale(1.1);
-			}
+.tiles article.style6 > .image:before {
+	background-color: #8499e7;
+	
+}
 
-				body:not(.is-touch) .tiles article:hover > .image:before {
-					background-color: #333333;
-					opacity: 0.35;
-				}
+body:not(.is-touch) .tiles article:hover > .image {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
 
-				body:not(.is-touch) .tiles article:hover > .image:after {
-					opacity: 0;
-				}
+	body:not(.is-touch) .tiles article:hover > .image:before {
+		background-color: #333333;
+		opacity: 0.35;
+	}
 
-			body:not(.is-touch) .tiles article:hover .content {
-				max-height: 15em;
-				opacity: 1;
-			}
+	body:not(.is-touch) .tiles article:hover > .image:after {
+		opacity: 0;
+	}
+
+body:not(.is-touch) .tiles article:hover .content {
+	max-height: 15em;
+	opacity: 1;
+}
 
 		* + .tiles {
 			margin-top: 2em;

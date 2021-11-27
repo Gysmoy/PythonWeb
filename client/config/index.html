@@ -5,9 +5,16 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="main1.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
+			
+		<!-- Remember to include jQuery :) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<!-- jQuery Modal -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 		<!--script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(203821)</script-->
 		<!-- Wrapper -->
@@ -47,6 +54,7 @@
 
 				<!-- Main -->
 					<div id="main">
+
 						<div class="inner">
 							<header>
 								<h1><span class="fas fa-cogs"></span> Configuración</h1>
@@ -64,23 +72,108 @@
 										</div>
 									</a>
 								</article>
+								<center>
+									<div id="idiom-modal" class="modal">
+										<select name="select">
+											<option value="1" selected>Español</option>
+											<option value="2">Ingles</option>
+										</select>
+									</div>
+								</center>
+								
 								<article class="style2">
 									<span class="image">
 										<img src="../images/configuracion/idioma1.jpg" alt="" />
 									</span>
-									<a href="generic.html">
-                                        <h1 class="fas fa-language"></h1>
+									
+									<a href="#idiom-modal" rel="modal:open">
+										<h1 class="fas fa-language"></h1>
 										<h2>Idioma</h2>
 										<div class="content">
 											<p>Cambiar el idioma de tu prefencia.</p>
 										</div>
 									</a>
+								
 								</article>
+								<center>
+									<div id="act-modal" class="modal box">
+										<h1>¿Que Desea Atualizar?</h1>
+										<button class="fit"><a href="#data-modal" rel="modal:open">Actualizar Datos</a></button> 
+										<button class="fit"><a href="#credenciales-modal" rel="modal:open">Actualizar Credenciales</a></button>
+									</div>
+									<div id="credenciales-modal" class="modal">
+										<form action="" autocomplete="off">
+											<div class="field half">
+												<label for="password1Register">Contraseña Actual</label>
+												<input type="password" id="password1Register" placeholder="Contraseña" />
+											</div>
+											<div class="field half">
+												<label for="password1Register">Nueva contraseña</label>
+												<input type="password" id="password1Register" placeholder="Contraseña" />
+											</div>
+											<div class="field half">
+												<label for="password2Register">Repita la contraseña</label>
+												<input type="password" id="password2Register" placeholder="Contraseña" />
+											</div>
+										</form>
+									</div>
+									<div id="data-modal" class="modal">
+										<form action="" autocomplete="off">
+											<h1>Actualizaciónde Usuario</h1>
+											<div class="fields">
+												<div class="field half">
+													<label for="DNIRegister">DNI</label>
+													<input type="text" id="DNIRegister" placeholder="Ingrese su DNI" />
+												</div>
+												<div class="field half">
+													<label for="nombreRegister">Nombres</label>
+													<input type="text" id="lastnameRegister" placeholder="Ingrese sus nombres" />
+												</div>
+												<div class="field half">
+													<label for="apellidopatRegister">Apellido Paterno</label>
+													<input type="text" id="apellidopatRegister" placeholder="Ingrese sus apellido paterno" />
+												</div>
+												<div class="field half">
+													<label for="apellidomatRegister">Apellidos Materno</label>
+													<input type="text" id="apellidomatRegister" placeholder="Ingrese su apellido materno" />
+												</div>
+												<div class="field half">
+													<label for="fechanaciRegister">Fecha De Nacimiento</label>
+													<input type="date" id="fechanaciRegister" placeholder="Ingrese su fecha de nacimiento" />
+												</div>
+												<div class="field half">
+													<label for="sexoRegister">Sexo</label>
+													<select type="date" id="sexoRegister" placeholder="Ingrese su sexo">
+														<option value="M">Masculino</option>
+														<option value="F">Femenino</option>
+													</select>
+												</div>
+												<div class="field">
+													<label for="emailRegister">Correo electrónico</label>
+													<input type="email" id="emailRegister" placeholder="correo@ejemplo.com" />
+												</div>
+												<div class="field half">
+													<label for="password1Register">Nueva contraseña</label>
+													<input type="password" id="password1Register" placeholder="Contraseña" />
+												</div>
+												<div class="field half">
+													<label for="password2Register">Repita la contraseña</label>
+													<input type="password" id="password2Register" placeholder="Contraseña" />
+												</div>
+											</div>
+											<ul class="actions">
+												<li><input type="submit" value="Actualizar" class="primary" /></li>
+												<li><input type="reset" value="Limpiar formulario" /></li>
+											</ul>
+										</form>
+									</div>
+
+								</center>
 								<article class="style3">
 									<span class="image">
 										<img src="../images/configuracion/usuario.jpg" alt="" />
 									</span>
-									<a href="generic.html">
+									<a href="#act-modal" rel="modal:open">
                                         <h1 class="fas fa-user-cog"></h1>
 										<h2>Usuario</h2>
 										<div class="content">
@@ -116,6 +209,7 @@
 						</div>
 					</div>
 			</div>
+
 
 		<!-- Scripts -->
 			<script src="../assets/js/jquery.min.js"></script>
