@@ -35,7 +35,7 @@ class updateP_naturalSerializer(serializers.Serializer):
 
 class setPjuridicaSerializer(serializers.Serializer):
     # Agregar nuebo usuario
-    RSocial = serializers.CharField(max_length = 250)
+    razonSocial = serializers.CharField(max_length = 250)
     ruc = serializers.CharField(max_length = 11)
     id_servicio = serializers.CharField(max_length = 8)
     tel1 = serializers.CharField(max_length = 15)
@@ -47,7 +47,7 @@ class setPjuridicaSerializer(serializers.Serializer):
 
 class updatePJuridicaSerializer(serializers.Serializer):
     id = serializers.CharField(max_length = 8)
-    RSocial = serializers.CharField(max_length = 250)
+    razonSocial = serializers.CharField(max_length = 250)
     ruc = serializers.CharField(max_length = 11)
     id_servicio = serializers.CharField(max_length = 8)
     tel1 = serializers.CharField(max_length = 15)

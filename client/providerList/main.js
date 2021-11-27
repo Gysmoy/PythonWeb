@@ -24,7 +24,7 @@ function getSuppliers() {
         headers: {
             'Content-Type': 'application/json'
         },
-        data: JSON.stringify({id_user: usuario}),
+        data: JSON.stringify({id: usuario}),
         success: res => {
             var template = '';
             res.data.forEach(proveedor => {
@@ -53,13 +53,14 @@ function getSuppliers() {
                     <td>${direccion}</td>
                     <td>${estado}</td>
                     <td>
-                        <a href="#" id="btn-editar" class="icon solid style1 fa-edit"><span class="label">Editar</span></a>
-                        <a href="#" id="btn-estado" class="icon solid style1 fa-toggle-${estado == 'ACTIVO'? 'on': 'off'}"><span class="label">Cambiar estado</span></a>
+                        <a href="#tbl-providers" id="btn-editar" class="icon solid style1 fa-edit"><span class="label">Editar</span></a>
+                        <a href="#tbl-providers" id="btn-estado" class="icon solid style1 fa-toggle-${estado == 'ACTIVO'? 'on': 'off'}"><span class="label">Cambiar estado</span></a>
                     </td>
                 </tr>
                 `;
             })
             $('#tbl-providers tbody').html(template);
+            $('#tbl-providers').DataTable()
         }
     })
 }
@@ -144,6 +145,39 @@ $(document).on('click', '#btn-editar', function() {
     $('#table').hide();
     $('#form').show(250);
 })
+
+$(document).on('click', '#btn-estado', function() {
+    var row = $(this).parents('tr');
+    var data = JSON.parse($(row).attr('data-proveedor'));
+    var id = data.id;
+    var tipoConsulta = data.estado ? 'delete': 'restore';
+    $.ajax({
+        url: `${ipBack}/supplier/${tipoConsulta}Supplier/`,
+        type: 'POST',
+        dataType: 'JSON',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify({'id': id}),
+        success: res => {
+            data.estado = !data.estado;
+            $(row).attr('data-proveedor', JSON.stringify(data));
+            if (data.estado) {
+                $(row).find('td:eq(5)').text('ACTIVO');
+                $(this)
+                    .removeClass('fa-toggle-off')
+                    .addClass('fa-toggle-on');
+            } else {
+                $(row).find('td:eq(5)').text('INACTIVO');
+                $(this)
+                    .removeClass('fa-toggle-on')
+                    .addClass('fa-toggle-off');
+            }
+            
+        }
+    })
+});
+
 $('#form form').submit(form => {
     form.preventDefault();
     var request = {};
@@ -155,13 +189,17 @@ $('#form form').submit(form => {
     var apeMater = $('#apeMater').val();
     var nombres = $('#nombres').val();
     var razonSocial = $('#razonSocial').val();
+    
+    // INICIO GENERALES
     request.id = tipoConsulta == 'update' ? $('#id').val(): undefined;
     request.id_servicio = $('#servicios').val();
     request.tel1 = $('#tel1').val();
     request.tel2 = $('#tel2').val();
     request.correo = $('#correo').val();
     request.direccion = $('#direccion').val();
-    var usuario_creacion = getCookie('id');
+    request.id_user = tipoConsulta == 'set' ? getCookie('id'): undefined;
+    // FIN GENERALES
+    
     if (tipoProveedor == 'N') {
         request.apePater = apePater;
         request.apeMater = apeMater;
@@ -171,4 +209,19 @@ $('#form form').submit(form => {
         request.razonSocial = razonSocial;
         request.ruc = numDoc;
     }
+
+    var path = tipoProveedor == 'N' ? `${tipoConsulta}PNatural/`: `${tipoConsulta}PJuridica/`;
+    $.ajax({
+        url: `${ipBack}/persona/${path}`,
+        type: 'POST',
+        dataType: 'JSON',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(request),
+        success: res => {
+            $('#cancelSupplier').click();
+            getSuppliers();
+        }
+    })
 })
