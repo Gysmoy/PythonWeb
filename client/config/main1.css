@@ -1,7 +1,6 @@
 
 #idiom-modal{
-    position: relative;
-    z-index: 4;
+    z-index: 9999999;
     margin-left: 100px;
     margin-right: 100px;
     width: 2000px;
@@ -13,16 +12,9 @@
 }
 #data-modal h1{
     text-align: center;
-
 }
-#act-modal button a{
-    text-decoration: none;
+a {
+    border-bottom: none;
     text-align: center;
-    color: blue;
-}
-#act-modal button{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-decoration: none;
 }
 

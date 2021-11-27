@@ -1,222 +1,226 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Manage It | Configuracion</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<link rel="stylesheet" href="main1.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-			
-		<!-- Remember to include jQuery :) -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-		<!-- jQuery Modal -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-		<!--script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(203821)</script-->
-		<!-- Wrapper -->
-			<div id="wrapper">
+<head>
+	<title>Manage It | Configuracion</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="main1.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+<body class="is-preload">
 
-							<!-- Logo -->
-								<a href="index.html" class="logo">
-									<span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
-								</a>
+	<!-- Remember to include jQuery :) -->
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+	<!--script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(203821)</script-->
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-						</div>
-					</header>
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="index.html">Inicio</a></li>
-							<li><a href="generic.html">Cronograma de pagos</a></li>
-							<li><a href="generic.html">Flujo de proveedores</a></li>
-							<li><a href="generic.html">Lista de proveedores</a></li>
-							<li><a href="config.html">Configuración</a></li>
-                            <li><a href="../index.html">Cerrar sesión</a></li>
-						</ul>
-					</nav>
+				<!-- Logo -->
+				<a href="index.html" class="logo">
+					<span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
+				</a>
 
-				<!-- Main -->
-					<div id="main">
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
 
-						<div class="inner">
-							<header>
-								<h1><span class="fas fa-cogs"></span> Configuración</h1>
-							</header>
-							<section class="tiles">
-								<article class="style1">
-									<span class="image">
-										<img src="../images/configuracion/inicio.jpg" alt="" />
-									</span>
-									<a href="index.html">
-										<h1 class="fas fa-home"></h1>
-                                        <h2>Inicio</h2>
-										<div class="content">
-											<p>Regresar al inicio.</p>
-										</div>
-									</a>
-								</article>
-								<center>
-									<div id="idiom-modal" class="modal">
-										<select name="select">
-											<option value="1" selected>Español</option>
-											<option value="2">Ingles</option>
-										</select>
-									</div>
-								</center>
-								
-								<article class="style2">
-									<span class="image">
-										<img src="../images/configuracion/idioma1.jpg" alt="" />
-									</span>
-									
-									<a href="#idiom-modal" rel="modal:open">
-										<h1 class="fas fa-language"></h1>
-										<h2>Idioma</h2>
-										<div class="content">
-											<p>Cambiar el idioma de tu prefencia.</p>
-										</div>
-									</a>
-								
-								</article>
-								<center>
-									<div id="act-modal" class="modal box">
-										<h1>¿Que Desea Atualizar?</h1>
-										<button class="fit"><a href="#data-modal" rel="modal:open">Actualizar Datos</a></button> 
-										<button class="fit"><a href="#credenciales-modal" rel="modal:open">Actualizar Credenciales</a></button>
-									</div>
-									<div id="credenciales-modal" class="modal">
-										<form action="" autocomplete="off">
-											<div class="field half">
-												<label for="password1Register">Contraseña Actual</label>
-												<input type="password" id="password1Register" placeholder="Contraseña" />
-											</div>
-											<div class="field half">
-												<label for="password1Register">Nueva contraseña</label>
-												<input type="password" id="password1Register" placeholder="Contraseña" />
-											</div>
-											<div class="field half">
-												<label for="password2Register">Repita la contraseña</label>
-												<input type="password" id="password2Register" placeholder="Contraseña" />
-											</div>
-										</form>
-									</div>
-									<div id="data-modal" class="modal">
-										<form action="" autocomplete="off">
-											<h1>Actualizaciónde Usuario</h1>
-											<div class="fields">
-												<div class="field half">
-													<label for="DNIRegister">DNI</label>
-													<input type="text" id="DNIRegister" placeholder="Ingrese su DNI" />
-												</div>
-												<div class="field half">
-													<label for="nombreRegister">Nombres</label>
-													<input type="text" id="lastnameRegister" placeholder="Ingrese sus nombres" />
-												</div>
-												<div class="field half">
-													<label for="apellidopatRegister">Apellido Paterno</label>
-													<input type="text" id="apellidopatRegister" placeholder="Ingrese sus apellido paterno" />
-												</div>
-												<div class="field half">
-													<label for="apellidomatRegister">Apellidos Materno</label>
-													<input type="text" id="apellidomatRegister" placeholder="Ingrese su apellido materno" />
-												</div>
-												<div class="field half">
-													<label for="fechanaciRegister">Fecha De Nacimiento</label>
-													<input type="date" id="fechanaciRegister" placeholder="Ingrese su fecha de nacimiento" />
-												</div>
-												<div class="field half">
-													<label for="sexoRegister">Sexo</label>
-													<select type="date" id="sexoRegister" placeholder="Ingrese su sexo">
-														<option value="M">Masculino</option>
-														<option value="F">Femenino</option>
-													</select>
-												</div>
-												<div class="field">
-													<label for="emailRegister">Correo electrónico</label>
-													<input type="email" id="emailRegister" placeholder="correo@ejemplo.com" />
-												</div>
-												<div class="field half">
-													<label for="password1Register">Nueva contraseña</label>
-													<input type="password" id="password1Register" placeholder="Contraseña" />
-												</div>
-												<div class="field half">
-													<label for="password2Register">Repita la contraseña</label>
-													<input type="password" id="password2Register" placeholder="Contraseña" />
-												</div>
-											</div>
-											<ul class="actions">
-												<li><input type="submit" value="Actualizar" class="primary" /></li>
-												<li><input type="reset" value="Limpiar formulario" /></li>
-											</ul>
-										</form>
-									</div>
-
-								</center>
-								<article class="style3">
-									<span class="image">
-										<img src="../images/configuracion/usuario.jpg" alt="" />
-									</span>
-									<a href="#act-modal" rel="modal:open">
-                                        <h1 class="fas fa-user-cog"></h1>
-										<h2>Usuario</h2>
-										<div class="content">
-											<p>Edita tu usuario.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="../images/configuracion/contactenos.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-                                        <h1 class="fas fa-phone-volume"></h1>
-										<h2>Contactenos</h2>
-										<div class="content">
-											<p>Si tine cualquier consulta ,contactenos por este medio.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="../images/configuracion/ayuda.jpg" alt="" />
-									</span>
-									<a href="generic.html">
-                                        <h1 class="far fa-question-circle"></h1>
-										<h2>Ayuda</h2>
-										<div class="content">
-											<p>En este apartado le ayudaremos en cualquier cosulta de la pagina web.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-						</div>
-					</div>
 			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="generic.html">Cronograma de pagos</a></li>
+				<li><a href="generic.html">Flujo de proveedores</a></li>
+				<li><a href="generic.html">Lista de proveedores</a></li>
+				<li><a href="config.html">Configuración</a></li>
+				<li><a href="../index.html">Cerrar sesión</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<div class="inner">
+				<header>
+					<h1><span class="fas fa-cogs"></span> Configuración</h1>
+				</header>
+				<section class="tiles">
+					<article class="style1">
+						<span class="image">
+							<img src="../images/configuracion/inicio.jpg" alt="" />
+						</span>
+						<a href="index.html">
+							<h1 class="fas fa-home"></h1>
+							<h2>Inicio</h2>
+							<div class="content">
+								<p>Regresar al inicio.</p>
+							</div>
+						</a>
+					</article>
+					<div id="idiom-modal" class="modal box">
+						<label for="lang-select">Selecciona un idioma</label>
+						<select id="lang-select">
+							<option value="1" selected>Español</option>
+							<option value="2">Ingles</option>
+						</select>
+					</div>
+
+					<article class="style2">
+						<span class="image">
+							<img src="../images/configuracion/idioma1.jpg" alt="" />
+						</span>
+
+						<a href="#idiom-modal" rel="modal:open">
+							<h1 class="fas fa-language"></h1>
+							<h2>Idioma</h2>
+							<div class="content">
+								<p>Cambiar el idioma de tu prefencia.</p>
+							</div>
+						</a>
+
+					</article>
+
+					<div id="act-modal" class="modal box">
+						<h2>¿Qué desea actualizar?</h2>
+						<a class="button fit" href="#data-modal" rel="modal:open">Actualizar datos personales</a>
+						<a class="button fit" href="#credenciales-modal" rel="modal:open">Actualizar datos de usuario</a>
+					</div>
+					<div id="credenciales-modal" class="modal">
+						<form action="" autocomplete="off">
+							<div class="field half">
+								<label for="password1Register">Contraseña Actual</label>
+								<input type="password" id="password1Register" placeholder="Contraseña" />
+							</div>
+							<div class="field half">
+								<label for="password1Register">Nueva contraseña</label>
+								<input type="password" id="password1Register" placeholder="Contraseña" />
+							</div>
+							<div class="field half">
+								<label for="password2Register">Repita la contraseña</label>
+								<input type="password" id="password2Register" placeholder="Contraseña" />
+							</div>
+						</form>
+					</div>
+					<div id="data-modal" class="modal">
+						<form action="" autocomplete="off">
+							<h1>Actualizaciónde Usuario</h1>
+							<div class="fields">
+								<div class="field half">
+									<label for="DNIRegister">DNI</label>
+									<input type="text" id="DNIRegister" placeholder="Ingrese su DNI" />
+								</div>
+								<div class="field half">
+									<label for="nombreRegister">Nombres</label>
+									<input type="text" id="lastnameRegister" placeholder="Ingrese sus nombres" />
+								</div>
+								<div class="field half">
+									<label for="apellidopatRegister">Apellido Paterno</label>
+									<input type="text" id="apellidopatRegister"
+										placeholder="Ingrese sus apellido paterno" />
+								</div>
+								<div class="field half">
+									<label for="apellidomatRegister">Apellidos Materno</label>
+									<input type="text" id="apellidomatRegister"
+										placeholder="Ingrese su apellido materno" />
+								</div>
+								<div class="field half">
+									<label for="fechanaciRegister">Fecha De Nacimiento</label>
+									<input type="date" id="fechanaciRegister"
+										placeholder="Ingrese su fecha de nacimiento" />
+								</div>
+								<div class="field half">
+									<label for="sexoRegister">Sexo</label>
+									<select type="date" id="sexoRegister" placeholder="Ingrese su sexo">
+										<option value="M">Masculino</option>
+										<option value="F">Femenino</option>
+									</select>
+								</div>
+								<div class="field">
+									<label for="emailRegister">Correo electrónico</label>
+									<input type="email" id="emailRegister" placeholder="correo@ejemplo.com" />
+								</div>
+								<div class="field half">
+									<label for="password1Register">Nueva contraseña</label>
+									<input type="password" id="password1Register" placeholder="Contraseña" />
+								</div>
+								<div class="field half">
+									<label for="password2Register">Repita la contraseña</label>
+									<input type="password" id="password2Register" placeholder="Contraseña" />
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Actualizar" class="primary" /></li>
+								<li><input type="reset" value="Limpiar formulario" /></li>
+							</ul>
+						</form>
+					</div>
+					<article class="style3">
+						<span class="image">
+							<img src="../images/configuracion/usuario.jpg" alt="" />
+						</span>
+						<a href="#act-modal" rel="modal:open">
+							<h1 class="fas fa-user-cog"></h1>
+							<h2>Usuario</h2>
+							<div class="content">
+								<p>Edita tu usuario.</p>
+							</div>
+						</a>
+					</article>
+					<article class="style4">
+						<span class="image">
+							<img src="../images/configuracion/contactenos.jpg" alt="" />
+						</span>
+						<a href="generic.html">
+							<h1 class="fas fa-phone-volume"></h1>
+							<h2>Contactenos</h2>
+							<div class="content">
+								<p>Si tine cualquier consulta ,contactenos por este medio.</p>
+							</div>
+						</a>
+					</article>
+					<article class="style5">
+						<span class="image">
+							<img src="../images/configuracion/ayuda.jpg" alt="" />
+						</span>
+						<a href="generic.html">
+							<h1 class="far fa-question-circle"></h1>
+							<h2>Ayuda</h2>
+							<div class="content">
+								<p>En este apartado le ayudaremos en cualquier cosulta de la pagina web.</p>
+							</div>
+						</a>
+					</article>
+				</section>
+			</div>
+		</div>
+	</div>
 
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+	<!-- Scripts -->
 
-	</body>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
 </html>
