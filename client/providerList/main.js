@@ -29,6 +29,7 @@ function getServices() {
 
 function getSuppliers() {
     var usuario = getCookie('id');
+    console.log(usuario)
     $.ajax({
         url: ipBack + '/supplier/getSuppliers/',
         type: 'POST',
