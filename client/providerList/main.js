@@ -12,6 +12,17 @@ function getServices() {
                 <option value="${id}" label="${servicio}" ${!estado ? 'disabled': ''}>${servicio}</option>
                 `);
             });
+            $.notify('Servicios obtenidos con exito', {
+                'position': 'top left',
+                'className': 'success'
+            });
+        },
+        error: e => {
+            var message = e.responseJSON ? e.responseJSON.message : `Servicios: ${e.statusText}`;
+            $.notify(message, {
+                'position': 'top left',
+                'className': 'error'
+            });
         }
     })
 }
@@ -62,6 +73,17 @@ function getSuppliers() {
             })
             $('#tbl-providers tbody').html(template);
             $('#tbl-providers').DataTable()
+            $.notify('Proveedores obtenidos con exito', {
+                'position': 'top left',
+                'className': 'success'
+            });
+        },
+        error: e => {
+            var message = e.responseJSON ? e.responseJSON.message : `Proveedores: ${e.statusText}`;
+            $.notify(message, {
+                'position': 'top left',
+                'className': 'error'
+            });
         }
     })
 }
@@ -168,13 +190,27 @@ $(document).on('click', '#btn-estado', function() {
                 $(this)
                     .removeClass('fa-toggle-off')
                     .addClass('fa-toggle-on');
+                $.notify(`El proveedor ${data.razonSocial || (data.nombres)} ha sido restaurado`, {
+                    'position': 'top left',
+                    'className': 'success'
+                });
             } else {
                 $(row).find('td:eq(5)').text('INACTIVO');
                 $(this)
                     .removeClass('fa-toggle-on')
                     .addClass('fa-toggle-off');
+                $.notify(`El proveedor ${data.razonSocial || (data.nombres)} ha sido desactivado`, {
+                    'position': 'top left',
+                    'className': 'success'
+                });
             }
-            
+        },
+        error: e => {
+            var message = e.responseJSON ? e.responseJSON.message : `Cambiar estado: ${e.statusText}`;
+            $.notify(message, {
+                'position': 'top left',
+                'className': 'error'
+            });
         }
     })
 });
@@ -223,6 +259,17 @@ $('#form form').submit(form => {
         success: res => {
             $('#cancelSupplier').click();
             getSuppliers();
+            $.notify(`Guardado correctamente`, {
+                'position': 'top left',
+                'className': 'success'
+            });
+        },
+        error: e => {
+            var message = e.responseJSON ? e.responseJSON.message : `Guardar proveedor: ${e.statusText}`;
+            $.notify(message, {
+                'position': 'top left',
+                'className': 'error'
+            });
         }
     })
 })
