@@ -21,6 +21,7 @@ $('#act-user-modal').click(function() {
 }); 
 
 $('#passwordValActDat').keyup(function () { 
+    $('.close-modal').attr('id','cerrar_modal')
     var request = {};
     var pass = getCookie('token');
     var clave = $('#passwordValActDat').val()
@@ -54,15 +55,20 @@ $('#passwordValActDat').keyup(function () {
                 },
                 data: JSON.stringify(request),
                 success: res => {
-                    $('#close-modal').click();
+                    
+                    $('#cerrar-wind-up-da-us').click();
+
                     $.notify(`Actualizado correctamente`, {
                         'position': 'top left',
                         'className': 'success'
                     });
 
+                    // ELIMINADO CONTRASEÑA DEL FORM
+                    $('#passwordValActDat').val('')
+
                     // ACTUALIZANDO COOKIES
                     deleteCookie();
-                    
+
                     setCookie('correo',request.correo)
                     setCookie('dni',request.dni)
                     setCookie('apePater',request.apePater)
@@ -70,6 +76,8 @@ $('#passwordValActDat').keyup(function () {
                     setCookie('nombres',request.nombres)
                     setCookie('sexo',request.sexo)
                     setCookie('fec_nac',request.fec_nac)
+
+
                 },
                 error: e => {
                     var message = e.responseJSON ? e.responseJSON.message : `Actualizar Datos de Usuario: ${e.statusText}`;
