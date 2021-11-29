@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-<<<<<<< HEAD
 	<head>
 		<title>Manage It | Configuracion</title>
 		<meta charset="utf-8" />
@@ -97,10 +96,10 @@
 								
 								</article>
 								<center>
-									<div id="act-modal" class="modal box">
+									<div id="act-user-modal" class="modal box">
 										<h1>¿Que Desea Atualizar?</h1>
-										<button class="fit" id="id-data-modal"><a href="#data-modal" rel="modal:open">Actualizar Datos</a></button> 
-										<button class="fit" id="credenciales-model"><a href="#credenciales-modal" rel="modal:open">Actualizar Credenciales</a></button>
+										<button class="btn" id="id-data-modal"><a href="#data-modal" rel="modal:open">Actualizar Datos</a></button> 
+										<button class="btn" id="credenciales-model"><a href="#credenciales-modal" rel="modal:open">Actualizar Credenciales</a></button>
 									</div>
 									<div id="credenciales-modal" class="modal">
 										<form action="" autocomplete="off">
@@ -119,8 +118,9 @@
 										</form>
 									</div>
 									<div id="data-modal" class="modal">
-										<form action="" autocomplete="off">
-											<h1>Actualizaciónde Usuario</h1>
+										<form  autocomplete="off">
+											<h1>Actualización de Usuario</h1>
+											<blockquote id="messageUpUsDat" style="display: none;">Ingrese las actualizaciones</blockquote>
 											<div class="fields">
 												<div class="field half">
 													<label for="DNIRegister">DNI</label>
@@ -154,12 +154,8 @@
 													<input type="email" id="emailRegister" placeholder="correo@ejemplo.com" />
 												</div>
 												<div class="field half">
-													<label for="password1Register">Nueva contraseña</label>
-													<input type="password" id="password1Register" placeholder="Contraseña" />
-												</div>
-												<div class="field half">
-													<label for="password2Register">Repita la contraseña</label>
-													<input type="password" id="password2Register" placeholder="Contraseña" />
+													<label for="password1Register">Contraseña</label>
+													<input type="password" id="passwordValActDat" placeholder="Contraseña" />
 												</div>
 											</div>
 											<ul class="actions">
@@ -168,13 +164,12 @@
 											</ul>
 										</form>
 									</div>
-
 								</center>
 								<article class="style3">
 									<span class="image">
 										<img src="../images/configuracion/usuario.jpg" alt="" />
 									</span>
-									<a href="#act-modal" rel="modal:open">
+									<a href="#act-user-modal" rel="modal:open">
                                         <h1 class="fas fa-user-cog"></h1>
 										<h2>Usuario</h2>
 										<div class="content">
@@ -208,179 +203,6 @@
 								</article>
 							</section>
 						</div>
-=======
-
-<head>
-	<title>Manage It | Configuracion</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="../assets/css/main.css" />
-	<link rel="stylesheet" href="main1.css" />
-	<noscript>
-		<link rel="stylesheet" href="../assets/css/noscript.css" />
-	</noscript>
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-</head>
-
-<body class="is-preload">
-
-	<!-- Remember to include jQuery :) -->
-
-	<!--script src="https://account.snatchbot.me/script.js"></script><script>window.sntchChat.Init(203821)</script-->
-	<!-- Wrapper -->
-	<div id="wrapper">
-
-		<!-- Header -->
-		<header id="header">
-			<div class="inner">
-
-				<!-- Logo -->
-				<a href="index.html" class="logo">
-					<span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
-				</a>
-
-				<!-- Nav -->
-				<nav>
-					<ul>
-						<li><a href="#menu">Menu</a></li>
-					</ul>
-				</nav>
-
-			</div>
-		</header>
-
-		<!-- Menu -->
-		<nav id="menu">
-			<h2>Menu</h2>
-			<ul>
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="generic.html">Cronograma de pagos</a></li>
-				<li><a href="generic.html">Flujo de proveedores</a></li>
-				<li><a href="generic.html">Lista de proveedores</a></li>
-				<li><a href="config.html">Configuración</a></li>
-				<li><a href="../index.html">Cerrar sesión</a></li>
-			</ul>
-		</nav>
-
-		<!-- Main -->
-		<div id="main">
-
-			<div class="inner">
-				<header>
-					<h1><span class="fas fa-cogs"></span> Configuración</h1>
-				</header>
-				<section class="tiles">
-					<article class="style1">
-						<span class="image">
-							<img src="../images/configuracion/inicio.jpg" alt="" />
-						</span>
-						<a href="index.html">
-							<h1 class="fas fa-home"></h1>
-							<h2>Inicio</h2>
-							<div class="content">
-								<p>Regresar al inicio.</p>
-							</div>
-						</a>
-					</article>
-					<div id="idiom-modal" class="modal box">
-						<label for="lang-select">Selecciona un idioma</label>
-						<select id="lang-select">
-							<option value="1" selected>Español</option>
-							<option value="2">Ingles</option>
-						</select>
-					</div>
-
-					<article class="style2">
-						<span class="image">
-							<img src="../images/configuracion/idioma1.jpg" alt="" />
-						</span>
-
-						<a href="#idiom-modal" rel="modal:open">
-							<h1 class="fas fa-language"></h1>
-							<h2>Idioma</h2>
-							<div class="content">
-								<p>Cambiar el idioma de tu prefencia.</p>
-							</div>
-						</a>
-
-					</article>
-
-					<div id="act-modal" class="modal box">
-						<h2>¿Qué desea actualizar?</h2>
-						<a class="button fit" href="#data-modal" rel="modal:open">Actualizar datos personales</a>
-						<a class="button fit" href="#credenciales-modal" rel="modal:open">Actualizar datos de usuario</a>
-					</div>
-					<div id="credenciales-modal" class="modal">
-						<form action="" autocomplete="off">
-							<div class="field half">
-								<label for="password1Register">Contraseña Actual</label>
-								<input type="password" id="password1Register" placeholder="Contraseña" />
-							</div>
-							<div class="field half">
-								<label for="password1Register">Nueva contraseña</label>
-								<input type="password" id="password1Register" placeholder="Contraseña" />
-							</div>
-							<div class="field half">
-								<label for="password2Register">Repita la contraseña</label>
-								<input type="password" id="password2Register" placeholder="Contraseña" />
-							</div>
-						</form>
-					</div>
-					<div id="data-modal" class="modal">
-						<form action="" autocomplete="off">
-							<h1>Actualizaciónde Usuario</h1>
-							<div class="fields">
-								<div class="field half">
-									<label for="DNIRegister">DNI</label>
-									<input type="text" id="DNIRegister" placeholder="Ingrese su DNI" />
-								</div>
-								<div class="field half">
-									<label for="nombreRegister">Nombres</label>
-									<input type="text" id="lastnameRegister" placeholder="Ingrese sus nombres" />
-								</div>
-								<div class="field half">
-									<label for="apellidopatRegister">Apellido Paterno</label>
-									<input type="text" id="apellidopatRegister"
-										placeholder="Ingrese sus apellido paterno" />
-								</div>
-								<div class="field half">
-									<label for="apellidomatRegister">Apellidos Materno</label>
-									<input type="text" id="apellidomatRegister"
-										placeholder="Ingrese su apellido materno" />
-								</div>
-								<div class="field half">
-									<label for="fechanaciRegister">Fecha De Nacimiento</label>
-									<input type="date" id="fechanaciRegister"
-										placeholder="Ingrese su fecha de nacimiento" />
-								</div>
-								<div class="field half">
-									<label for="sexoRegister">Sexo</label>
-									<select type="date" id="sexoRegister" placeholder="Ingrese su sexo">
-										<option value="M">Masculino</option>
-										<option value="F">Femenino</option>
-									</select>
-								</div>
-								<div class="field">
-									<label for="emailRegister">Correo electrónico</label>
-									<input type="email" id="emailRegister" placeholder="correo@ejemplo.com" />
-								</div>
-								<div class="field half">
-									<label for="password1Register">Nueva contraseña</label>
-									<input type="password" id="password1Register" placeholder="Contraseña" />
-								</div>
-								<div class="field half">
-									<label for="password2Register">Repita la contraseña</label>
-									<input type="password" id="password2Register" placeholder="Contraseña" />
-								</div>
-							</div>
-							<ul class="actions">
-								<li><input type="submit" value="Actualizar" class="primary" /></li>
-								<li><input type="reset" value="Limpiar formulario" /></li>
-							</ul>
-						</form>
->>>>>>> 7c28a8c2d33d01480e01268a698429e19c4f1d02
 					</div>
 					<article class="style3">
 						<span class="image">
@@ -423,7 +245,9 @@
 		</div>
 	</div>
 
-
+    <!-- Scripts PATH PRINCIPAL -->
+    <script src="../../assets/js/configuracion.js"></script>
+    <script src="../../assets/js/cookies.js"></script>
 	<!-- Scripts -->
 
 	<script src="../assets/js/browser.min.js"></script>
@@ -431,17 +255,17 @@
 	<script src="../assets/js/util.js"></script>
 	<script src="../assets/js/main.js"></script>
 
-<<<<<<< HEAD
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-			<script src="main.js"></script>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/notify.js"></script>
 
-=======
-</body>
->>>>>>> 7c28a8c2d33d01480e01268a698429e19c4f1d02
+	
+	<script src="hash.js"></script>
+	<script src="main.js"></script>
+
 
 </html>

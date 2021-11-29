@@ -6,7 +6,8 @@ urlpatterns = [
     path('getUsers/', views.getUsers.as_view()),
     path('getActiveUsers/', views.getActiveUsers.as_view()),
     path('getInactiveUsers/', views.getInactiveUsers.as_view()),
-    path('updateUser/', views.updateUser.as_view()),
+    path('updateUserDat/', views.updateUserDat.as_view()),
+    path('updateUserCredentials/', views.updateUserCredentials.as_view()),
     path('deleteUser/', views.deleteUser.as_view()),
     path('validateUser/', views.validateUser.as_view()),
 ]

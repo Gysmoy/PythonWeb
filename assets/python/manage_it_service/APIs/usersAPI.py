@@ -124,37 +124,68 @@ class getInactiveUsers(APIView):
             else:
                 return Response(res, status.HTTP_400_BAD_REQUEST)
 
-class updateUser(APIView):
-    serializer_class = serializers.updateUserSerializer
-
+class updateUserDat(APIView):
+    serializer_class = serializers.updateUserData
     def post(self, request):
         res = {}
         res['status'] = 400
         res['message'] = 'NTS'
         res['data'] = []
-
         try:
             serializer = self.serializer_class(data=request.data)
+            res['data'] = 'dentro de try'
             if serializer.is_valid():
+                res['data'] = 'dentro de cerializer'
                 postData = serializer.validated_data
                 id = postData.get('id')
-                usuario = postData.get('usuario')
                 correo = postData.get('correo')
-                clave = postData.get('clave')
-                clave = sha256(clave.encode()).hexdigest()
                 dni = postData.get('dni')
                 apePater = postData.get('apePater')
                 apeMater = postData.get('apeMater')
                 nombres = postData.get('nombres')
                 sexo = postData.get('sexo')
                 fec_nac = postData.get('fec_nac')
-                id_idioma = postData.get('id_idioma')
-                query = Query("USUARIOS_UPDATE", [
-                              id, usuario, correo, clave, dni, apePater, apeMater, nombres, sexo, fec_nac, id_idioma], 'SET')
+                clave = postData.get('clave')
+                query = Query("USUARIOS_UPDATE_DATA", [
+                              id, correo, dni, apePater, apeMater, nombres, sexo, fec_nac, clave], 'SET')
                 if query.status:
                     res['status'] = 200
                     res['message'] = 'Operacion Correcta'
+                else:
+                    res['message'] = query.message
+            else:
+                res['status'] = 400
+                res['message'] = 'Error en la Peticion'
+        except Exception as e:
+            res['status'] = 400
+            res['message'] = 'Error' + e
+        finally:
 
+            if (res['status'] == 200):
+                return Response(res, status.HTTP_200_OK)
+            else:
+                return Response(res, status.HTTP_400_BAD_REQUEST)
+
+class updateUserCredentials(APIView):
+    serializer_class = serializers.updateUserCredentials
+    def post(self, request):
+        res = {}
+        res['status'] = 400
+        res['message'] = 'NTS'
+        res['data'] = []
+        try:
+            serializer = self.serializer_class(data=request.data)
+            if serializer.is_valid():
+                postData = serializer.validated_data
+                id = postData.get('id')
+                usuario = postData.get('usuario')
+                claveNew = postData.get('claveNew')
+                claveOld = postData.get('claveOld')
+                query = Query("USUARIOS_UPDATE_CRE", [
+                              id, usuario, claveNew, claveOld], 'SET')
+                if query.status:
+                    res['status'] = 200
+                    res['message'] = 'Operacion Correcta'
                 else:
                     res['message'] = query.message
             else:

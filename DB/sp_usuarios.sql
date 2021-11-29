@@ -62,24 +62,20 @@ AS BEGIN
 END
 GO
 
--- USUARIOS -> UPDATE == EXEC USUARIOS_UPDATE
-CREATE PROCEDURE USUARIOS_UPDATE
+CREATE PROCEDURE USUARIOS_UPDATE_DATA
 @id INT,
-@usuario VARCHAR(16),
 @correo VARCHAR(320),
-@clave CHAR(64),
 @dni CHAR(8),
 @apePater VARCHAR(15),
 @apeMater VARCHAR(15),
 @nombres VARCHAR(45),
 @sexo CHAR(1),
 @fec_nac DATE,
-@id_idioma INT
+@id_idioma INT,
+@clave CHAR(64)
 AS BEGIN
     UPDATE USUARIOS SET
-        usuario = @usuario,
         correo = @correo,
-        clave = @clave,
         dni = @dni,
         apePater = @apePater,
         apeMater = @apeMater,
@@ -88,10 +84,25 @@ AS BEGIN
         fec_nac = @fec_nac,
         id_idioma = @id_idioma
     WHERE
-        id = @id
+        id = @id and clave =@clave
 END
 GO
 
+CREATE PROCEDURE USUARIOS_UPDATE_CREDENTIALS
+@id INT,
+@usuario VARCHAR(16),
+@claveNew CHAR(64),
+@claveOld Char(64)
+AS BEGIN
+    UPDATE USUARIOS SET
+        clave = @claveNew,
+		usuario = @usuario
+    WHERE
+        id = @id and clave =@claveNew
+END
+GO
+
+GO
 --USUARIOS -> CHANGE STATUS == EXEC USUARIOS_DELETE
 CREATE PROCEDURE USUARIOS_DELETE
 @id INT
@@ -100,6 +111,46 @@ AS BEGIN
     WHERE id = @id
 END
 GO
+
+
+CREATE PROCEDURE USUARIOS_UPDATE_DATA
+@id INT,
+@correo VARCHAR(320),
+@dni CHAR(8),
+@apePater VARCHAR(15),
+@apeMater VARCHAR(15),
+@nombres VARCHAR(45),
+@sexo CHAR(1),
+@fec_nac DATE,
+@clave CHAR(64)
+AS BEGIN
+    UPDATE USUARIOS SET
+        correo = @correo,
+        dni = @dni,
+        apePater = @apePater,
+        apeMater = @apeMater,
+        nombres = @nombres,
+        sexo = @sexo,
+        fec_nac = @fec_nac
+    WHERE
+        id = @id and clave =@clave
+END
+GO
+
+CREATE PROCEDURE USUARIOS_UPDATE_CREDENTIALS
+@id INT,
+@usuario VARCHAR(16),
+@claveNew CHAR(64),
+@claveOld Char(64)
+AS BEGIN
+    UPDATE USUARIOS SET
+        clave = @claveNew,
+		usuario = @usuario
+    WHERE
+        id = @id and clave =@claveNew
+END
+GO
+
 
 --USUARIOS -> CHANGE STATUS == EXEC USUARIOS_RESTORE
 CREATE PROCEDURE USUARIOS_RESTORE
