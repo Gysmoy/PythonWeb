@@ -146,6 +146,7 @@ class updateUserDat(APIView):
                 sexo = postData.get('sexo')
                 fec_nac = postData.get('fec_nac')
                 clave = postData.get('clave')
+                clave = sha256(clave.encode()).hexdigest()
                 query = Query("USUARIOS_UPDATE_DATA", [
                               id, correo, dni, apePater, apeMater, nombres, sexo, fec_nac, clave], 'SET')
                 if query.status:
@@ -180,8 +181,9 @@ class updateUserCredentials(APIView):
                 id = postData.get('id')
                 usuario = postData.get('usuario')
                 claveNew = postData.get('claveNew')
+                claveNew = sha256(claveNew.encode()).hexdigest()
                 claveOld = postData.get('claveOld')
-                query = Query("USUARIOS_UPDATE_CRE", [
+                query = Query("USUARIOS_UPDATE_CREDENTIALS", [
                               id, usuario, claveNew, claveOld], 'SET')
                 if query.status:
                     res['status'] = 200

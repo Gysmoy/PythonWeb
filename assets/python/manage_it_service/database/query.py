@@ -18,6 +18,7 @@ class Query():
                 if type == 'SET':
                     
                     cursor.commit()
+                    
                     self.status = True
                     self.message = 'Operación correcta'
                 else:
