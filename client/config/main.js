@@ -55,7 +55,8 @@ $('#passwordValActDat').keyup(function () {
                 },
                 data: JSON.stringify(request),
                 success: res => {
-
+                    
+                    $.modal.close();
 
                     $.notify(`Actualizado correctamente`, {
                         'position': 'top left',
@@ -76,7 +77,7 @@ $('#passwordValActDat').keyup(function () {
                     setCookie('sexo',request.sexo)
                     setCookie('fec_nac',request.fec_nac)
 
-                    $.modal
+                    
                 },
                 error: e => {
                     var message = e.responseJSON ? e.responseJSON.message : `Actualizar Datos de Usuario: ${e.statusText}`;
