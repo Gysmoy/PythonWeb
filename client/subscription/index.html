@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Subscripciones x proveedor | Manage It</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
+    <script src="../assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+</head>
+<body class="is-preload">
+
+    <div id="wrapper">
+        <header id="header">
+            <div class="inner">
+                <a href="../providerList/" class="logo">
+                    <span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#menu">Menu</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- Menu -->
+        <nav id="menu">
+            <h2>Menu</h2>
+            <ul></ul>
+        </nav>
+        <!--tabla de registro-->
+        <div id="main">
+            <div class="inner">
+                <h1><span class="icon solid fa-anchor"></span> Subscripciones</h1>
+                <hr>
+                <section id="table">
+                    <h2 id="title">Lista de subscripciones [Banco de la Nación]</h2>
+                    <div class="row gtr-uniform">
+                        <div class="col-6 col-12-xsmall">
+                            <button id="addSupplier">AGREGAR SUBSCRIPCIÓN</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="table-wrapper">
+                        <table class="alt hover" id="tbl-providers">
+                            <thead>
+                                <tr>
+                                    <th>Nombre Subscripcion</th>
+                                    <th>Ciclo</th>
+                                    <th>Monto</th>
+                                    <th>Fecha</th>
+                                    <th>Prorroga</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Prestamo para casa</td>
+                                    <td>Mensual</td>
+                                    <td>375.50 Soles</td>
+                                    <td>
+                                        Desde: 01-11-2021<br>
+                                        Hasta: 01-12-2022<br>
+                                        Recordatorio: 05 cada mes
+                                    </td>
+                                    <td>3 días</td>
+                                    <td>
+                                        <button id="btn-editar" class="button small icon solid style1 fa-edit" title="Editar subscripcion"><span class="label">Editar</span></button>
+                                        <button id="btn-estado" class="button small icon solid style1 fa-toggle-on" title="Cambiar estado"><span class="label">Cambiar estado</span></button>
+                                        <button id="btn-subscribe" class="small icon solid style1 fa-trash" title="Eliminar subscripcion"><span class="label">Eliminar subscripción</span></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Prestamo para negocio</td>
+                                    <td>Diario</td>
+                                    <td>10.00 Soles</td>
+                                    <td>
+                                        Desde: 01-12-2021<br>
+                                        Hasta: 01-12-2022<br>
+                                        Recordatorio: 06:00 PM
+                                    </td>
+                                    <td>2 horas</td>
+                                    <td>
+                                        <button id="btn-editar" class="button small icon solid style1 fa-edit" title="Editar subscripcion"><span class="label">Editar</span></button>
+                                        <button id="btn-estado" class="button small icon solid style1 fa-toggle-off" title="Cambiar estado"><span class="label">Cambiar estado</span></button>
+                                        <button id="btn-subscribe" class="small icon solid style1 fa-trash" title="Eliminar subscripcion"><span class="label">Eliminar subscripción</span></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section id="section-subs">
+                    <h2 id="title"></h2>
+                </section>
+                <section id="form" style="display: none;">
+                    <form method="post" class="box">
+                        <h2 id="title">Agregar una subscripción</h2>
+                        <div class="row gtr-uniform">
+                            <input type="hidden" id="id" value="">
+                            <input type="hidden" id="tipoConsulta" value="set">
+                            <div class="col-6 col-12-xsmall">
+                                <label for="ciclo">Ciclo de recordatorio</label>
+                                <select id="ciclo" required>
+                                    <option value disabled selected>- Escoja un ciclo -</option>
+                                    <option value="N">Diario</option>
+                                    <option value="J">Semanal</option>
+                                    <option value="J">Quincenal</option>
+                                    <option value="J">Mensual</option>
+                                    <option value="J">Bimestral</option>
+                                    <option value="J">Trimestral</option>
+                                    <option value="J">Semestral</option>
+                                    <option value="J">Anual</option>
+                                    <option value="J">Bianual</option>
+                                </select>
+                            </div>
+                            <div class="col-3 col-12-xsmall">
+                                <label for="moneda">Moneda de pago</label>
+                                <select id="moneda" required>
+                                    <option value disabled selected>- Escoja una moneda -</option>
+                                    <option value="N">Soles</option>
+                                    <option value="J">Dolares</option>
+                                    <option value="J">Euros</option>
+                                </select>
+                            </div>
+                            <div class="col-3 col-12-xsmall">
+                                <label for="monto">Monto de pago</label>
+                                <input type="text" name="" id="monto" placeholder="Ingrese un monto">
+                            </div>
+                            <div class="col-4 col-12-xsmall">
+                                <label for="fechain">Fecha inicio</label>
+                                <input type="date" name="" id="fechain">
+                            </div>
+                            <div class="col-4 col-12-xsmall">
+                                <label for="fechaout">Fecha fin</label>
+                                <input type="date" name="" id="fechaout">
+                            </div>
+                            <div class="col-4 col-12-xsmall">
+                                <label for="fechain">Prórroga</label>
+                                <input type="text" name="" id="prorroga" placeholder="Tiempo de espera">
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li><input type="submit" value="AGREGAR" class="primary" /></li>
+                                    <li><input type="button" id="cancelSupplier" value="CANCELAR" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts PATH PRINCIPAL -->
+    <script src="../../assets/js/configuracion.js"></script>
+    <script src="../../assets/js/cookies.js"></script>
+    
+    <!-- Scripts PATH RELATIVO -->
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/showHide.js"></script>
+    <script src="../assets/js/useAll.js"></script>
+    <script src="../assets/js/notify.js"></script>
+    
+    <!-- Scripts PATH ABSOLUTO-->
+    <script src="main.js"></script>
+
+
+</body>
+
+
+</html>

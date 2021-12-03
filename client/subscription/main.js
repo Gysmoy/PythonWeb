@@ -27,7 +27,7 @@ function getServices() {
     })
 }
 
-function getSuppliers() {
+/*function getSuppliers() {
     var usuario = getCookie('id');
     console.log(usuario)
     $.ajax({
@@ -85,21 +85,7 @@ function getSuppliers() {
             });
         }
     })
-}
-
-$(document).on('click', '#btn-subscriptions', function() {
-    var row = $(this).parents('tr');
-    var data = JSON.parse($(row).attr('data-proveedor'));
-    console.log('redireccionando');
-    location.href = `../subscription/?proveedor=${data.id}&action=show`;
-})
-
-$(document).on('click', '#btn-subscribe', function() {
-    var row = $(this).parents('tr');
-    var data = JSON.parse($(row).attr('data-proveedor'));
-    console.log('redireccionando');
-    location.href = `../subscription/?proveedor=${data.id}&action=add`;
-})
+}*/
 
 $(document).ready(function() {
     getServices();
@@ -131,7 +117,7 @@ $('#tipoProveedor').change(function() {
 $('#addSupplier').click(function() {
     $('#table').hide();
     $('#form').show(250);
-    $('#form #title').text('Agregar un proveedor');
+    $('#form #title').text('Agregar una subscripción');
     $('#id').val(null);
     $('#tipoConsulta').val('set');
     $('#tipoProveedor').val(null)
@@ -153,6 +139,10 @@ $('#cancelSupplier').click(function() {
     $('#form').hide();
     $('#table').show(250);
 })
+
+if (location.search.includes('add')) {
+    $('#addSupplier').click();
+}
 
 $(document).on('click', '#btn-editar', function() {
     var row = $(this).parents('tr');

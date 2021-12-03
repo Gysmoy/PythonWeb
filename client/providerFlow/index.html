@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Manage It | Flujo de proveedores</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,26 @@
         <link rel="stylesheet" href="../assets/css/noscript.css" />
     </noscript>
     <link rel="stylesheet" href="../assets/css/flujo-pro.css">
-    <title>Document</title>
+    
+    <style>
+        table {
+            border-collapse: separate;
+            border-spacing: 2px;
+        }
+        table td {
+            border: 1px solid #3b5998;
+            border-radius: 5px;
+            text-align: center;
+            vertical-align: middle;
+            box-shadow: 1px 1px 2px #3b589855;
+            background-color: #fff;
+        }
+        table thead td,
+        table tbody tr td:nth-child(1) {
+            background-color: #3b5998;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body class="is-preload">
@@ -23,7 +43,7 @@
             <div class="inner">
 
                 <!-- Logo -->
-                <a href="./" class="logo">
+                <a href="../" class="logo">
                     <span class="symbol icon solid fa-arrow-circle-left"></span><span>Volver</span>
                 </a>
 
@@ -38,76 +58,42 @@
         </header>
         <nav id="menu">
             <h2>Menu</h2>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="paymentChron.html">Cronograma de pagos</a></li>
-                <li><a href="providerFlow.html">Flujo de proveedores</a></li>
-                <li><a href="providerList.html">Lista de proveedores</a></li>
-                <li><a href="config.html">Configuración</a></li>
-                <li><a href="./#">Cerrar sesión</a></li>
-            </ul>
+            <ul></ul>
         </nav>
         <div id="main">
             <div class="inner">
                 <header>
-                    <h1><span class="icon solid fa-home"></span> Inicio | FLUJO DE PROVEEDORES</h1>
+                    <h1><span class="icon solid fa-wind"></span> Flujo de proveedores</h1>
                 </header>
                 <section>
-                    <div class="content-general-pr col-6 col-12-medium">
-                        <ul class="colum-1-pr actions stacked">
-
-                            <li >
-                                <a  class="colum-2-2-flujo-pr button small fit">
-                                    <p> FLUJO</p>
-                                    <p> DE</p>
-                                    <p> DIARIO</p>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a  class="colum-2-2-fecha-pr button small fit">FECHA</a>
-                                
-                            </li>
-                            <li>
-                                <a class="colum-2-2-total-pr button small fit">TOTAL</a>
-                                
-                            </li>
-
-                        </ul>
-                        <div class="colum-2-pr">
-
-                            <div class="prov-mon-pr button primary">
-                                <div class="prov-mon-prov-pr">Proveedor</div>
-                                <div class="prov-mon-mon-pr ">Monto</div>
-                            </div>
-                            <div class="colum-2-proveedores-list-pr">
-                                <div class="prov-price-pr">
-                                    <div class="prov-pr button primary">
-                                        Proveedor x
-                                    </div>
-                                    <div class="price-pr button primary">
-                                        S/.000
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="colum-2-fechas-pr  button primary ">
-                                00/00/0000
-                            </div>
-                            <div class="colum-2-money-pr">
-                                <div class="colum-2-money-type-pr">
-                                    <div class="colum-2-money-type-dolar-pr button">Dolares</div>
-                                    <div class="colum-2-money-type-soles-pr button">Soles</div>
-                                </div>
-                                <div class="colum-2-money-d-pr">
-                                    <a class="colum-2-money-d-dolar button fit">S/000</a>
-                                    <a class="colum-2-money-d-soles button  fit">S/000</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>DETERMINACIÓN</td>
+                                <td colspan="2">EMPRESAS</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FLUJO DIARIO</td>
+                                <td>Banco de la nación</td>
+                                <td>S/ 375.50</td>
+                            </tr>
+                            <tr>
+                                <td>FECHA DE PAGO</td>
+                                <td colspan="2">05 de Noviembre del 2021</td>
+                            </tr>
+                            <tr>
+                                <td>TOTAL</td>
+                                <td colspan="2">
+                                    <span title="(Cantidad establecida por defecto)">SOLES: S/ 375.50</span><br>
+                                    <span title="(Cantidad establecida por SUNAT)">DOLARES: $ 92.14</span><br>
+                                    <span title="(Cantidad establecida por SUNAT)">EUROS: € 92.14</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </section>
             </div>
         </div>

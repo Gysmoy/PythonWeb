@@ -3,7 +3,7 @@ $('#login form').submit(e => {
     var username = $('#usernameLogin').val();
     var password = $('#passwordLogin').val();
     $.ajax({
-        url: 'http://127.0.0.1:8000/users/validateUser/',
+        url: ipBack + '/users/validateUser/',
         method: 'POST',
         dataType: 'JSON',
         headers: {
