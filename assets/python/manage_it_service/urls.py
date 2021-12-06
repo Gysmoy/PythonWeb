@@ -29,6 +29,4 @@ urlpatterns = [
     path('cycles/', include(cycles)),
     path('idiom/', include(idiom)),
     path('record/', include(record)),
-    
-
 ]
