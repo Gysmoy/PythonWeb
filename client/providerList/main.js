@@ -113,7 +113,6 @@ $('#tipoProveedor').change(function() {
             break;
     }
 })
-
 $('#addSupplier').click(function() {
     $('#table').hide();
     $('#form').show(250);
